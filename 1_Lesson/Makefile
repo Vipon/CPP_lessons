@@ -3,7 +3,9 @@ CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
 
 BINDIR=bin
 VPATH=$(BINDIR)
-EXAMPLES=auto
+
+EXAMPLES=auto cswap
+EXEC_EXAMPLES=$(addprefix exec/,$(EXAMPLES))
 
 all: prep $(EXAMPLES)
 
@@ -16,11 +18,17 @@ prep:
 	fi;
 
 
-$(EXAMPLES): $(EXAMPLES).cpp
+$(EXAMPLES): %: %.cpp
 	$(CXX) $(CXXFLAGS) $< -o $(BINDIR)/$@
 
-$(EXAMPLES)/exec: $(EXAMPLES)
-	./$(BINDIR)/$(EXAMPLES)
+
+$(EXEC_EXAMPLES): exec/%: %
+	./$(BINDIR)/$(notdir $<)
+
+
+.PHONY: exec_all
+exec_all: $(EXEC_EXAMPLES)
+
 
 clean:
 	rm -f $(addprefix $(BINDIR)/,$(EXAMPLES))
