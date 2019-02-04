@@ -4,7 +4,7 @@ CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
 BINDIR=bin
 VPATH=$(BINDIR)
 
-EXAMPLES=auto cswap cppswap
+EXAMPLES=auto cswap cppswap swap_template
 EXEC_EXAMPLES=$(addprefix exec/,$(EXAMPLES))
 
 all: prep $(EXAMPLES)
