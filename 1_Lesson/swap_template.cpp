@@ -23,6 +23,7 @@ struct section {
 };
 
 
+// explicitly specialized
 template <> void swapP<section>(section *a, section *b)
 {
     printf("I'm special swapP for struct section.\n");
