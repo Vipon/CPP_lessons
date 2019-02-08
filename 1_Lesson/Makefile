@@ -1,5 +1,6 @@
 CXX=g++
 CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
+INCLUDE=../include
 
 BINDIR=bin
 VPATH=$(BINDIR)
@@ -19,7 +20,7 @@ prep:
 
 
 $(EXAMPLES): %: %.cpp
-	$(CXX) $(CXXFLAGS) $< -o $(BINDIR)/$@
+	$(CXX) $(CXXFLAGS) $< -o $(BINDIR)/$@ -I $(addprefix -I,$(INCLUDE))
 
 
 $(EXEC_EXAMPLES): exec/%: %
