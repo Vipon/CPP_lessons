@@ -5,6 +5,6 @@ int main() {
     int a;
 
     if (a) {
-        cout << "Halow woard";
+        cout << "Halow woard!";
     }
 }
