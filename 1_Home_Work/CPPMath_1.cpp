@@ -84,7 +84,7 @@ int main()
     printf("Mul(dVal1, dVal2) %lf\n", Mul(dVal1, dVal2));
     printf("Div(dVal1, dVal2) %lf\n", Div(dVal1, dVal2));
 
-    Complex CVal1 = { 1, 2 }, CVal2 = { 3, 9 },c;
+    Complex CVal1 = { 1, 2 }, CVal2 = { 3, 9 };
 
     printf("Sum(CVal1, CVal2) ");
     print_complex(Sum(CVal1, CVal2));
@@ -102,6 +102,5 @@ int main()
     print_complex(Div(CVal1, CVal2));
     printf("\n");
 
-    getchar();
     return 0;
 }
