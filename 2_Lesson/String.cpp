@@ -66,13 +66,14 @@ void String::insert(size_t pos, char a)
 
 void String::append(const String& s1)
 {
-    len = len + s1.len;
+    size_t newLen = len + s1.len;
     // extra byte for terminate '\0'
-    auto temp = new char[len + 1];
+    auto temp = new char[newLen + 1];
     memcpy(temp, str, len);
     memcpy(temp + len, s1.str, s1.len);
 
     delete [] str;
+    len = newLen;
     str = temp;
 }
 
