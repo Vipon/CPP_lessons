@@ -1,6 +1,6 @@
 #include "String.h"
-#include <cstring>
 #include <cstdlib>
+#include <cstring>
 #include <iostream> /**
                      *  class ostream;
                      *  class istream;
@@ -8,8 +8,9 @@
 
 String::String(const char *str)
 {
-    if (str == nullptr)
+    if (str == nullptr) {
         abort();
+    }
 
     len = strlen(str);
 
@@ -67,7 +68,7 @@ void String::append(const String& s1)
 {
     len = len + s1.len;
     // extra byte for terminate '\0'
-    char *temp = new char[len + 1];
+    auto temp = new char[len + 1];
     memcpy(temp, str, len);
     memcpy(temp + len, s1.str, s1.len);
 

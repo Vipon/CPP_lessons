@@ -1,5 +1,5 @@
 #include "simpleClass.h"
-#include <cstdio>
+#include <iostream>
 
 simpleClass::simpleClass(int val)
 {
@@ -8,7 +8,7 @@ simpleClass::simpleClass(int val)
 
 void simpleClass::print()
 {
-    printf("a = %d\n", this->a);
+    std::cout << "a = " << this->a << std::endl;
 }
 
 simpleClass::simpleClass(simpleClass& sc)

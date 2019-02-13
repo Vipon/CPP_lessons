@@ -8,4 +8,4 @@ compiler:
   - gcc
 
 script:
-  - clang-tidy `find . -type f -name "*.h" -or -name "*.cpp"` -checks=clang-analyzer-*,-clang-diagnostic-unused-command-line-argument -warnings-as-errors=* -- -Iinclude/
+  - clang-tidy `find . -type f -name "*.cpp"` -- -Iinclude/

@@ -1,24 +1,24 @@
-#include <cstdio>
 #include "testNamespace.h"
+#include <iostream>
 
 
 void Test0::test0()
 {
-	printf("test0 namespace\n");
+	std::cout << "test0 namespace\n";
 
 }
 
 
 void Test1::test0()
 {
-	printf("test1 namespace\n");
+	std::cout << "test1 namespace\n";
 
 }
 
 
 void test0()
 {
-	printf("global namespace\n");
+	std::cout << "global namespace\n"  ;
 }
 
 
