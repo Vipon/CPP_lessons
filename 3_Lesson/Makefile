@@ -5,7 +5,7 @@ INCLUDE=../include
 BINDIR=bin
 VPATH=$(BINDIR)
 
-EXAMPLES=
+EXAMPLES=String
 EXEC_EXAMPLES=$(addprefix exec/,$(EXAMPLES))
 
 all: prep $(EXAMPLES)
