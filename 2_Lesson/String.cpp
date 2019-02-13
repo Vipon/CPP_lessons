@@ -1,73 +1,105 @@
 #include "String.h"
 #include <cstring>
+#include <cstdlib>
+#include <iostream> /**
+                     *  class ostream;
+                     *  class istream;
+                     */
 
-String::String(size_t size)
+String::String(const char *str)
 {
-	/* C
-	str = (char*)malloc(size*sizeof(char));
-	if (str == nullptr)
-		abort(); 
-	*/
-	str = new char[size];
-	len = size;
+    if (str == nullptr)
+        abort();
+
+    len = strlen(str);
+
+    /** C-language
+     *  this->str = (char*)malloc(len);
+     *  if (this->str == nullptr)
+     *      abort();
+     */
+
+    // C++-language
+    this->str = new char[len];
+    // copy string including terminate '\0' symbol.
+    memcpy(this->str, str, len + 1);
 }
 
 
 String::~String()
 {
-	/* C
-	free(str);
-	*/
-	delete [] str;
+    /** C
+     *  free(str);
+     */
+
+    // C++-language
+    delete [] str;
 }
 
 
-char String::get(size_t pos)
+size_t String::size() const
 {
-	if (pos > len) {
-		//abort();
-	}
+    return len;
+}
 
-	return str[pos];
+
+char String::get(size_t pos) const
+{
+    if (pos > len) {
+        abort();
+    }
+
+    return str[pos];
 }
 
 
 void String::insert(size_t pos, char a)
 {
-	if (pos > len) {
-		//abort();
-	}
+    if (pos > len) {
+        abort();
+    }
 
-	str[pos] = a;
+    str[pos] = a;
 }
 
 
-String& String::append(String& s1)
+void String::append(const String& s1)
 {
-	char *temp = new char[this->len + s1.len];
-	memcpy(temp, this->str, this->len);
-	memcpy(&temp[this->len - 1], s1.str, s1.len);
+    len = len + s1.len;
+    // extra byte for terminate '\0'
+    char *temp = new char[len + 1];
+    memcpy(temp, str, len);
+    memcpy(temp + len, s1.str, s1.len);
 
-	delete [] str;
-	str = temp;
+    delete [] str;
+    str = temp;
 }
 
 
-size_t String::size()
+void String::print() const
 {
-	return len;
+    std::cout << str << std::endl;
 }
 
-#include <string>
-#include <iostream> /* 	
-						class ostream;
-						class istream;
-					*/
 
 int main()
 {
-	std::string str, str0;
-	std::cin >> str >> str0;
-	std::cout << 100 << str << ' ' << str0 << std::endl;
-}
+    String str("Hello world!");
+    std::cout << "str: ";
+    str.print();
+    std::cout << "String len = " << str.size() << std::endl;
 
+    String str1("Hello!");
+    std::cout << "str1: ";
+    str1.print();
+    std::cout << "String len = " << str1.size() << std::endl;
+
+    str.append(str1);
+    std::cout << "str: ";
+    str.print();
+    std::cout << "String len = " << str.size() << std::endl;
+
+    std::cout << "str1: ";
+    str1.print();
+    return 0;
+}

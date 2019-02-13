@@ -4,14 +4,14 @@
 class simpleClass {
 
 public:
-	simpleClass(int val = -1);
-	simpleClass(simpleClass& sc);
-	~simpleClass() {};
+    simpleClass(int val = -1);
+    simpleClass(simpleClass& sc);
+    ~simpleClass() {};
 
-	void print();
+    void print();
 
 private:
-	int a;
+    int a;
 
 };
 

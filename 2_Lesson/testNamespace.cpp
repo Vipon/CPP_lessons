@@ -1,22 +1,26 @@
 #include <cstdio>
 #include "testNamespace.h"
 
+
 void Test0::test0()
 {
-	printf("namespace test0\n");
+	printf("test0 namespace\n");
 
 }
+
 
 void Test1::test0()
 {
-	printf("namespace test1\n");
-	
+	printf("test1 namespace\n");
+
 }
 
-void test0() 
+
+void test0()
 {
-	printf("Global\n");
+	printf("global namespace\n");
 }
+
 
 int main()
 {

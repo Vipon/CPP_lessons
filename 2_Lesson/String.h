@@ -3,21 +3,21 @@
 
 #include <cstddef>
 
-
 class String {
 
 public:
-	String(size_t size); 	// !TODO
-	~String();				// !TODO
+    String(const char *str);
+    ~String();
 
-	char get(size_t pos);
-	void insert(size_t pos, char a);
-	String& append(String& s1);
-	size_t size();
+    size_t  size() const;
+    char    get(size_t pos) const;
+    void    insert(size_t pos, char a);
+    void    append(const String& s1);
+    void    print() const;
 
 private:
-	char*	str;
-	size_t 	len;
+    char*   str;
+    size_t  len;
 };
 
 #endif /* __STRING_H */

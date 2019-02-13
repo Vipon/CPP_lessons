@@ -5,8 +5,12 @@ namespace Test0 {
 	void test0();
 };
 
+
 namespace Test1 {
 	void test0();
 };
+
+
+void test0();
 
 #endif /* __TEST_NAMESPACE_H */
