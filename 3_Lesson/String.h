@@ -19,6 +19,7 @@ public:
 
     size_t                  size() const;
     char&                   operator[](size_t pos);
+    String&                 operator=(const String& s);
     String&                 operator+=(const String& s);
     String                  operator+(const String& s) const;
     friend std::ostream&    operator<<(std::ostream& os, const String& s);

@@ -63,6 +63,17 @@ char& String::operator[](size_t pos)
 }
 
 
+String& String::operator=(const String& s)
+{
+    len = s.len;
+    delete [] str;
+    str = new char[len + 1];
+    memcpy(str, s.str, len);
+
+    return *this;
+}
+
+
 String& String::operator+=(const String& s)
 {
     size_t newLen = len + s.len;
