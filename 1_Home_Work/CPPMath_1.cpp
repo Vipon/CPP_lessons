@@ -8,7 +8,6 @@ struct Complex {
 
 
 template <typename T>
-
 T Sum(T &a, T &b) 
 {
 	return (a + b);
@@ -25,7 +24,6 @@ template <> Complex Sum<Complex>(Complex &a, Complex &b)
 
 
 template <typename T>
-
 T Sub(T &a, T &b) 
 {
 	return (a - b);
@@ -42,7 +40,6 @@ template <> Complex Sub<Complex>(Complex &a, Complex &b)
 
 
 template <typename T>
-
 T Mul(T &a, T &b) 
 {
 	return (a * b);
@@ -59,7 +56,6 @@ template <> Complex Mul<Complex>(Complex &a, Complex &b)
 
 
 template <typename T>
-
 T Div(T &a, T &b) 
 {
 	return (a / b);

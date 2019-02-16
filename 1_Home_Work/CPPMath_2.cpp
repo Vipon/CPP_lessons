@@ -8,7 +8,6 @@ struct Complex {
 
 
 template <typename T0, typename T1>
-
 auto Mul (T0 &a, T1 &b)
 {
 	return (a * b);
@@ -45,9 +44,12 @@ template <> auto Mul<Complex, Complex>(Complex &a, Complex &b)
 int main()
 {
 	int num = 5;
+	int num2 = 3;
 	double sc = 5;
 	sc = Mul(num, sc);
 	printf("Mul int * double = %f\n", sc);
+	num2 = Mul(num, num2);
+	printf("Mul int * int = %d\n", num2);
 	Complex c = {10, 10};
 	Complex d = {2, 2};
 	Complex res_comp = {};

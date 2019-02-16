@@ -1,7 +1,6 @@
 #include <cstdio>
 
 template <typename T>
-
 auto Sum(T &a, T &b) 
 {
 	return (a + b);
@@ -9,7 +8,6 @@ auto Sum(T &a, T &b)
 
 
 template <typename T>
-
 auto Sub(T &a, T &b) 
 {
 	return (a - b);
@@ -17,7 +15,6 @@ auto Sub(T &a, T &b)
 
 
 template <typename T>
-
 auto Mul(T &a, T &b) 
 {
 	return (a * b);
@@ -25,7 +22,6 @@ auto Mul(T &a, T &b)
 
 
 template <typename T>
-
 auto Div(T &a, T &b) 
 {
 	return (a / b);
