@@ -16,23 +16,31 @@ Stack::~Stack()
 
 int Stack::isFull() 
 {
+	int error = 0;
+
 	if (head == size) {
-		return 1;
+		error = 1;
 	}
 	else {
-		return 0;
+		error = 0;
 	};
+
+	return error;
 }
 
 
 int Stack::isEmpty()
 {
+	int error = 0;
+
 	if (head == 0) {
-		return 1;
+		error = 1;
 	}
 	else {
-		return 0;
+		error = 0;
 	}
+
+	return error;
 }
 
 
