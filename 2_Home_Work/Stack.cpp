@@ -49,12 +49,14 @@ int Stack::isEmpty()
 void Stack::push(uint64_t val)
 {
 	if (isFull() == 1) {
-		uint64_t *temp = (uint64_t*)reallocarray(stack, (++size), sizeof(uint64_t));
+		uint64_t *temp = (uint64_t*)realloc(stack, ((++size) * sizeof(uint64_t)));
 
 		if (temp == nullptr) {
 			size--;
 			abort();
 		}
+
+		stack = temp;
 	}
 
 	stack[(head++)] = val;
