@@ -49,7 +49,7 @@ int Stack::isEmpty()
 void Stack::push(uint64_t val)
 {
 	if (isFull() == 1) {
-		uint64_t *temp = (uint64_t*)realloc(stack, ((++size) * sizeof(uint64_t)));
+		auto *temp = static_cast<uint64_t*>(realloc(stack, ((++size) * sizeof(uint64_t))));
 
 		if (temp == nullptr) {
 			size--;
