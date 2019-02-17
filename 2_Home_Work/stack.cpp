@@ -42,5 +42,5 @@ bool Stack::isEmpty() {
     if (top == 0) {
         return true;
     }
-        return false;
+    return false;
 }
