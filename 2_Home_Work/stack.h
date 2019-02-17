@@ -1,9 +1,6 @@
 #ifndef STACK
 #define STACK
 
-#define MAX 20
-#define MULTI 2
-
 class Stack {
 
 public:
