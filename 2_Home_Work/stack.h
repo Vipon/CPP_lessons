@@ -17,6 +17,6 @@ private:
     int *data;
     size_t top;
     const size_t size;
-};
+};  
 
 #endif
