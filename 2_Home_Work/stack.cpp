@@ -3,7 +3,6 @@
 #include "stack.h"
 #include <iostream>
 
-char error = 0;
 
 Stack::Stack(size_t maxsize):size(maxsize) {
     data = new int[size];
