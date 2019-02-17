@@ -1,4 +1,6 @@
 #include "Stack.h"
+#include <iostream>
+#include <cstdlib>
 
 Stack::Stack (size_t size)
 {
@@ -47,7 +49,12 @@ int Stack::isEmpty()
 void Stack::push(uint64_t val)
 {
 	if (isFull() == 1) {
-		abort();
+		uint64_t *temp = (uint64_t*)reallocarray(stack, (++size), sizeof(uint64_t));
+
+		if (temp == nullptr) {
+			size--;
+			abort();
+		}
 	}
 
 	stack[(head++)] = val;

@@ -1,7 +1,7 @@
 #ifndef __STACK_H
 #define __STACK_H
 
-#include <iostream>
+#include <cstddef>
 #include <cstdint>
 
 class Stack {

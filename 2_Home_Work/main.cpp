@@ -1,4 +1,5 @@
 #include "Stack.h"
+#include <iostream>
 
 int main()
 {
@@ -6,7 +7,7 @@ int main()
 	Stack st(size);
 	size_t i = 0;
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < (size + 1); i++) {
 		st.push(((i + 1) * 10));
 	}
 
@@ -15,7 +16,7 @@ int main()
 	std::cout << "STACK POP: \n"; 
 	uint64_t value = 0;
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < (size + 1); i++) {
 		value = st.pop();
 		std::cout << value << std::endl;
 	}
