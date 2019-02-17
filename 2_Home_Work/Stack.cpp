@@ -1,6 +1,6 @@
 #include "Stack.h"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 
 Stack::Stack (size_t size)
 {
