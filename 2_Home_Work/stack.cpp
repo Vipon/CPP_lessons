@@ -24,7 +24,7 @@ void Stack::dump() {
     size_t i = 0;
     for (i; i < top; i++) {
         std::cout << data[i];
-        std::cout << "   ";
+        std::cout << "    ";
     }
 }
 
