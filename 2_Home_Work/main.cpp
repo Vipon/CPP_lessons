@@ -1,6 +1,6 @@
+#include "Stack.h"
 #include <cstdio>
 #include <cstdlib> 
-#include "Stack.h"
 #include <iostream>
 
 
