@@ -22,8 +22,8 @@ int Stack::pop() {
 
 
 void Stack::dump() {
-    size_t i = 0;
-    for (i; i < top; i++) {
+    size_t i;
+    for (i = 0; i < top; i++) {
         std::cout << data[i];
         std::cout << "    ";
     }
