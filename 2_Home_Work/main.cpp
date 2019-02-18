@@ -10,7 +10,7 @@ int main() {
     std::cin >> size;
     Stack wassap(size);
 
-    if (wassap.isEmpty()) {
+    if (wassap.isEmpty() != 0) {
         std::cout << "Stack is Empty\n";
     }
     else {
@@ -30,7 +30,7 @@ int main() {
 
     wassap.dump();
 
-    if (wassap.isFull()) {
+    if (wassap.isFull() != 0) {
         std::cout << "\nStack is Full";
     }
     else {
