@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstdlib> 
 #include <iostream>
+#include <cstddef>
 
 
 Stack::Stack(size_t maxsize):size(maxsize) {
