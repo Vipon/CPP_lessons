@@ -1,9 +1,8 @@
 #include "Stack.h"
+#include <cstddef>
 #include <cstdio>
 #include <cstdlib> 
 #include <iostream>
-#include <cstddef>
-
 
 int main() {
     std::cout << "Print size of stack\n";
