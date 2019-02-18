@@ -30,17 +30,17 @@ void Stack::dump() {
 }
 
 
-bool Stack::isFull() {
+int Stack::isFull() {
     if (top == size) {
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }
 
 
-bool Stack::isEmpty() {
+int Stack::isEmpty() {
     if (top == 0) {
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }
