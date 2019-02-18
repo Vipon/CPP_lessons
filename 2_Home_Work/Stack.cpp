@@ -1,5 +1,5 @@
 #include "Stack.h"
-#include <cstdlib>
+#include <cstring>
 #include <iostream>
 
 Stack::Stack (size_t size)
@@ -49,14 +49,11 @@ int Stack::isEmpty()
 void Stack::push(uint64_t val)
 {
 	if (isFull() == 1) {
-		auto *temp = static_cast<uint64_t*>(realloc(stack, ((++size) * sizeof(uint64_t))));
-
-		if (temp == nullptr) {
-			size--;
-			abort();
-		}
-
-		stack = temp;
+		uint64_t* temp = stack;
+		stack = new uint64_t[size * 2];
+		memcpy(stack, temp, (size * sizeof(uint64_t)));
+		size *= 2;
+		delete [] temp;
 	}
 
 	stack[(head++)] = val;
