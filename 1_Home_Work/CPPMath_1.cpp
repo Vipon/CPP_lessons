@@ -3,53 +3,53 @@
 using namespace std;
 
 struct Complex{
-double Re;
-double Im;
+    double Re;
+    double Im;
 };
 
 template <typename T>
 T Sum(T &a, T &b){
-return a + b;
+    return a + b;
 }
 
 template <>
 Complex Sum <Complex> (Complex &a, Complex &b){
-return {a.Re + b.Re, a.Im + b.Im};
+    return {a.Re + b.Re, a.Im + b.Im};
 }
 
 template <typename T>
 T Sub(T &a, T &b){
-return a - b;
+    return a - b;
 }
 
 template <>
 Complex Sub <Complex> (Complex &a, Complex &b){
-return {a.Re - b.Re, a.Im - b.Im};
+    return {a.Re - b.Re, a.Im - b.Im};
 }
 
 template <typename T>
 T Mul(T &a, T &b){
-return a * b;
+    return a * b;
 }
 
 template <>
 Complex Mul <Complex> (Complex &a, Complex &b){
-return {a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im};
+    return {a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im};
 }
 
 template <typename T>
 T Div(T &a, T &b){
-return a / b;
+    return a / b;
 }
 
 template <>
 Complex Div <Complex> (Complex &a, Complex &b){
-return {(a.Re * b.Re + a.Im * b.Im)/(b.Re * b.Re + b.Im * b.Im), (a.Im * b.Re - a.Re * b.Im)/(b.Re * b.Re + b.Im * b.Im)};
+    return {(a.Re * b.Re + a.Im * b.Im)/(b.Re * b.Re + b.Im * b.Im), (a.Im * b.Re - a.Re * b.Im)/(b.Re * b.Re + b.Im * b.Im)};
 }
 
 ostream &operator<<(ostream &out, Complex C){
-out << C.Re << "+" << C.Im << "i";
-return out;
+    out << C.Re << "+" << C.Im << "i";
+    return out;
 }
 
 int main(){

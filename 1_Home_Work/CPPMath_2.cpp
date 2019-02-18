@@ -10,27 +10,27 @@ public:
 
 template <typename T, typename R>
 auto Mul(T &a, R &b){
-return a * b;
+    return a * b;
 }
 
 template <>
 auto Mul <Complex, double> (Complex &a, double &b){
-return (Complex) {a.Re * b, a.Im * b};
+    return (Complex) {a.Re * b, a.Im * b};
 }
 
 template <>
 auto Mul <double, Complex> (double &a, Complex &b){
-return (Complex) {b.Re * a, b.Im * a};
+    return (Complex) {b.Re * a, b.Im * a};
 }
 
 template <>
 auto Mul <Complex, Complex> (Complex &a, Complex &b){
-return (Complex) {a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im};
+    return (Complex) {a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im};
 }
 
 ostream &operator<<(ostream &out, Complex C){
-out << C.Re << "+" << C.Im << "i";
-return out;
+    out << C.Re << "+" << C.Im << "i";
+    return out;
 }
 
 int main(){

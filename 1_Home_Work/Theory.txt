@@ -1,46 +1,46 @@
 0)
-Сигнатура функции -- её отличительные особенности, которые позволяют понимать,
-какую именно реализацию когда исользовать.
-Т.е., это имя функции и список типов аргументов.
-Одинаковые сигнатуры:
-void func(int a, double &b, char c = '3')
+Signatura funkcii -- eyo otlichitel'nye osobennosti, kotorye pozvolyayut ponimat',
+kakuyu imenno realizaciyu kogda isol'zovat'.
+T.e., eto imya funkcii i spisok tipov argumentov.
+Odinakovye signatury:
+void func(int a, double &b, char c = \'3\')
 int func(int a, double &b)
-Одинаковые сигнатуры:
-void func(int a, double &b, char c = '3')
+Odinakovye signatury:
+void func(int a, double &b, char c = \'3\')
 int func(int a, double &b, char c)
-Разные сигнатуры:
+Raznye signatury:
 void func(int a, double &b)
 int func(int a, double &b, char c)
-Разные сигнатуры:
+Raznye signatury:
 void func(int a, int b)
 void func(int a, double b)
-Разные сигнатуры:
+Raznye signatury:
 void func1(int a, int b)
 void func2(int a, int b)
 
 1)
-Полиморфизм -- возможность обрабатывать одной и той же функцией переменные разных типов.
+Polimorfizm -- vozmozhnost' obrabatyvat' odnoj i toj zhe funkciej peremennye raznyh tipov.
 
 2)
-Перегрузка -- возможность использования одноимённых функций.
-void func(int a) и void func(double a)
-operator+ для разных типов
+Peregruzka -- vozmozhnost' ispol'zovaniya odnoimyonnyh funkcij.
+void func(int a) i void func(double a)
+operator+ dlya raznyh tipov
 ...
 
 3)
-Если в вызове присутствуют эти аргументы, действуют  как обычные аргументы.
-Если отсутствуют, то вместо них подставляются значения по умолчанию.
+Esli v vyzove prisutstvuyut eti argumenty, dejstvuyut  kak obychnye argumenty.
+Esli otsutstvuyut, to vmesto nih podstavlyayutsya znacheniya po umolchaniyu.
 
 4)
-Шаблон функции показывает, как описать функцию независимо от типов аргументов.
-Нужен, чтобы не прописывать по 50 раз одну и ту же функцию, где у аргументов только типы меняются.
-Шаблон может оказаться нерабочим для некоторых типов аргументов,
-если не определены функции или операторы для этих типов.
+Shablon funkcii pokazyvaet, kak opisat' funkciyu nezavisimo ot tipov argumentov.
+Nuzhen, chtoby ne propisyvat' po 50 raz odnu i tu zhe funkciyu, gde u argumentov tol'ko tipy menyayutsya.
+Shablon mozhet okazat'sya nerabochim dlya nekotoryh tipov argumentov,
+esli ne opredeleny funkcii ili operatory dlya etih tipov.
 
 5)
-Специализирует функцию только для некоторых типов аргументов.
-Если в функцию подаётся список типов аргументов, указанный в специализации,
-то используется специализация вместо шаблона.
+Specializiruet funkciyu tol'ko dlya nekotoryh tipov argumentov.
+Esli v funkciyu podayotsya spisok tipov argumentov, ukazannyj v specializacii,
+to ispol'zuetsya specializaciya vmesto shablona.
 
 template <typename T, typename R>
 auto Mul(T &a, R &b){
@@ -53,23 +53,23 @@ return (Complex) {a.Re * b, a.Im * b};
 }
 
 6) 
-если int &b = a;
-то все изменения в а и b тождественны.
-т.е., что бы не происходило, а = b. Кроме того &a = &b.
+esli int &b = a;
+to vse izmeneniya v a i b tozhdestvenny.
+t.e., chto by ne proiskhodilo, a = b. Krome togo &a = &b.
 
 7)
-Для ускорения работы за счёт памяти.
-Вставляет функцию непосредственно в код,
-чтобы лишний раз неи выполнялись функции вызова функции,
-запоминания, где остановились, и возвращения.
-открытия и чистки памяти на стеке.
+Dlya uskoreniya raboty za schyot pamyati.
+Vstavlyaet funkciyu neposredstvenno v kod,
+chtoby lishnij raz nei vypolnyalis' funkcii vyzova funkcii,
+zapominaniya, gde ostanovilis', i vozvrashcheniya.
+otkrytiya i chistki pamyati na steke.
 
 8)
-Для автоматического определения типа.
-Причём auto просто автоопределение,
-а decltype() возвращает тип выражения в скобках.
+Dlya avtomaticheskogo opredeleniya tipa.
+Prichyom auto prosto avtoopredelenie,
+a decltype() vozvrashchaet tip vyrazheniya v skobkah.
 template <typename T, typename R>
 auto Mul(T &a, R &b) -> decltype(a * b){
 return (decltype(a * b)) a * b;
 }
-Функция возвращает значение типа, совпадающего с типом выражения a * b.
+Funkciya vozvrashchaet znachenie tipa, sovpadayushchego s tipom vyrazheniya a * b.
