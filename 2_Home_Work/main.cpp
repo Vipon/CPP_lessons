@@ -2,11 +2,12 @@
 #include <cstdio>
 #include <cstdlib> 
 #include <iostream>
+#include <cstddef>
 
 
 int main() {
     std::cout << "Print size of stack\n";
-    int size = 0;
+    size_t size = 0;
     std::cin >> size;
     Stack wassap(size);
 
@@ -17,7 +18,7 @@ int main() {
         std::cout << "Stack isn't Empty\n";
     }
 
-    int i;
+    size_t i;
     for (i = 0; i < size; i++) {
         wassap.push(i); 
         // stack is filling up with i
