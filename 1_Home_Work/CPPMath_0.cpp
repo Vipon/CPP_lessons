@@ -2,29 +2,29 @@
 #include <iostream>
 
 template <typename Type>
-auto Sum(Type& a, Type& b)->decltype(a + b)
+auto Sum(Type& a, Type& b)
 {
     return a + b;
 }
 
 template <typename Type>
-auto Sub(Type& a, Type& b)->decltype(a - b)
+auto Sub(Type& a, Type& b)
 {
     return a - b;
 }
 
 template <typename Type>
-auto Mul(Type& a, Type& b)->decltype(a * b)
+auto Mul(Type& a, Type& b)
 {
     return a * b;
 }
 
 template <typename Type>
-auto Div(Type& a, Type& b)->decltype(a / b)
+auto Div(Type& a, Type& b)
 {
     if (b == 0)
     {
-        return 0;
+        return b;
     }
     return a / b;
 }
