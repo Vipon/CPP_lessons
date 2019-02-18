@@ -1,6 +1,8 @@
 #ifndef STACK
 #define STACK
 
+#include <cstddef>
+
 class Stack {
 
 public:
