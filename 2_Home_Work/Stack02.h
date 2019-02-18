@@ -2,7 +2,7 @@
 #define STACK02_H
 
 #include <cstdint>
-
+using namespace std;
 
 class Stack {
 public:
@@ -17,8 +17,8 @@ public:
 
 private:
 	uint64_t* stack;
-	size_t size;
 	size_t head;
+	size_t size;
 };
 
 #endif /*STACK02_H*/
