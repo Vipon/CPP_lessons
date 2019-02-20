@@ -36,7 +36,7 @@ bool Stack::isEmpty()
 
 uint64_t Stack::pop()
 {
-	if (isEmpty() == true)
+	if (isEmpty())
 	{
 		abort();
 	}
