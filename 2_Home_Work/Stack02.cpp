@@ -18,25 +18,25 @@ Stack::~Stack()
 {
 	if (head == size)
 	{
-		return 1;
+		return true;
 	}
 
-	return 0;
+	return false;
 }
 
 bool Stack::isEmpty()
 {
 	if (head == 0)
 	{
-		return 1;
+		return true;
 	}
 
-	return 0;
+	return false;
 }
 
 uint64_t Stack::pop()
 {
-	if (isEmpty() == 1)
+	if (isEmpty() == true)
 	{
 		abort();
 	}
@@ -46,9 +46,9 @@ uint64_t Stack::pop()
 
 bool Stack::push(uint64_t top)
 {
-	if (isFull() == 1)
+	if (isFull() == true)
 	{
-		uint64_t* buf = new uint64_t[2 * size];
+		auto buf = new uint64_t[2 * size];
 		size = size * 2;
 		for (size_t i = 0; i < size; i++)
 		{
@@ -60,12 +60,12 @@ bool Stack::push(uint64_t top)
 
 	stack[head++] = top;
 
-	return 0;
+	return true;
 }
 
 void Stack::dump()
 {
-	if (isEmpty() == 1)
+	if (isEmpty() == true)
 	{
 		std::cout << "Stack is empty" << std::endl;
 		return;
@@ -78,6 +78,5 @@ void Stack::dump()
 		std::cout << stack[i] << std::endl;
 	}
 
-	return;
 }
 
