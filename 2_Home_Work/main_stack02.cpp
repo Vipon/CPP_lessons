@@ -1,7 +1,7 @@
 #include "Stack02.h"
 #include <cstdio>
 #include <iostream>
-#include <conio.h>
+// #include <conio.h>
 
 int main()
 {
@@ -18,6 +18,6 @@ int main()
 	std::cout << "pop " << st.pop() << "\n" << "and push 5 " << std::endl;
 	st.push(5);
 	std::cout << "pop again " << st.pop() << std::endl;
-	_getch();
+//	_getch();
 	return 0;
 }
