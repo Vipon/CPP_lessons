@@ -6,7 +6,7 @@ using namespace std;
 
 class Stack {
 public:
-	Stack(size_t size);
+	Stack();
 	~Stack();
 	
 	void push(uint64_t top);

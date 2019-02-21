@@ -2,10 +2,10 @@
 #include <cstdio>
 #include <iostream>
 
-Stack::Stack(size_t size)
+Stack::Stack()
 {
-	stack = new uint64_t[size];
-	this->size = size;
+	stack = new uint64_t[10];
+	this->size = 10;
 	this->head = 0;
 }
 

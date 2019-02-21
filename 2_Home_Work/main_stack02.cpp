@@ -6,7 +6,7 @@
 int main()
 {
 	size_t size = 11;
-	Stack st(size);
+	Stack st;
 
 	for (size_t i = 0; i < size * 2; i++)
 	{
