@@ -9,7 +9,7 @@ public:
 	Stack(size_t size);
 	~Stack();
 	
-	bool push(uint64_t top);
+	void push(uint64_t top);
 	uint64_t pop();
 	bool isFull();
 	bool isEmpty();

@@ -16,22 +16,12 @@ Stack::~Stack()
 
  bool Stack::isFull()
 {
-	if (head == size)
-	{
-		return (1==1);
-	}
-
-	return (1==2);
+	 return head == size;
 }
 
 bool Stack::isEmpty()
 {
-	if (head == 0)
-	{
-		return (1==1);
-	}
-
-	return (1==2);
+	return head == 0;
 }
 
 uint64_t Stack::pop()
@@ -44,7 +34,7 @@ uint64_t Stack::pop()
 	return stack[--head];
 }
 
-bool Stack::push(uint64_t top)
+void Stack::push(uint64_t top)
 {
 	if (isFull())
 	{
@@ -59,8 +49,6 @@ bool Stack::push(uint64_t top)
 	}
 
 	stack[head++] = top;
-
-	return (1==1);
 }
 
 void Stack::dump()
