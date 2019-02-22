@@ -57,27 +57,28 @@ template <> complex Div<complex>(complex &a, complex &b)
 
 int main()
 {
-	int ai = 0, bi = 1;
-	double ad = 10.0, bd = 11.0;
+	int ai = 0, bi = 1, si, mi, di;
+	double ad = 10.0, bd = 11.0, sd, md, dd;
 	complex c1 = {11, 13};
 	complex c2 = {17, 19};
+	complex sc, mc, dc;
 
 
 	printf("ai = %d, bi = %d\n", ai, bi);
-	int si = Sum(ai, bi);
-	int mi = Mul(ai, bi);
-	int di = Div(ai, bi);
+	si = Sum(ai, bi);
+	mi = Mul(ai, bi);
+	di = Div(ai, bi);
 	printf("ci = %d \t mi = %d \t di = %d\n", si, mi, di);
 
 	printf("ad = %lf, bd = %lf\n", ad, bd);
-	double sd = Sum(ad, bd);
-	double md = Mul(ad, bd);
-	double dd = Div(ad, bd);
+	sd = Sum(ad, bd);
+	md = Mul(ad, bd);
+	dd = Div(ad, bd);
 	printf("cd = %lf \t mlf = %lf \t dd = %lf\n", sd, md, dd);
 
-	complex sc = Sum(c1, c2);
-	complex mc = Mul(c1, c2);
-	complex dc = Div(c1, c2);
+	sc = Sum(c1, c2);
+	mc = Mul(c1, c2);
+	dc = Div(c1, c2);
 	printf("sc = %f + i * %f\tmc = %f + i * %f\tdc = %f + i * %f\t\n", sc.re, sc.im, mc.re, mc.im, dc.re, dc.im);
 
 	return 0;
