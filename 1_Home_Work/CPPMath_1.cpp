@@ -61,7 +61,7 @@ int main()
 	double ad = 10.0, bd = 11.0, sd, md, dd;
 	complex c1 = {11, 13};
 	complex c2 = {17, 19};
-	complex sc, mc, dc;
+	complex sc = {}, mc = {}, dc = {};
 
 
 	printf("ai = %d, bi = %d\n", ai, bi);
