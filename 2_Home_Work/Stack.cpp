@@ -30,7 +30,7 @@ bool Stack::isEmpty()
 
 void Stack::push(uint64_t val)
 {
-	if (isFull() == true) {
+	if (isFull()) {
 		uint64_t* temp = stack;
 		stack = new uint64_t[size * 2];
 		memcpy(stack, temp, (size * sizeof(uint64_t)));
@@ -44,7 +44,7 @@ void Stack::push(uint64_t val)
 
 uint64_t Stack::pop()
 {
-	if (isEmpty() == true) {
+	if (isEmpty()) {
 		abort();
 	}
 
@@ -56,7 +56,7 @@ uint64_t Stack::pop()
 
 void Stack::dump()
 {
-	if (isEmpty() == true) {
+	if (isEmpty()) {
 		return;
 	}
 
