@@ -2,23 +2,24 @@
 
 
 struct complex {
-	double re, im;
+	double re;
+	double im;
 };
 
 template <typename T>
-auto Sum(T &a, T &b)
+T Sum(T &a, T &b)
 {
 	return (a + b);
 }
 
 template <typename T>
-auto Mul(T &a, T &b)
+T Mul(T &a, T &b)
 {
 	return (a * b);
 }
 
 template <typename T>
-auto Div(T &a, T &b)
+T Div(T &a, T &b)
 {
 	return (a / b);
 }
@@ -61,7 +62,9 @@ int main()
 	double ad = 10.0, bd = 11.0, sd, md, dd;
 	complex c1 = {11, 13};
 	complex c2 = {17, 19};
-	complex sc = {}, mc = {}, dc = {};
+	complex sc = {};
+	complex mc = {};
+	complex dc = {};
 
 
 	printf("ai = %d, bi = %d\n", ai, bi);
