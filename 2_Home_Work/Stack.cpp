@@ -18,27 +18,19 @@ Stack::~Stack()
 
 bool Stack::isFull() 
 {
-	if (head == size) {
-		return true;
-	}
-
-	return false;
+	return (head == size);
 }
 
 
 bool Stack::isEmpty()
 {
-	if (head == 0) {
-		return true;
-	}
-	
-	return false; 
+	return (head == 0);
 }
 
 
 void Stack::push(uint64_t val)
 {
-	if (isFull() == 1) {
+	if (isFull() == true) {
 		uint64_t* temp = stack;
 		stack = new uint64_t[size * 2];
 		memcpy(stack, temp, (size * sizeof(uint64_t)));
@@ -52,7 +44,7 @@ void Stack::push(uint64_t val)
 
 uint64_t Stack::pop()
 {
-	if (isEmpty() == 1) {
+	if (isEmpty() == true) {
 		abort();
 	}
 
@@ -64,7 +56,7 @@ uint64_t Stack::pop()
 
 void Stack::dump()
 {
-	if (isEmpty() == 1) {
+	if (isEmpty() == true) {
 		return;
 	}
 
