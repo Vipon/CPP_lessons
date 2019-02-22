@@ -21,8 +21,8 @@ auto Div(T &a, T &b)
 
 int main()
 {
-	int ai = 0, bi = 1;
-	double ad = 10.0, bd = 11.0;
+	int ai = 0, bi = 1, si, mi, di;
+	double ad = 10.0, bd = 11.0, sd, md, dd;
 
 
 	printf("ai = %d, bi = %d\n", ai, bi);
