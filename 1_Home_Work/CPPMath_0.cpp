@@ -26,15 +26,15 @@ int main()
 
 
 	printf("ai = %d, bi = %d\n", ai, bi);
-	si = Sum(&ai, &bi);
-	mi = Mul(&ai, &bi);
-	di = Div(&ai, &bi);
+	si = Sum(ai, bi);
+	mi = Mul(ai, bi);
+	di = Div(ai, bi);
 	printf("ci = %d \t mi = %d \t di = %d\n", si, mi, di);
 
 	printf("ad = %lf, bd = %lf\n", ad, bd);
-	sd = Sum(&ad, &bd);
-	md = Mul(&ad, &bd);
-	dd = Div(&ad, &bd);
+	sd = Sum(ad, bd);
+	md = Mul(ad, bd);
+	dd = Div(ad, bd);
 	printf("cd = %lf \t mlf = %lf \t dd = %lf\n", sd, md, dd);
 
 	return 0;

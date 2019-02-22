@@ -64,15 +64,15 @@ int main()
 
 
 	printf("ai = %d, bi = %d\n", ai, bi);
-	int si = Sum(&ai, &bi);
-	int mi = Mul(&ai, &bi);
-	int di = Div(&ai, &bi);
+	int si = Sum(ai, bi);
+	int mi = Mul(ai, bi);
+	int di = Div(ai, bi);
 	printf("ci = %d \t mi = %d \t di = %d\n", si, mi, di);
 
 	printf("ad = %lf, bd = %lf\n", ad, bd);
-	double sd = Sum(&ad, &bd);
-	double md = Mul(&ad, &bd);
-	double dd = Div(&ad, &bd);
+	double sd = Sum(ad, bd);
+	double md = Mul(ad, bd);
+	double dd = Div(ad, bd);
 	printf("cd = %lf \t mlf = %lf \t dd = %lf\n", sd, md, dd);
 
 	complex sc = Sum(c1, c2);
