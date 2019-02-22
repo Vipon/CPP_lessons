@@ -3,8 +3,8 @@
 
 int main()
 {
-	size_t size = 7;
-	Stack st(size);
+	size_t size = 10;
+	Stack st;
 	size_t i = 0;
 
 	for (i = 0; i < (size + 1); i++) {

@@ -7,11 +7,11 @@
 class Stack {
 
 public:
-	Stack(size_t size);
+	Stack(size_t size = 10);
 	~Stack();
 
-	int isFull(); //returns 1 if stack is full, else 0.
-	int isEmpty(); //returns 1 if stack is emty, else 0.
+	bool isFull(); //returns true if stack is full, else false.
+	bool isEmpty(); //returns true if stack is emty, else false.
 	void push(uint64_t val);
 	uint64_t pop();
 	void dump();

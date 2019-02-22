@@ -1,14 +1,16 @@
-main: main.o Stack.o
-	g++ main.o Stack.o -o main
+CXX=g++
+CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
 
-Stack.o: Stack.cpp Stack.h
-	g++ -Wall -Wextra -Werror -std=c++14 -O3 -c Stack.cpp
+EXAMPLE=Stack
 
-main.o: main.cpp Stack.cpp
-	g++ -Wall -Wextra -Werror -std=c++14 -O3 -c main.cpp
+main: main.o $(EXAMPLE).o
+	$(CXX) $^ -o $@
+
+$(EXAMPLE): %: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< 
 
 exec: main 
 	./main
 
-clean: 
-	rm -rf main.o Stack.o main
+clean:
+	rm -f main.o main $(EXAMPLE).o
