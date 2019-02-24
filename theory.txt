@@ -1,0 +1,29 @@
+1)
+Esli pisat' znachenia dlya peremennuh v tele konsruktora, to poluchitsa,
+chto inizializatsia i peredacha znachenia peremennum proishodyat v raznoe vremya.
+Eto nepriemlimo dlya ssulok i konstant, poetomu dlya nih ispol'zu'utsa 
+spiski inizializatsii -- prisvaivanie znachenii v moment inizialisatsii.
+
+2)
+Standartnui: ispolzuetsya prosto pri sozdanii peremennoi classa.
+Moget but' kak s argumentami, tak i bez.
+Kopirovania (ot &class): kopiruet polnustiu soderganie iz odnoi peremennoi classa v druguu.
+Ispolzuetsa avtomaticheski pri peredache v funkciu po znacheniu.
+Ot (&&class): vurezaet sodegimoe iz odnoi peremennoi v drugyiu.
+(Ibo ne imeet smusla nichego sohranyat' v ishodnoi peremennoi, e'o otdali nam na rasterzanie (&&)).
+
+3)
+Pokazat, chto peremennaya ne menyaetsa (klassicheskii sposob primeneniya dly funkcii).
+Libo pokazat, chto ne menyaetsa "this" (pishetsya posle argumentov funkcii).
+
+4)
+Pochti kak ugodno.
+Odnoarumentnue operatoru ostautsya takimi ge, kak i dvuhargumentnue.
+Krome togo, nekotorue peregtuzit' nelzya. & (ssulka), &&, naprimer.
+
+5)
+Chtobu dat vneshney funkcii dostup k polyam classa.
+
+6)
+Bolee bezopasnu, kidaut iskluchenia,
+srazu ge vudelyaut pamyat pod nazvannuy tip i k etomu ge tipu ukazatel privodyat.
