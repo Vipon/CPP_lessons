@@ -1,6 +1,6 @@
 #include "Stack.h"
-#include <cstdlib>
 #include <cstdbool>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
 
@@ -29,18 +29,18 @@ bool Stack::is_full()const
 {
     if (head == size)
     {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 bool Stack::is_empty()const
 {
     if (head == 0)
     {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 void Stack::push(const double& val)
