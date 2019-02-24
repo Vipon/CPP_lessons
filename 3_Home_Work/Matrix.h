@@ -26,7 +26,7 @@ public:
         M.size = 0;
     };
 
-    Matrix(T *arr){
+    Matrix(T arr[Size * Size]){
         this->mat =  new T[Size * Size];
         this->size = Size;
         memcpy(this->mat, arr, Size * Size * sizeof(T));
