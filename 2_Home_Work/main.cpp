@@ -1,6 +1,6 @@
 #include "Stack.h"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 
 void testing_of_constructor_of_copy(Stack st)
 {
