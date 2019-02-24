@@ -1,7 +1,7 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
 
-#include <mem.h>
+#include <cstring>
 
 template <typename T, unsigned int Size>
 class Matrix{

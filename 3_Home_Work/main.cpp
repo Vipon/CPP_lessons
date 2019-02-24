@@ -1,52 +1,50 @@
 #include <iostream>
 #include "Matrix.h"
 
-using namespace std;
-
 int main()
 {
     Matrix <int,3> A, B, C;
     for (int i = 0; i < 9; ++i){
         A[{i / 3, i % 3}] = i * 2;
     }
-    cout << A;
-    cout << endl;
+    std::cout << A;
+    std::cout << std::endl;
 
     B = A;
     B *= 3;
-    cout << B;
-    cout << endl;
+    std::cout << B;
+    std::cout << std::endl;
 
     B -= A + A;
-    cout << B;
-    cout << endl;
+    std::cout << B;
+    std::cout << std::endl;
 
     C = B + A;
-    cout << C;
-    cout << endl;
+    std::cout << C;
+    std::cout << std::endl;
 
     C = B + (A * (-4));
     C = (A * (-4)) + B;
-    cout << C;
-    cout << endl;
+    std::cout << C;
+    std::cout << std::endl;
 
-    cout << A;
-    cout << endl;
+    std::cout << A;
+    std::cout << std::endl;
 
     int arr[9] = {1, 0, 0, 0, 1, 0, 0, 0, 1};
     Matrix <int, 3> E(arr);
-    cout << E;
-    cout << endl;
+    std::cout << E;
+    std::cout << std::endl;
 
     A *= E;
-    cout << A;
-    cout << endl;
+    std::cout << A;
+    std::cout << std::endl;
 
     B = A * (3 * E);
-    cout << B;
-    cout << endl;
+    std::cout << B;
+    std::cout << std::endl;
 
-    cin >> C;
-    cout << C;
+    std::cin >> C;
+    std::cout << C;
     return 0;
 }
