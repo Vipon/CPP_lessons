@@ -19,7 +19,7 @@ template <> double Mul<double, Complex>(double scalar, Complex comp)
 
 template <> Complex Mul<Complex, double>(Complex comp, double scalar)
 {
-	Complex mul;
+	Complex mul {};
 	mul.im = scalar * comp.im;
 	mul.re = scalar * comp.re;
 	return mul;
@@ -27,7 +27,7 @@ template <> Complex Mul<Complex, double>(Complex comp, double scalar)
 
 template <> Complex Mul<Complex, Complex>(Complex comp1, Complex comp2)
 {
-	Complex mul;
+	Complex mul {};
 	mul.im = comp1.re * comp2.im + comp1.im * comp2.re;
 	mul.re = comp1.re * comp2.re - comp1.im * comp2.im; 
 	return mul;
@@ -35,7 +35,7 @@ template <> Complex Mul<Complex, Complex>(Complex comp1, Complex comp2)
 
 int main ()
 {
-	Complex a,b;
+	Complex a,b {};
 	a.im = 10;
 	b.im = 15;
 	a.re = 3;

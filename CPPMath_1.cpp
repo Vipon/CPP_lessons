@@ -32,7 +32,7 @@ T Div (T &a, T &b)
 
 template <> Complex Sum<Complex> (Complex &a, Complex &b)
 {
-	Complex sum;
+	Complex sum {};
 	sum.im = a.im + b.im;
 	sum.re = a.re + b.re; 
 	return sum;
@@ -40,21 +40,21 @@ template <> Complex Sum<Complex> (Complex &a, Complex &b)
 
 template <> Complex Sub<Complex> (Complex &a, Complex &b)
 {
-	Complex sub;
+	Complex sub {};
 	sub.im = a.im - b.im;
 	sub.re = a.re - b.re; 
 	return sub;
 }
 template <> Complex Mul<Complex> (Complex &a, Complex &b)
 {
-	Complex mul;
+	Complex mul {};
 	mul.im = a.re * b.im + a.im * b.re;
 	mul.re = a.re * b.re - a.im * b.im; 
 	return mul;
 }
 template <> Complex Div<Complex> (Complex &a, Complex &b)
 {
-	Complex div;
+	Complex div {};
 	div.im = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
 	div.re = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
 	return div;
@@ -63,7 +63,7 @@ template <> Complex Div<Complex> (Complex &a, Complex &b)
 
 int main ()
 {
-	Complex a,b;
+	Complex a,b {};
 	a.im = 10;
 	b.im = 15;
 	a.re = 3;
