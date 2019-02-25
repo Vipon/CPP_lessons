@@ -18,26 +18,12 @@ Stack::~Stack(){
 
 
 bool Stack::isFull(){
-	if (head == size)
-	{
-		return 1;
-	}
-	else	
-	{
-		return 0;
-	}
+	return (head == size);
 }
 
 
 bool Stack::isEmpty(){
-	if (head == 0)
-	{
-		return 1;
-	}
-	else	
-	{
-		return 0;
-	}
+	return (head ==0);
 }
 
 
