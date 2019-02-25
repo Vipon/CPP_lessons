@@ -1,5 +1,6 @@
-#include <iostream>
 #include "Matrix.h"
+#include <array>
+#include <iostream>
 
 int main()
 {
@@ -31,7 +32,7 @@ int main()
     std::cout << A;
     std::cout << std::endl;
 
-    int arr[9] = {1, 0, 0, 0, 1, 0, 0, 0, 1};
+    std::array <int, 9> arr = {1, 0, 0, 0, 1, 0, 0, 0, 1};
     Matrix <int, 3> E(arr);
     std::cout << E;
     std::cout << std::endl;

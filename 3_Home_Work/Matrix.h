@@ -1,6 +1,9 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
 
+#include <utility>
+#include <array>
+#include <iostream>
 #include <cstring>
 
 template <typename T, unsigned int Size>
@@ -26,10 +29,10 @@ public:
         M.size = 0;
     };
 
-    Matrix(T arr[Size * Size]){
+    Matrix(std::array <T, Size * Size> &arr){
         this->mat =  new T[Size * Size];
         this->size = Size;
-        memcpy(this->mat, arr, Size * Size * sizeof(T));
+        memcpy(this->mat, arr.begin(), Size * Size * sizeof(T));
     };
 
     ~Matrix(){
