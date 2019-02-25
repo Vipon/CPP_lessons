@@ -10,32 +10,33 @@ T1 Mul (T1 a, T2 b)
 {
 	return (a * b);
 }
-template <> double Mul<double, Complex>(double scalar, Complex comp)
+template <> double Mul<double, Complex>(double a, Complex b)
 {
 	double mul;
-	mul = scalar * ((comp.im) * (comp.im) + (comp.re) * (comp.re));
+	mul = a * ((b.im) * (b.im) + (b.re) * (b.re));
 	return mul;
 }
 
-template <> Complex Mul<Complex, double>(Complex comp, double scalar)
+template <> Complex Mul<Complex, double>(Complex a, double b)
 {
 	Complex mul {};
-	mul.im = scalar * comp.im;
-	mul.re = scalar * comp.re;
+	mul.im = b * a.im;
+	mul.re = b * a.re;
 	return mul;
 }
 
-template <> Complex Mul<Complex, Complex>(Complex comp1, Complex comp2)
+template <> Complex Mul<Complex, Complex>(Complex a, Complex b)
 {
 	Complex mul {};
-	mul.im = comp1.re * comp2.im + comp1.im * comp2.re;
-	mul.re = comp1.re * comp2.re - comp1.im * comp2.im; 
+	mul.im = a.re * b.im + a.im * b.re;
+	mul.re = a.re * b.re - a.im * b.im; 
 	return mul;
 }
 
 int main ()
 {
-	Complex a,b {};
+	Complex a {};
+	Complex b {};
 	a.im = 10;
 	b.im = 15;
 	a.re = 3;

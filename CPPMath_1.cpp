@@ -63,7 +63,8 @@ template <> Complex Div<Complex> (Complex &a, Complex &b)
 
 int main ()
 {
-	Complex a,b {};
+	Complex a {};
+	Complex b {};
 	a.im = 10;
 	b.im = 15;
 	a.re = 3;
