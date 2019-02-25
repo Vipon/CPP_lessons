@@ -6,7 +6,7 @@ EXAMPLE=Vector
 main: main.o $(EXAMPLE).o
 	$(CXX) $^ -o $@
 
-%: %.cpp
+%.o: %.cpp %.h
 	$(CXX) $(CXXFLAGS) -c $< 
 
 exec: main 

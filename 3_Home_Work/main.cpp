@@ -5,8 +5,8 @@
 int main()
 {
 	double crd1[3] = {1, 2, 3};
-	Vector a(crd1, 3);
-	Vector b(crd1, 3);
+	Vector a((double *)crd1, 3);
+	Vector b((double *)crd1, 3);
 	std::cout << a << '\n';
 	a *= 5;
 	std::cout << a << '\n';
