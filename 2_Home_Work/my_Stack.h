@@ -41,7 +41,7 @@ public:
     }
 
     bool empty() const {
-    return (this.length == 0);
+    return (this->length == 0);
     }
 
     std::size_t length() const {
