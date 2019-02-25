@@ -1,6 +1,7 @@
 #include <cstdint>
-#include <iostream>
 #include <cstdio>
+#include <iostream>
+
 
 #include "Stack.h"
 
@@ -17,14 +18,26 @@ Stack::~Stack(){
 
 
 bool Stack::isFull(){
-	if (head == size)	return 1;
-	else	return 0;
+	if (head == size)
+	{
+		return 1;
+	}
+	else	
+	{
+		return 0;
+	}
 }
 
 
 bool Stack::isEmpty(){
-	if(head == 0)	return 1;
-	else	return 0;
+	if (head == 0)
+	{
+		return 1;
+	}
+	else	
+	{
+		return 0;
+	}
 }
 
 
