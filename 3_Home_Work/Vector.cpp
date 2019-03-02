@@ -1,22 +1,26 @@
 #include "Vector.h"
 #include <cstring>
 
-Vector::Vector(size_t dim)
+Vector::Vector(size_t dim) :
+	dim(dim),
+	crd(new double[dim])
 {
-	this->dim = dim;
-	crd = new double[dim];
 	size_t i = 0;
-	for (i = 0; i < 3; ++i) {
+	for (i = 0; i < dim; ++i) {
 		crd[i] = 0;
 	}
 }
 
 
-Vector::Vector(double* crd, size_t dim) 
+Vector::Vector(double* c, size_t dim) : 
+	dim(dim),
+	crd(new double[dim])
 {
-	this->crd = new double[dim];
-	this->dim = dim;
-	memcpy(this->crd, crd, (dim*(sizeof(double))));
+	if (c == nullptr) {
+		abort();
+	}
+
+	memcpy(crd, c, (dim*(sizeof(double))));
 }
 
 
@@ -148,11 +152,32 @@ std::ostream& operator<<(std::ostream& os, const Vector& v)
 
 std::istream& operator>>(std::istream& is, Vector& v)
 {
+	char buf = 0;
+	is >> buf;
+
+	if (buf != '(') {
+		return is;
+	}
+
 	size_t i = 0;
 
-	for (i = 0; i < v.dim; ++i) {
-		is >> (v.crd)[i];
-	}; 
+	while (buf != ')') {
+		if (i >= v.dim) {
+			double* temp = v.crd;
+			v.crd = new double[v.dim * 2];
+			memcpy(v.crd, temp, (v.dim * (sizeof(double))));
+			v.dim *= 2;
+			delete [] temp;
+		}
 
+		is >> v.crd[i];
+		is >> buf;
+		i++;
+	}
+
+	double* temp = v.crd;
+	v.crd = new double[i];
+	memcpy(v.crd, temp, (i * (sizeof(double))));
+	delete [] temp;
 	return is;
 }
