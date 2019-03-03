@@ -73,14 +73,14 @@ int main() {
 	printf("It is complex now\n");
 	Complex c = {12, 5};
 	Complex d = {2, 3};
-	Complex ans = {};
-	ans = Sum(c, d);
-	printf("Sum: Re = %f, Im = %f\n", ans.Re, ans.Im);
-	ans = Sub(c, d);
-	printf("Sub: Re = %f, Im = %f\n", ans.Re, ans.Im);
-	ans = Mul(c, d);
-	printf("Mul: Re = %f, Im = %f\n", ans.Re, ans.Im);
-	ans = Div(c, d);
-	printf("Div: Re = %f, Im = %f\n", ans.Re, ans.Im);
+	Complex ans_c = {};
+	ans_c = Sum(c, d);
+	printf("Sum: Re = %f, Im = %f\n", ans_c.Re, ans_c.Im);
+	ans_c = Sub(c, d);
+	printf("Sub: Re = %f, Im = %f\n", ans_c.Re, ans_c.Im);
+	ans_c = Mul(c, d);
+	printf("Mul: Re = %f, Im = %f\n", ans_c.Re, ans_c.Im);
+	ans_c = Div(c, d);
+	printf("Div: Re = %f, Im = %f\n", ans_c.Re, ans_c.Im);
 	return 0;
 } 

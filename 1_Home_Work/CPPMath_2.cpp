@@ -12,7 +12,7 @@ auto Mul (T0 &a, T1 &b) {
 	return (a * b);
 }
 
-template <> auto Mul<double, Complex> (double &scalar, Complex &comp) {
+template <> auto Mul<double, Complex> (double &scal, Complex &comp) {
 	Complex ans = {};
 	ans.Re = comp.Re * scal;
 	ans.Im = comp.Im * scal;
@@ -35,9 +35,8 @@ template <> auto Mul<Complex, Complex> (Complex &a, Complex &b) {
 
 
 int main() {
-	nt a = 18;
+	int a = 18;
 	int b = 4;
-	int ans = 0;
 	printf("It is int now\n");
 	printf("Mul = %d\n", Mul(a, b));
 
