@@ -19,7 +19,7 @@ template <> auto Mul<double, Complex> (double &scal, Complex &comp) {
 	return ans;
 }
 
-template <> auto Mul<Complex, double> (Complex &comp, double &scalar) {
+template <> auto Mul<Complex, double> (Complex &comp, double &scal) {
 	Complex ans = {};
 	ans.Re = comp.Re * scal;
 	ans.Im = comp.Im * scal;
