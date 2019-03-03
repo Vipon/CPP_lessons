@@ -19,10 +19,10 @@ public:
         const double b = 0, 
         const double c = 0, 
         const double d = 0);
-    Quaternion(Quaternion& q);
-    /*We don't need in move-constructor in class Quaternion, becouse
-    Quaternion's constructor of copy is fast*/
-    Quaternion& operator=(const Quaternion& q);
+    /* We don't need to write constructor of copy, becouse default constructor
+    of copy is working right.
+    Also, we don't need in move-constructor in class Quaternion, becouse
+    Quaternion's constructor of copy is fast.*/
     Quaternion& operator+=(const Quaternion& q);
     Quaternion operator+(const Quaternion& q) const;
     Quaternion operator+(const double& a) const;

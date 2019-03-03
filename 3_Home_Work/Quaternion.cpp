@@ -9,22 +9,6 @@ Quaternion::Quaternion(const double a, const double b, const double c, const dou
     k(d)
 {};
 
-Quaternion::Quaternion(Quaternion& q):
-    r(q.r),
-    i(q.i),
-    j(q.j),
-    k(q.k)
-{};
-
-Quaternion& Quaternion::operator=(const Quaternion& q)
-{
-    r = q.r;
-    i = q.i;
-    j = q.j;
-    k = q.k;
-    return *this;
-}
-
 Quaternion& Quaternion::operator+=(const Quaternion& q)
 {
     r += q.r;
