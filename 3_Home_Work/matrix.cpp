@@ -35,8 +35,10 @@ matrix::matrix(const matrix& A)
 	}	
 }
 	
-matrix::matrix(matrix&& A) noexcept : height(A.height), width(A.width)
+matrix::matrix(matrix&& A) noexcept : m(A.m), height(A.height), width(A.width)
 {
+	*A.m = nullptr;
+	A.m = nullptr;
 	A.height = 0;
 	A.width = 0;
 }
