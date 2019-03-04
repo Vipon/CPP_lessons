@@ -49,15 +49,13 @@ void Stack::dump() {
 
 bool Stack::isFull() {
     if (top == size) {
-        return true;
+        return (top == size);
     }
-    return false;
 }
 
 
 bool Stack::isEmpty() {
     if (top == 0) {
-        return true;
+        return (topp == 0);
     }
-    return false;
 }
