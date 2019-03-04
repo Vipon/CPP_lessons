@@ -11,7 +11,7 @@ class Mat {
 public:
     // default constructor
     Mat() : size(0), val(nullptr) {};
-    Mat(const size_t size = 1) : size(this->size), val(nullptr) {};
+    Mat(const size_t size = 1) : size(size), val(nullptr) {};
 
     Mat(const uint16_t *val, const size_t size);
     // constructor of copy
