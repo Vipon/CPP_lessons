@@ -2,8 +2,9 @@
 #define MATRIX_H
 
 #include <cstdint>
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
+
 
 
 class matrix
