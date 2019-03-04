@@ -3,24 +3,15 @@
 #include <cstdlib> 
 #include <iostream>
 
-int error;
 
 Stack::Stack(size_t maxsize):size(maxsize), top(0) {
     data = new int[size];
-    if (data == nullptr) {
-        error = OUT_OF_MEMORY;
-    }
 }
 
 
 int Stack::push(int value) {
     if (top > value) {
         int *temp = new int[size * 2];
-
-        if (temp == nullptr) {
-            error = OUT_OF_MEMORY;
-            return OUT_OF_MEMORY;
-        }
 
         for (int i = 0; i < size; ++i) {
             temp[i] = data[i];
@@ -56,17 +47,17 @@ void Stack::dump() {
 }
 
 
-int Stack::isFull() {
+bool Stack::isFull() {
     if (top == size) {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 
-int Stack::isEmpty() {
+bool Stack::isEmpty() {
     if (top == 0) {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
