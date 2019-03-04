@@ -19,8 +19,8 @@ public:
     void dump();
     int push(int value);
     int pop();
-    int isFull();
-    int isEmpty();
+    bool isFull();
+    bool isEmpty();
 
 private:
     int *data;
