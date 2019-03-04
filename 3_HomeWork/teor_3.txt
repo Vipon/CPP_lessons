@@ -5,7 +5,22 @@
 или объединением, содержащими поля (также включая поля, рекурсивно вложенные в содержащиеся агрегаты и объединения) со
 спецификатором const.
 
-rvalue - любое выражение, которое не является lvalue. Формально:an rvalue is a prvalue or an xvalue. Where prvalue is an expression whose evaluation initializes an object or a bit-field, or computes the value of the operand of an operator, as specified by the context in which it appears. And xvalue is a glvalue that denotes an object or bit-field whose resources can be reused (usually because it is near the end of its lifetime).
+rvalue - любое выражение, которое не является lvalue.
+____________________________________________________
+Формально:
+Объект glvalue представляет собой выражение, вычисление которого определяет удостоверение объекта, битового поля или функции.
+
+Объект prvalue представляет собой выражение, вычисление которого инициализирует объект или битовое поле или вычисляет значение операнда
+оператора.
+
+Xvalue является glvalue, который обозначает объект или битовые поля, ресурсы которых может многократно использоваться (обычно, поскольку
+он находится в конце его времени существования). Пример: Некоторые типы выражений, включающих ссылки rvalue дают xvalues, такие как 
+вызов функции, возвращаемый тип которых является ссылкой rvalue или преобразование в ссылочный тип rvalue.
+
+Lvalue является glvalue, который не является xvalue.
+
+Rvalue является prvalue или xvalue.
+_____________________________________________________
 
 Все lvalue, которые не являются массивом, функцией и не имеют неполный тип, могут быть преобразованы в rvalue.
 Преобразовать же rvalue в lvalue нельзя! 
