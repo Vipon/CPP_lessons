@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-Stack::Stack(size_t maxsize):size(maxsize), top(0) {
+Stack::Stack(size_t maxsize):size(maxsize), top(0), error(OK) {
     data = new int[size];
 }
 
