@@ -1,6 +1,7 @@
 #include <cstdint>
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
+
 
 #include "matrix.h"
 
