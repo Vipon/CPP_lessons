@@ -51,6 +51,7 @@ bool Stack::isFull() {
     if (top == size) {
         return (top == size);
     }
+    return (top == size);
 }
 
 
@@ -58,4 +59,5 @@ bool Stack::isEmpty() {
     if (top == 0) {
         return (top == 0);
     }
+    return (top == 0);
 }
