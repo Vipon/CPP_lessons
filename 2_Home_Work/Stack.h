@@ -4,12 +4,9 @@
 #include <cstddef> 
 
 enum ERRORS {
-    OUT_OF_MEMORY = -103,
-    STACK_UNDERFLOW,
+    STACK_UNDERFLOW = -103,
     OK = 0
 };
-
-extern int error;
 
 class Stack {
 
@@ -17,6 +14,8 @@ public:
     Stack(size_t size = 0);
     ~Stack() {};
 
+    int error;
+    
     void dump();
     int push(int value);
     int pop();
