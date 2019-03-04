@@ -10,7 +10,7 @@ rvalue - любое выражение, которое не является lva
 Преобразовать же rvalue в lvalue нельзя! 
 
 Ссылки на Rvalue:
-Rvalue references allow a function to branch at compile time (via overload resolution) on the condition "Am I being called on an lvalue or an rvalue?"
+Rvalue ссылка ведет себя точно так же, как и lvalue ссылка, за исключением того, что она может быть связана с временным объектом, тогда как lvalue связать с временным (не константным) объектом нельзя.
 
 Двойной асперсанд — это ссылка на rvalue. Он означает как раз то, что и обещает — даёт ссылку на rvalue. Мы можем «стащить» внутренности rvalue.
 
