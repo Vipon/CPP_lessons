@@ -35,7 +35,7 @@ Mat::~Mat()
 }
 
 
-uint16_t Mat::operator[](size_t pos)
+uint16_t& Mat::operator[](size_t pos)
 {
     if (pos > size) {
         abort();
@@ -45,7 +45,7 @@ uint16_t Mat::operator[](size_t pos)
 }
 
 
-Mat Mat::operator=(const Mat& m)
+Mat& Mat::operator=(const Mat& m)
 {
     size = m.size;
     delete[] val;
@@ -85,7 +85,7 @@ std::istream& operator>>(std::istream& is, Mat& m)
 }
 
 
-Mat Mat::operator+=(const Mat& m)
+Mat& Mat::operator+=(const Mat& m)
 {
     if ((this->size) < (m.size)) {
         uint16_t* temp = val;
