@@ -11,7 +11,7 @@ int main()
     uint16_t crd2[9] = { 0, 0, 0,
                          1, 4, 6,
                          1, 3, 3 };
-    Mat a(static_cast<uint16_t*>(crd2)crd2, 9);
+    Mat a(static_cast<uint16_t*>(crd2), 9);
     Mat b(9);
 
     b = a;
