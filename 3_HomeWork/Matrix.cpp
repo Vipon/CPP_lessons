@@ -1,6 +1,5 @@
 #include "Matrix.h"
 #include <cmath>
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 #include <iostream> 
@@ -60,7 +59,7 @@ Mat& Mat::operator=(const Mat& m)
 std::ostream& operator<<(std::ostream& os, const Mat& m)
 {
     os << "| ";
-    int t = sqrt(m.size);
+    int t = int(sqrt(m.size));
     for (int i = 1; i < (m.size); ++i) {
         if (i % t == 1 && i != 1) {
             os << "|\n| ";
