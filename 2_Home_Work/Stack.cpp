@@ -1,4 +1,4 @@
-#include "Stack.h" 
+#include "Stack.h"
 #include <cstdbool>
 #include <cstdlib>
 #include <cstring>
@@ -38,7 +38,7 @@ void Stack::push(const double& val)
 {
     if (Stack::is_full())
     {
-        double* New_El_of_stack = new double[++size];
+        auto New_El_of_stack = new double[++size];
         memcpy(New_El_of_stack, El_of_stack, size*sizeof(double));
         delete [] El_of_stack;
         El_of_stack = New_El_of_stack;
