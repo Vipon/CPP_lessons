@@ -6,13 +6,12 @@
 
 Stack::Stack(size_t stack_size)
 {
-    El_of_stack = new double[stack_size];
     size = stack_size;
     head = 0;
+    El_of_stack = new double[stack_size];
 };
 
 Stack::Stack(const Stack& s):
-
     size(s.size),
     head(s.head),
     El_of_stack(new double [size])
@@ -39,7 +38,10 @@ void Stack::push(const double& val)
 {
     if (Stack::is_full())
     {
-        abort();
+        double* New_El_of_stack = new double[++size];
+        memcpy(New_El_of_stack, El_of_stack, size*sizeof(double));
+        delete [] El_of_stack;
+        El_of_stack = New_El_of_stack;
     }
     El_of_stack[head++] = val;
 };
@@ -56,7 +58,7 @@ double Stack::pop()
 void Stack::dump()const
 {
     std::cout << "Begining\n";
-    for (int i = head - 1; i > -1 ; i--)
+    for (size_t i = head - 1; i + 1 > 0 ; i--)
     {
         std::cout << El_of_stack[i] << std::endl;
     }

@@ -23,12 +23,19 @@ int main()
     {
         std::cout << "I'm full:\n";
     }
+    some_stack.push(4);
+    if (some_stack.is_full())
+    {
+        std::cout << "I'm full:\n";
+    }
     some_stack.dump();
     testing_of_constructor_of_copy(some_stack);
     some_stack.dump();
     std::cout << some_stack.pop()<< std::endl;
     std::cout << some_stack.pop()<< std::endl;
     std::cout << some_stack.pop()<< std::endl;
+    std::cout << some_stack.pop()<< std::endl;
     some_stack.dump();
+    Stack another_stack(0);
     return 0;
 }
