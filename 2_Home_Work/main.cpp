@@ -9,7 +9,7 @@ void testing_of_constructor_of_copy(Stack st)
     st.dump();
 }//It is'n mistake, this function must be in main.cpp
 
-int main()
+int main() 
 {
     Stack some_stack(3);
     if (some_stack.is_empty())

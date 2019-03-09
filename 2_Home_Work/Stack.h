@@ -1,5 +1,5 @@
 #ifndef STACK
-#define STACK
+#define STACK 
 
 #include <cstdlib>
 #include <cstdbool>
