@@ -3,11 +3,6 @@
 
 #include <cstddef> 
 
-enum ERRORS {
-    STACK_UNDERFLOW = -103,
-    OK = 0
-};
-
 class Stack {
 
 public:
@@ -15,6 +10,11 @@ public:
     ~Stack() {};
 
     int error;
+    
+    enum ERRORS {
+         STACK_UNDERFLOW = -103,
+         OK = 0
+    };
     
     void dump();
     int push(int value);
