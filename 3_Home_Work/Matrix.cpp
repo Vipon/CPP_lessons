@@ -87,20 +87,6 @@ std::istream& operator>>(std::istream& is, Mat& m)
 
 Mat& Mat::operator+=(const Mat& m)
 {
-    if ((this->size) < (m.size)) {
-        uint16_t* temp = val;
-        val = new uint16_t[m.size];
-        memcpy(val, temp, (size * (sizeof(uint16_t))));
-
-        size_t i = 0;
-        for (i = size; i < m.size; ++i) {
-            val[i] = i;
-        };
-
-        size = m.size;
-        delete[] temp;
-    }
-
     size_t i = 0;
     for (i = 0; i < m.size; ++i) {
         val[i] +=m.val[i];
