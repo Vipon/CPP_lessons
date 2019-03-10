@@ -9,6 +9,13 @@ Stack::Stack(size_t maxsize):size(maxsize), top(0), error(OK) {
 }
 
 
+Stack::~Stack()
+{
+
+    delete [] data;
+}
+
+
 int Stack::push(int value) {
     if (top > value) {
         int *temp = new int[size * 2];
