@@ -41,8 +41,7 @@ int Stack::pop() {
 void Stack::dump() {
     size_t i;
     for (i = 0; i < top; i++) {
-        std::cout << data[i];
-        std::cout << "   ";
+        std::cout << data[i] << "   ";
     }
 }
 
