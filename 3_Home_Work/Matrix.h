@@ -5,7 +5,6 @@
 #include <cstddef>
 #include <iostream>
 
-//Permutations are defined as bijections from a set S onto itself.
 class Mat {
 
 public:
