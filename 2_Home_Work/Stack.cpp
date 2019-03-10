@@ -11,7 +11,6 @@ Stack::Stack(size_t maxsize):size(maxsize), top(0), error(OK) {
 
 Stack::~Stack()
 {
-
     delete [] data;
 }
 
