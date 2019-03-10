@@ -1,5 +1,4 @@
 #include "gObject.h"
-#include <iostream>
 #include <cmath>
 
 
@@ -21,7 +20,7 @@ void Segment::draw(SDL_Renderer* renderer, int x, int y)
 void Triangle::draw(SDL_Renderer* renderer, int x, int y)
 {
 	SDL_RenderDrawLine(renderer, x, y, x + a, y);
-	double cosa = ((a * a) + (b * b) - (c * c)) / (2 * a * b);
+	double cosa = static_cast<double>((a * a) + (b * b) - (c * c)) / (2 * a * b);
 	int x0 = static_cast<int>(b * cosa);
 	int y0 = static_cast<int>(b * sqrt(1 - (cosa * cosa)));
 	SDL_RenderDrawLine(renderer, x, y, x + x0, y + y0);
