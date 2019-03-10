@@ -7,7 +7,7 @@ class Stack {
 
 public:
     Stack(size_t size = 0);
-    ~Stack() {};
+    ~Stack();
 
     int error;
     
