@@ -1,0 +1,17 @@
+CXX=g++
+CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
+LINKERFLAGS=-lSDL2
+
+EXAMPLE=gObject
+
+main: main.o $(EXAMPLE).o
+	$(CXX) $^ $(LINKERFLAGS) -o $@
+
+%.o: %.cpp %.h
+	$(CXX) $(CXXFLAGS) -c $< 
+
+exec: main 
+	./main
+
+clean:
+	rm -f main.o main $(EXAMPLE).o
