@@ -5,7 +5,7 @@ INCLUDE=../include
 BINDIR=bin
 VPATH=$(BINDIR)
 
-EXAMPLES=auto references cswap cppswap swap_template multiple_template
+EXAMPLES=static testPublicInher testPassport testVirtMethod
 EXEC_EXAMPLES=$(addprefix exec/,$(EXAMPLES))
 
 all: prep $(EXAMPLES)

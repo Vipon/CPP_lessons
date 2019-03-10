@@ -1,0 +1,11 @@
+language:
+  - cpp
+
+dist:
+  - xenial
+
+compiler:
+  - gcc
+
+script:
+  - clang-tidy `find . -type f -name "*.cpp"` -- -Iinclude/
