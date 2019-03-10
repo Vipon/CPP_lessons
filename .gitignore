@@ -3,3 +3,7 @@
 
 # ignore binary files in bin/ directory
 */bin/*
+
+# ignore *.out files
+*.out
+
