@@ -58,17 +58,19 @@ Mat& Mat::operator=(const Mat& m)
 
 std::ostream& operator<<(std::ostream& os, const Mat& m)
 {
-    os << "| ";
+    os << "|";
     int t = int(sqrt(m.size));
     for (int i = 1; i < (m.size); ++i) {
         if (i % t == 1 && i != 1) {
-            os << "|\n| ";
+            os << "|\n|";
         }
 
-        os << (m.val)[i - 1] << " ";
+        os.width(4);
+        os << (m.val)[i - 1];
     };
 
-    os << (m.val)[m.size - 1] << " |";
+    os.width(4);
+    os << (m.val)[m.size - 1] << "|";
     return os;
 }
 
