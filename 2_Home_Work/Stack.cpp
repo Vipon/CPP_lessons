@@ -1,5 +1,5 @@
 #include "Stack.h"
-#include <cstdbool>
+#include <cstdbool> 
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
