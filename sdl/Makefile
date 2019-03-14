@@ -1,65 +1,48 @@
-CXX=g++
-CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
-INCLUDE=../include
-LIB=SDL2
+CMAKE = cmake
 
-BINS=drawLine
-EXEC_BINS=$(addprefix exec/,$(BINS))
-BINDIR=bin
-VPATH=$(BINDIR)
+TOP = $(PWD)
+WORK_DIR = $(TOP)/.work
+BUILD_DIR = $(WORK_DIR)/build
+INSTALL_DIR = $(WORK_DIR)/install
 
-MODULES=mediaApp window render drawLine event point2D
-mediaApp_DEPS=mediaApp.h graphException.h
-window_DEPS=window.h graphException.h
-render_DEPS=render.h window.h point2D.h
-event_DEPS=event.h point2D.h
-point2D_DEPS=point2D.h
+BINS = drawLine miniPaint
 
-drawLine_DEPS=mediaApp.h window.h render.h event.h point2D.h
-drawLine_OBJS=drawLine.o window.o render.o mediaApp.o event.o point2D.o
-
-OBJDIR=obj
-vpath %.o $(OBJDIR)
-OBJECTS=$(addsuffix .o, $(MODULES))
-
-define create_object =
-$(1).o: $(1).cpp $$($(1)_DEPS)
-	$(CXX) $(CXXFLAGS) $$< -c -o $$@ $(addprefix -I,$(INCLUDE))
-endef
-
-define create_exec_file =
-$(1): $$($(1)_OBJS)
-	$(CXX) $(CXXFLAGS) $$^ -o $(BINDIR)/$$@ $(addprefix -l,$(LIB))
-endef
-
-all: prep $(BINS)
-
+all: prep build
 
 .PHONY: prep
 .SILENT: prep
 prep:
-	if [ ! -d $(OBJDIR) ]; then \
-		mkdir $(OBJDIR); \
+	if [ ! -d $(WORK_DIR) ]; then \
+		mkdir $(WORK_DIR); \
 	fi;
-	if [ ! -d $(BINDIR) ]; then \
-		mkdir $(BINDIR); \
+	if [ ! -d $(BUILD_DIR) ]; then \
+		mkdir $(BUILD_DIR); \
+	fi;
+	if [ ! -d $(INSTALL_DIR) ]; then \
+		mkdir $(INSTALL_DIR); \
 	fi;
 
 
-$(foreach mod,$(MODULES),$(eval $(call create_object,$(mod))))
-$(foreach bin,$(BINS),$(eval $(call create_exec_file,$(bin))))
+.PHONY: build
+build: configure
+	@cd $(BUILD_DIR) && make
+	@cd $(BUILD_DIR) && make install
+
+.PHONY: configure
+configure:
+	@cd $(BUILD_DIR) && $(CMAKE) \
+		-DCMAKE_INSTALL_PREFIX=$(INSTALL_DIR) \
+		../../
 
 
-$(EXEC_BINS): exec/%: %
-	./$(BINDIR)/$(notdir $<)
+define exec =
+.PHONY: exec/$(1)
+exec/$(1): build
+	$(INSTALL_DIR)/bin/$(1)
+endef
 
-
-.PHONY: exec_all
-exec_all: $(EXEC_BINS)
-
+$(foreach bin,$(BINS),$(eval $(call exec,$(bin))))
 
 .PHONE: clean
 clean:
-	@rm -rf $(OBJDIR)
-	@rm -rf $(BINDIR)
-	@rm -f *.o
+	@rm -rf $(WORK_DIR)
