@@ -8,7 +8,7 @@ const int SCREEN_HEIGHT = 960;
 int main()
 {
 	Triangle tr(30, 40, 50);
-	Circle cr(90);
+	Circle cr(50);
 	Segment seg(70);
 	Square sq(55);
 	Ellipse el(20, 30);
@@ -34,7 +34,7 @@ int main()
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
 		for (int i = 0; i < 5; i++) {
-			(obj[i])->draw(renderer, 10 + (100 * i), 10 + (100 * i));
+			(obj[i])->draw(renderer, 10 + (100 * i), 100);
 			SDL_RenderPresent(renderer);
 		}
 	}
