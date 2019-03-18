@@ -8,7 +8,7 @@
 const int SCREEN_WIDTH = 720;
 const int SCREEN_HEIGHT = 720;
 
-int main(int argc, char* args[])
+int main()
 {
     //Какое окно будет рендерится
     SDL_Window* window = NULL;
