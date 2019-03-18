@@ -1,7 +1,7 @@
 #ifndef __GOBJECT_H
 #define __GOBJECT_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 
 //Draw a pixel for the first quadrant and, simmetrically, for others

@@ -1,7 +1,8 @@
 #include "gObject.h"
-#include <SDL.h>
-#include <cstdio>
+#include <SDL2/SDL.h>
 #include <cmath>
+#include <cstdio>
+
 
 //Некоторые константы нашего окна
 const int SCREEN_WIDTH = 720;
