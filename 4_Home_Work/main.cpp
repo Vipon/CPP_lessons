@@ -21,7 +21,7 @@ int main()
 
 
      //Создаем окно
-     window = SDL_CreateWindow("Try", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+     window = SDL_CreateWindow("Try", 400, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
      //Отрисовка фигур не 100% точна, тк я решил использовать только int
 
@@ -40,7 +40,7 @@ int main()
 
      while (!quit)
          {
-              while (SDL_PollEvent(&event)) {
+              while (SDL_PollEvent(&event) != 0) {
                   if (event.type == SDL_QUIT) {
                       quit = true;
                   }
