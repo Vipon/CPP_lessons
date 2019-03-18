@@ -1,4 +1,5 @@
-#include "my_Stack.h"
+#include "List.h"
+#include "Stack.h"
 #include <cstddef>
 #include <iostream>
 
@@ -26,5 +27,6 @@ int main()
     std::cout << std::endl;
 
     std::cout << L.front() << " " << L.back();
+    Stack <int> st;
     return 0;
 }
