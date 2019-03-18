@@ -96,7 +96,7 @@ void Regular_Polygon::draw(SDL_Renderer* renderer, int x, int y) {
     //ПОСЛЕДОВАТЕЛЬНО СОЕДИНЯЕМ ТОЧКИ
     for (int i = 1; i < n+1 ; i ++)
     {
-        SDL_RenderDrawLine(renderer, px[i-1], py[i-1], px[i], py[i]);
+        SDL_RenderDrawLine(renderer, int(px[i-1]), int(py[i-1]), int(px[i]), int(py[i]));
     }
     delete[]px; //Освобождаем память
     delete[]py; //Освобождаем память
