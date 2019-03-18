@@ -1,8 +1,7 @@
 #include "Stack.h"
-#include <iostream>
-#include <ostream>
 #include <cstdio>
 #include <cstdlib> 
+#include <iostream>
 
 using namespace std;
 

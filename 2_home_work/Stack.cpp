@@ -1,8 +1,7 @@
 #include "Stack.h"
-#include <iostream>
-#include <ostream>
 #include <cstdio>
 #include <cstdlib> 
+#include <iostream>
 
 using namespace std;
 
@@ -28,30 +27,17 @@ void Stack::dump()
 {
 	int i = 0;
 	for(i = 0; i < head; ++i)
+	{
 		cout << i << " element: "<< value[i] << endl;
+	}
 }
 
 bool Stack::isFull()
 {
-	if (head == size - 1)
-	{
-		return true;
-	}
-	else 
-	{
-		return false;
-	}
+	return (head == size - 1);
 }
-
 bool Stack::isEmpty()
 {
-	if (head == 0)
-	{
-		return true;
-	}
-	else 
-	{
-		return false;
-	}
+	return (head == 0);
 }
 
