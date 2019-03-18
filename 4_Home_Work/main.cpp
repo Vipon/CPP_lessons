@@ -14,7 +14,7 @@ int main()
 	Ellipse el(20, 30);
 	gObject* obj[5] = {&tr, &cr, &seg, &sq, &el};
 
-	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Init(SDL_INIT_VIDEO);
 	SDL_Window* window = SDL_CreateWindow("Graphic Objects", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,  SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, 0, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
@@ -23,7 +23,7 @@ int main()
 
 	while (!quit)
 	{
-		while(SDL_PollEvent(&event)) {
+		while(SDL_PollEvent(&event) != 0) {
 			if(event.type == SDL_QUIT) {
 				quit = true;
 			}
