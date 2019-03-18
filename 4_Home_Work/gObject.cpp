@@ -76,8 +76,8 @@ void Rectangle::draw(SDL_Renderer* renderer, int x, int y)
 
 void Regular_Polygon::draw(SDL_Renderer* renderer, int x, int y) {
     int v = 0;
-    int *px = new int[n+1]; //Массив для хранения точек x
-    int *py = new int[n+1]; //Массив для хранения точек y
+    double *px = new double[n+1]; //Массив для хранения точек x
+    double *py = new double[n+1]; //Массив для хранения точек y
   
     px[0] = x;
     py[0] = y;
