@@ -2,83 +2,49 @@
 #define MATRIX_H_INCLUDED
 
 #include <utility>
-#include <array>
+#include <vector>
 #include <iostream>
 #include <cstring>
 
-template <typename T, unsigned int Size>
+template <typename T>
 class Matrix{
 public:
-    Matrix(){
-        this->mat =  new T[Size * Size];
-        this->size = Size;
-    };
+    Matrix(unsigned int Size);
 
-    Matrix(const Matrix &M){
-        this->mat = new T[M.size * M.size];
-        for (unsigned int i = 0; i < M.size * M.size; ++i){
-            memcpy(this->mat, M.mat, M.size * M.size * sizeof(T));
-        }
-        this->size = M.size;
-    };
+    Matrix(const Matrix &M);
 
-    Matrix(Matrix &&M){
-        mat = M.mat;
-        size =M.size;
-        M.mat = nullptr;
-        M.size = 0;
-    };
+    Matrix(Matrix &&M);
 
-    Matrix(std::array <T, Size * Size> &arr){
-        this->mat =  new T[Size * Size];
-        this->size = Size;
-        memcpy(this->mat, arr.begin(), Size * Size * sizeof(T));
-    };
+    Matrix(std::vector <T> &arr, unsigned int Size);
 
-    ~Matrix(){
-        delete mat;
-    };
+    ~Matrix();
 
-    Matrix &operator= (const Matrix &M){
-        memcpy(mat, M.mat, M.size * M.size * sizeof(T));
-        return *this;
-    };
+    Matrix &operator= (const Matrix &M);
 
-    Matrix &operator+= (const Matrix &M){
-        for (unsigned int i = 0; i < M.size * M.size; ++i){
-            mat[i] += M.mat[i];
-        }
-        return *this;
-    };
+    Matrix &operator+= (const Matrix &M);
 
-    Matrix &operator-= (const Matrix &M){
-        for (unsigned int i = 0; i < M.size * M.size; ++i){
-            mat[i] -= M.mat[i];
-        }
-        return *this;
-    };
+    Matrix &operator-= (const Matrix &M);
 
     friend Matrix operator+ (Matrix left, const Matrix &right){
+        if (left.size != right.size){
+            abort();
+        }
         left += right;
         return left;
     };
 
     friend Matrix operator- (Matrix left, const Matrix &right){
+        if (left.size != right.size){
+            abort();
+        }
         left -= right;
         return left;
     };
 
-    T &operator[](const std::pair <unsigned int, unsigned int> &nm){
-        return this->mat[nm.first * this->size + nm.second];
-    };
+    T &operator[](const std::pair <unsigned int, unsigned int> &nm);
 
     template <typename L>
-    Matrix & operator *= (const L &l){
-        for (unsigned int i = 0; i < size * size; ++i){
-            mat[i] = (T) (mat[i] * l);
-        }
-        return *this;
-    };
+    Matrix & operator *= (const L &l);
 
     template <typename L>
     friend Matrix operator* (Matrix left, const L &right){
@@ -90,29 +56,16 @@ public:
         return (right *= left);
     };
 
-    Matrix &operator*= (const Matrix &M){
-        T arr[size * size];
-        for (unsigned int i = 0; i < size * size; ++i){
-            arr[i] = proizv(*this, M, i / size, i % size);
-        }
-        for (unsigned int i = 0; i < size * size; ++i){
-            mat[i] = arr[i];
-        }
-        return *this;
-    };
+    Matrix &operator*= (const Matrix &M);
 
     friend Matrix &operator* (Matrix left, const Matrix &right){
+        if (left.size != right.size){
+            abort();
+        }
         return (left *= right);
     }
 
-    T tr(){
-        T sum;
-        sum -= sum;
-        for (unsigned int i = 0; i < size; ++ i){
-            sum += mat[i * (size + 1)];
-        }
-        return sum;
-    }
+    T tr();
 
     friend std::ostream &operator<< (std::ostream &out, const Matrix &M){
         for (unsigned int s = 0; s < M.size; ++s){
@@ -145,5 +98,114 @@ private:
         return sum;
     };
 };
+
+template <typename T>
+Matrix<T>::Matrix(unsigned int Size){
+    this->mat =  new T[Size * Size];
+    this->size = Size;
+};
+
+template <typename T>
+Matrix<T>::Matrix(const Matrix &M){
+    this->mat = new T[M.size * M.size];
+    for (unsigned int i = 0; i < M.size * M.size; ++i){
+        memcpy(this->mat, M.mat, M.size * M.size * sizeof(T));
+    }
+    this->size = M.size;
+};
+
+template <typename T>
+Matrix<T>::Matrix(Matrix &&M){
+    mat = M.mat;
+    size =M.size;
+    M.mat = nullptr;
+    M.size = 0;
+};
+
+template <typename T>
+Matrix<T>::Matrix(std::vector <T> &arr, unsigned int Size){
+    this->mat =  new T[Size * Size];
+    this->size = Size;
+    auto it = arr.begin();
+    for (unsigned int i = 0; i < Size * Size; ++i){
+        this->mat[i] = *it;
+        ++it;
+    }
+};
+
+template <typename T>
+Matrix<T>::~Matrix(){
+    delete mat;
+};
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator= (const Matrix &M){
+    if (M.size != this->size){
+        abort();
+    }
+    memcpy(mat, M.mat, M.size * M.size * sizeof(T));
+    return *this;
+};
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator+= (const Matrix &M){
+    if (M.size != this->size){
+        abort();
+    }
+    for (unsigned int i = 0; i < M.size * M.size; ++i){
+        mat[i] += M.mat[i];
+    }
+    return *this;
+};
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator-= (const Matrix &M){
+    if (M.size != this->size){
+        abort();
+    }
+    for (unsigned int i = 0; i < M.size * M.size; ++i){
+        mat[i] -= M.mat[i];
+    }
+    return *this;
+};
+
+template <typename T>
+T &Matrix<T>::operator[](const std::pair <unsigned int, unsigned int> &nm){
+    return this->mat[nm.first * this->size + nm.second];
+};
+
+template <typename T>
+template <typename L>
+Matrix<T> &Matrix<T>::operator*= (const L &l){
+    for (unsigned int i = 0; i < size * size; ++i){
+        mat[i] = (T) (mat[i] * l);
+    }
+    return *this;
+};
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator*= (const Matrix &M){
+    if (M.size != this->size){
+        abort();
+    }
+    T arr[size * size];
+    for (unsigned int i = 0; i < size * size; ++i){
+        arr[i] = proizv(*this, M, i / size, i % size);
+    }
+    for (unsigned int i = 0; i < size * size; ++i){
+        mat[i] = arr[i];
+    }
+    return *this;
+};
+
+template <typename T>
+T Matrix<T>::tr(){
+    T sum;
+    sum -= sum;
+    for (unsigned int i = 0; i < size; ++ i){
+        sum += mat[i * (size + 1)];
+    }
+    return sum;
+}
 
 #endif // MATRIX_H_INCLUDED

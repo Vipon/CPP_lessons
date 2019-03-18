@@ -1,10 +1,10 @@
 #include "Matrix.h"
-#include <array>
+#include <vector>
 #include <iostream>
 
 int main()
 {
-    Matrix <int,3> A, B, C;
+    Matrix <int> A(3), B(3), C(3);
     for (int i = 0; i < 9; ++i){
         A[{i / 3, i % 3}] = i * 2;
     }
@@ -32,8 +32,8 @@ int main()
     std::cout << A;
     std::cout << std::endl;
 
-    std::array <int, 9> arr = {1, 0, 0, 0, 1, 0, 0, 0, 1};
-    Matrix <int, 3> E(arr);
+    std::vector <int> arr = {1, 0, 0, 0, 1, 0, 0, 0, 1};
+    Matrix <int> E(arr, 3);
     std::cout << E;
     std::cout << std::endl;
 
