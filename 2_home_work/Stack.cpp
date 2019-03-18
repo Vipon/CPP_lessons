@@ -3,8 +3,6 @@
 #include <cstdlib> 
 #include <iostream>
 
-using namespace std;
-
 Stack::Stack(int size)
 {
 	value = new int[size];
@@ -28,7 +26,7 @@ void Stack::dump()
 	int i = 0;
 	for(i = 0; i < head; ++i)
 	{
-		cout << i << " element: "<< value[i] << endl;
+		std::cout << i << " element: "<< value[i] << std::endl;
 	}
 }
 

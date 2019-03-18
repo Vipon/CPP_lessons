@@ -3,8 +3,6 @@
 #include <cstdlib> 
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
 	Stack st(5);
@@ -14,7 +12,7 @@ int main()
 		st.push(i++);
 	}
 	st.dump();
-	cout << st.isFull() << endl;
+	std::cout << st.isFull() << std::endl;
 	st.~Stack();
 	return 0;
 }
