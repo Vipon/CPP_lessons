@@ -35,8 +35,8 @@ int main()
 
 		for (int i = 0; i < 5; i++) {
 			(obj[i])->draw(renderer, 10 + (100 * i), 100);
-			SDL_RenderPresent(renderer);
 		}
+		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();	
 	return 0;
