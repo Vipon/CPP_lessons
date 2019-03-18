@@ -4,6 +4,9 @@
 # ignore binary files in bin/ directory
 */bin/*
 
+# ignore object files in obj/ directory
+*/obj/*
+
 # ignore *.out files
 *.out
 
