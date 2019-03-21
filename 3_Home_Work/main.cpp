@@ -1,5 +1,5 @@
-#include <iostream>
 #include "gObject.h"
+#include <iostream>
 
 int main()
 {

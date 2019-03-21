@@ -1,5 +1,5 @@
-#include <iostream>
 #include "gObject.h"
+#include <iostream>
 
 void segment::draw(){
     std::cout << "First point of segment = (" << First.x << ", " << First.y << ")" << std::endl;
