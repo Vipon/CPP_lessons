@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <iostream>
+#include <cstring>
 
 Stack::Stack (size_t size) {
 	stack = new uint64_t[size];
@@ -36,7 +37,7 @@ void Stack::push(uint64_t value) {
 uint64_t Stack::pop() {
 	if (isEmpty()) {
 		std::cout << "Stack is empty" << std::endl;
-		abort();
+		return 0;
 	}
 
 	uint64_t value = stack[(head - 1)];
