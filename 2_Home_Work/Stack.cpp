@@ -1,8 +1,9 @@
 #include "Stack.h"
 #include <cstdint>
 #include <cstdio>
-#include <iostream>
 #include <cstring>
+#include <iostream>
+
 
 Stack::Stack (size_t size) {
 	stack = new uint64_t[size];
