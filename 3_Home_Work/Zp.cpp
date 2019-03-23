@@ -92,11 +92,9 @@ std::ostream& operator<<(std::ostream& op, Zp& output)
 
 	return op;
 }
-
-Zp& Zp::operator=(int lal)
+/*
+void Zp::operator=(int lal)
 {
-	Zp kompilyator_ulibnis;
-	Zp& pozhaluista = kompilyator_ulibnis;
 	val = lal;
-	return pozhaluista;
 }
+*/

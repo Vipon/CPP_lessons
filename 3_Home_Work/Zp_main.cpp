@@ -5,11 +5,11 @@ int main()
 	Zp a;
 	std::cin >> a;
 	Zp b;
-	b = 10;
+	b.val = 10;
 	Zp c,d,e;
 	c = a + b;
 	d = a ^ 3;
 	e = a * b;
 	std::cout << c << d << e;
-//	system("pause");
+//  system("pause");
 }
