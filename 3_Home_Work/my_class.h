@@ -13,7 +13,7 @@ public:
 	Zp operator*(Zp lal);// аналогично +
 	Zp operator^(int pow);// аналогично *
 	int val = 0;// дефолтное значение, его можно изменить при вводе >> или использу€ оператор =
-	void operator=(int lal);// измен€ет значение элемента пол€
+	Zp& operator=(int lal);// измен€ет значение элемента пол€
 	friend std::ostream& operator<<(std::ostream& op, Zp& output);// выводит значение элемента пол€
     friend std::istream& operator>>(std::istream& in, Zp& input);// ввод значени€ элемента пол€
 private:

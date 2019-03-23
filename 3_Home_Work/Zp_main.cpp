@@ -11,5 +11,5 @@ int main()
 	d = a ^ 3;
 	e = a * b;
 	std::cout << c << d << e;
-	system("pause");
+//	system("pause");
 }
