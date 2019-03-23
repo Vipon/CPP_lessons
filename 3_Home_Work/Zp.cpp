@@ -1,15 +1,7 @@
-#include "Stack02.h"
 #include "my_class.h"
-#include <iostream>
 
-void Zp::dump()
+Zp::Zp()
 {
-	this->zp.dump();
-}
-Zp::Zp(size_t p)
-{
-	Stack zp;
-	this->zp.push(1);
 	this->Char = p;
 }
 
@@ -18,62 +10,95 @@ Zp::~Zp()
 	
 }
 
-int Zp::operator+(int val)
+Zp Zp::operator+(Zp lal)
+{
+	while (lal.val < 0)
+	{
+		lal.val = lal.val + this->Char;
+	}
+
+	while (val < 0)
+	{
+		val = val + this->Char;
+	}
+	Zp buf;
+	buf.val = (val + lal.val) % this->Char;
+
+	return buf;
+}
+
+Zp Zp::operator*(Zp lal)
+{
+	while (lal.val < 0)
+	{
+		lal.val = lal.val + this->Char;
+	}
+
+	while (val < 0)
+	{
+		val = val + this->Char;
+	}
+	Zp buf;
+	buf.val=(val*lal.val) % this->Char;
+
+	return buf;
+}
+
+Zp Zp::operator^(int pow)
 {
 	while (val < 0)
 	{
 		val = val + this->Char;
 	}
 
-	int res = (zp.pop() + val) % this->Char;
-	zp.push(res);
-	zp.push(res);
-	zp.push(res);
-	return zp.pop();
-}
-
-int Zp::operator*(int val)
-{
-	while (val < 0)
-	{
-		val = val + this->Char;
-	}
-
-	int res = (zp.pop()*val) % this->Char;
-	zp.push(res);
-	zp.push(res);
-	zp.push(res);
-	return zp.pop();
-}
-
-int Zp::operator^(int pow)
-{
-	int val = zp.pop();
-	zp.push(val);
+	int lal = val;
 
 	if (pow > 0)
 	{
 		for (int i = 1; i < pow; i++)
 		{
-			zp.push((zp.pop()*val) % this->Char);
+			lal = lal*val % this->Char;
 		}
 	}
 
 	if (pow < 0)
 	{
-		while ((zp.pop()*val) % this->Char != 1)
+		while (lal*val % this->Char != 1)
 		{
 			for (int i = 1; i < -pow; i++)
 			{
-				zp.push((zp.pop()*val) % this->Char);
+				lal = val*val % this->Char;
 			}
 		}
 	}
 
-	int res = zp.pop();
-	zp.push(res);
-	zp.push(res);
+	Zp buf;
+	buf.val =lal;
 
-	return res;
+	return buf;
 
+}
+
+std::istream& operator>>(std::istream& in, Zp& input)
+{
+	int num;
+	in >> num;
+
+	while (num < 0)
+	{
+		num = num + p;
+	}
+
+	num = num % p;
+	input.val = num;
+	
+	return in;
+}
+
+std::ostream& operator<<(std::ostream& op, Zp& output)
+{
+	int val = output.val;
+	op << val;
+
+	return op;
 }

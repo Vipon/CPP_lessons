@@ -2,13 +2,13 @@
 
 int main()
 {
-	Zp zp(7);
-	int a = zp.operator+(0);
-
-	for (int i = 0; i < 5; i++)
-	{
-		a = zp.operator+(i*i);
-	}
-	a = zp.operator^(zp.Char - 1);
-	zp.dump();
+	Zp a;
+	std::cin >> a;
+	Zp b;
+	b.val = -4;
+	Zp c,d,e;
+	c= a + b;
+	d = a ^ 3;
+	e = a * b;
+	std::cout << c << d << e;
 }

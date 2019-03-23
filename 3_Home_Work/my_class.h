@@ -1,5 +1,6 @@
 #ifndef MY_CLASS_H
 #define MY_CLASS_H
+#define p 7
 #include "Stack02.h"
 #include <iostream>
 #include <cstdio>
@@ -7,16 +8,15 @@ using namespace std;
 
 class Zp{
 public:
-	Zp(size_t p);
+	Zp();
 	~Zp();
-	int operator+(int val);
-	int operator*(int val);
-	int operator^(int pow);
-	void dump();
-	size_t Char;
-//	friend std::ostream operator<<(std::ostream& op, const string& s);
-//  friend std::istream operator>>(std::istream& ip, const string& s);
+	Zp operator+(Zp lal);
+	Zp operator*(Zp lal);
+	Zp operator^(int pow);
+	int val=0;
+	friend std::ostream& operator<<(std::ostream& op, Zp& output);
+    friend std::istream& operator>>(std::istream& in, Zp& input);
 private:
-	Stack zp;
+	size_t Char;
 };
 #endif /*MY_CLASS_H*/
