@@ -13,10 +13,10 @@ public:
 	Zp operator*(Zp lal);// аналогично +
 	Zp operator^(int pow);// аналогично *
 	int val = 0;// дефолтное значение, его можно изменить при вводе >> или использу€ оператор =
-	Zp operator=(int val);// измен€ет значение элемента пол€
+	void operator=(int lal);// измен€ет значение элемента пол€
 	friend std::ostream& operator<<(std::ostream& op, Zp& output);// выводит значение элемента пол€
     friend std::istream& operator>>(std::istream& in, Zp& input);// ввод значени€ элемента пол€
 private:
-	size_t Char = p; // характеристика пол€ определена свыше
+	size_t Char = p; // характеристика пол€ определена свыше 
 };
 #endif /*MY_CLASS_H*/

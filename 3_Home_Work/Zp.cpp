@@ -93,9 +93,7 @@ std::ostream& operator<<(std::ostream& op, Zp& output)
 	return op;
 }
 
-Zp Zp::operator=(int val)
+void Zp::operator=(int lal)
 {
-	Zp buf;
-	buf.val = val;
-	return buf;
+	val = lal;
 }
