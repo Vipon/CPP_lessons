@@ -1,15 +1,5 @@
 #include "my_class.h"
 
-Zp::Zp()
-{
-	this->Char = p;
-}
-
-Zp::~Zp()
-{
-	
-}
-
 Zp Zp::operator+(Zp lal)
 {
 	while (lal.val < 0)
@@ -101,4 +91,11 @@ std::ostream& operator<<(std::ostream& op, Zp& output)
 	op << val;
 
 	return op;
+}
+
+Zp Zp::operator=(int val)
+{
+	Zp buf;
+	buf.val = val;
+	return buf;
 }
