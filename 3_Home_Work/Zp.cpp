@@ -96,4 +96,5 @@ std::ostream& operator<<(std::ostream& op, Zp& output)
 void Zp::operator=(int lal)
 {
 	val = lal;
+	return;
 }
