@@ -1,8 +1,8 @@
 #include "Triangle.h"
 #include "Circle.h"
+#include "Ellipse.h"
 #include "Segment.h"
 #include "Square.h"
-#include "Ellipse.h"
 #include <SDL2/SDL.h>
 
 const int SCREEN_WIDTH = 1280;
