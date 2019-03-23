@@ -92,9 +92,9 @@ std::ostream& operator<<(std::ostream& op, Zp& output)
 
 	return op;
 }
-/*
-void Zp::operator=(int lal)
+
+Zp& Zp::operator=(int lal)
 {
 	val = lal;
+	return *this;
 }
-*/

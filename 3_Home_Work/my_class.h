@@ -12,8 +12,8 @@ public:
 	Zp operator+(Zp lal);// оператор сложения двух чисел из поля вычетов по модулю p
 	Zp operator*(Zp lal);// аналогично +
 	Zp operator^(int pow);// аналогично *
-	int val = 0;// дефолтное значение, его можно изменить при вводе >> или напрямую
-	//void operator=(int lal);// изменяет значение элемента поля
+	int val = 0;// дефолтное значение, его можно изменить при вводе >> или оператором =
+	Zp& operator=(int lal);// изменяет значение элемента поля
 	friend std::ostream& operator<<(std::ostream& op, Zp& output);// выводит значение элемента поля
     friend std::istream& operator>>(std::istream& in, Zp& input);// ввод значения элемента поля
 private:
