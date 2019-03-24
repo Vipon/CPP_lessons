@@ -21,8 +21,9 @@ public:
     char&                   operator[](size_t pos);
     String&                 operator=(const String& s);
     String&                 operator+=(const String& s);
-    String                  operator+(const String& s) const;
-    friend std::ostream&    operator<<(std::ostream& os, const String& s);
+    String                  operator+(String& s);
+    friend std::ostream&    operator<<(std::ostream& os, String& s);
+    friend std::ostream&    operator<<(std::ostream& os, String&& s);
     friend std::istream&    operator>>(std::istream& is, String& s);
 
 private:

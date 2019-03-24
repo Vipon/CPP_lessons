@@ -8,6 +8,7 @@
 
 String::String(const char *str)
 {
+    std::cout << "Constructor\n";
     if (str == nullptr) {
         abort();
     }
@@ -27,8 +28,18 @@ String::String(const char *str)
 }
 
 
+String::String(const String& s) :
+    len(s.len),
+    str(new char[len + 1]) // extra space for '\0'
+{
+    std::cout << "Create Copy\n";
+    memcpy(this->str, s.str, len);
+}
+
+
 String::~String()
 {
+    std::cout << "Destructor\n";
     /** C
      *  free(str);
      */
@@ -84,6 +95,22 @@ void String::print() const
 }
 
 
+void print(String str)
+{
+    str.print();
+}
+
+
+int main()
+{
+    String str("Hello!");
+    print(str); 
+    print(str);
+    return 0;
+}
+
+
+/*
 int main()
 {
     String str("Hello world!");
@@ -104,4 +131,4 @@ int main()
     std::cout << "str1: ";
     str1.print();
     return 0;
-}
+}*/

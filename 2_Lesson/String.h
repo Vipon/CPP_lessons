@@ -7,6 +7,7 @@ class String {
 
 public:
     String(const char *str);
+    String(const String& s);
     ~String();
 
     size_t  size() const;
