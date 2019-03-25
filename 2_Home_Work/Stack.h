@@ -28,4 +28,5 @@ private:
     const size_t size;
 };
 
+
 #endif
