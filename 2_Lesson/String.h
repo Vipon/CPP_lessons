@@ -17,8 +17,9 @@ public:
     void    print() const;
 
 private:
-    char*   str;
     size_t  len;
+    char*   str;
+
 };
 
 #endif /* __STRING_H */

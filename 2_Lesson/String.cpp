@@ -95,7 +95,7 @@ void String::print() const
 }
 
 
-void print(String str)
+void print(const String& str)
 {
     str.print();
 }
@@ -104,7 +104,7 @@ void print(String str)
 int main()
 {
     String str("Hello!");
-    print(str); 
+    print(str);
     print(str);
     return 0;
 }
