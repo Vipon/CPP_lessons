@@ -38,9 +38,9 @@ public:
     }
 
     ~Stack() { std::cout << "Destroy object " << typeid(*this).name() << ".\n"; }
-    size_t size() { return Size; }
-    bool isFull() { return head == Size; }
-    bool isEmpty() { return head == 0; }
+    size_t size() const { return Size; }
+    bool isFull() const { return head == Size; }
+    bool isEmpty() const { return head == 0; }
 
     void push(const Type& elem)
     {
@@ -60,6 +60,14 @@ public:
         }
 
         return stack[--head];
+    }
+
+    Stack& operator=(const Stack& st)
+    {
+        head = st.head;
+        for (size_t i = 0; i < head; ++i) {
+            stack[i] = st.stack[i];
+        }
     }
 
 private:
