@@ -73,6 +73,12 @@ public:
         return (*this);
     }
 
+    Stack& operator=(Stack&& st)
+    {
+        (*this) = st;
+        return (*this);
+    }
+
 private:
     size_t  head;
     Type    stack[Size];
