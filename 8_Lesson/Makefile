@@ -5,7 +5,7 @@ WORK_DIR = $(TOP)
 BUILD_DIR = $(WORK_DIR)/build
 INSTALL_DIR = $(WORK_DIR)/install
 
-BINS = simpleTemplateTest nonTypeTemplateTest recursiveTemplateTest stackTest
+BINS = simpleTemplateTest nonTypeTemplateTest recursiveTemplateTest stackTest explicitStackTest
 
 all: prep build
 
