@@ -6,3 +6,4 @@ set(CMAKE_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
 
 add_subdirectory(simpleTemplate)
 add_subdirectory(nonTypeTemplate)
+add_subdirectory(recursiveTemplate)
