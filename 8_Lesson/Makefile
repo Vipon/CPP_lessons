@@ -5,7 +5,7 @@ WORK_DIR = $(TOP)
 BUILD_DIR = $(WORK_DIR)/build
 INSTALL_DIR = $(WORK_DIR)/install
 
-BINS = simpleTemplateTest nonTypeTemplateTest recursiveTemplateTest
+BINS = simpleTemplateTest nonTypeTemplateTest recursiveTemplateTest stackTest
 
 all: prep build
 
@@ -42,6 +42,11 @@ exec/$(1): build
 endef
 
 $(foreach bin,$(BINS),$(eval $(call exec,$(bin))))
+
+
+.PHONY: exec_all
+exec_all: $(addprefix exec/,$(BINS))
+
 
 .PHONE: clean
 clean:
