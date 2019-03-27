@@ -22,7 +22,7 @@ int main()
     dStack.push(100);   // int -> double, because dStack have only method push(double&)
     dStack.push(100.5);
     lStack.push(100);
-    lStack.push(100.6); // float -> long, because lStack have only method push(long&)
+    lStack.push(100.6); // double -> long, because lStack have only method push(long&)
 
     return 0;
 }
