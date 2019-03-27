@@ -28,14 +28,15 @@ public:
         std::cout << "Create object " << typeid(*this).name() << ".\n";
     }
 
-    Stack(const Stack& st)
+    Stack(const Stack& st) : Stack()
     {
-        std::cout << "Create object " << typeid(*this).name() << ".\n";
         head = st.head;
         for (size_t i = 0; i < head; ++i) {
             stack[i] = st.stack[i];
         }
     }
+
+    Stack(Stack&& st) : Stack(st) { }
 
     ~Stack() { std::cout << "Destroy object " << typeid(*this).name() << ".\n"; }
     size_t size() const { return Size; }
@@ -68,6 +69,8 @@ public:
         for (size_t i = 0; i < head; ++i) {
             stack[i] = st.stack[i];
         }
+
+        return (*this);
     }
 
 private:
