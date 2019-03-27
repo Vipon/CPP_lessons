@@ -5,6 +5,14 @@
 #include <iostream>
 #include <typeinfo>
 
+
+// non-type template argument can't be an floating point value, only integers,
+// enumerations, pointers and references.
+// !Wrong:
+// template <typename T, double NUM>
+// !But Right:
+// template <typename T, double& NUM>
+// Right:
 template <typename T, size_t NUM>
 class nonTypeTemplate {
 
@@ -33,7 +41,7 @@ public:
     void show() const
     {
         std::cout << "object nonTypeTemplate<" << typeid(T).name() << ", "
-                                                << NUM << "> constains:\t";
+                                                << NUM << "> contains:\t";
         for (size_t i = 0; i < num; ++i) {
             std::cout << array[i] << ' ';
         }
