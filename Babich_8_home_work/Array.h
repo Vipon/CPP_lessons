@@ -13,7 +13,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T>& input);
 	Array& operator=(Array<T> dupl);
 private:
-	const size_t Size;
+	size_t Size;
 	T* table;
 };
 #endif /*ARRAY_H*/
