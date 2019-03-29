@@ -12,7 +12,7 @@ Array<T>::~Array()
 {
 	delete[] table;
 }
-/*
+
 template <typename T>
 Array<T>& Array<T>::operator=(Array<T> dupl)
 {
@@ -42,4 +42,3 @@ std::istream& operator>>(std::istream& stream, Array<T>& input)
 
 
 
-*/
