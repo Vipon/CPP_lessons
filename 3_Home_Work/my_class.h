@@ -4,19 +4,21 @@
 #include <iostream>
 #include <cstdio>
 using namespace std;
-
+/*СЌС‚РѕС‚ РєР»Р°СЃСЃ РѕРїРёСЃС‹РІР°РµС‚ СЌР»РµРјРµРЅС‚С‹ РїРѕР»СЏ РІС‹С‡РµС‚РѕРІ РїРѕ РјРѕРґСѓР»СЋ p СЃ РµСЃС‚РµСЃС‚РІРµРЅРЅС‹РјРё РѕРїРµСЂР°С†РёСЏРјРё СЃР»РѕР¶РµРЅРёСЏ, СѓРјРЅРѕР¶РµРЅРёСЏ (Рё РІРѕР·РІРµРґРµРЅРёРµ РІ СЃС‚РµРїРµРЅСЊ, 
+РїСЂРёСЃРІР°РёРІР°РЅРёРµ, РІРІРѕРґ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ Рё РІС‹РІРѕРґ). РЈ РґР°РЅРЅРѕРіРѕ РєР»Р°СЃСЃР° РѕРїСЂРµРґРµР»РµРЅ РґРµС„РѕР»С‚РЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ Р±РѕР»РµРµ РїСЂРѕСЃС‚РѕРіРѕ 
+РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ.*/
 class Zp{
 public:
 	Zp() = default;
 	~Zp() = default;
-	Zp operator+(Zp lal);// оператор сложения двух чисел из поля вычетов по модулю p
-	Zp operator*(Zp lal);// аналогично +
-	Zp operator^(int pow);// аналогично *
-	int val = 0;// дефолтное значение, его можно изменить при вводе >> или оператором =
-	Zp& operator=(int lal);// изменяет значение элемента поля
-	friend std::ostream& operator<<(std::ostream& op, Zp& output);// выводит значение элемента поля
-    friend std::istream& operator>>(std::istream& in, Zp& input);// ввод значения элемента поля
+	Zp operator+(Zp lal);
+	Zp operator*(Zp lal);
+	Zp operator^(int pow);
+	int val = 0;
+	Zp& operator=(int lal);
+	friend std::ostream& operator<<(std::ostream& op, Zp& output);
+    	friend std::istream& operator>>(std::istream& in, Zp& input);
 private:
-	size_t Char = p; // характеристика поля определена свыше 
+	size_t Char = p; 
 };
 #endif /*MY_CLASS_H*/
