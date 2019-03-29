@@ -4,7 +4,7 @@ template <typename T>
 Array<T>::Array(size_t size)
 {
 	this->size = size;
-	table = T new[size];
+	table = new T[size];
 }
 
 template <typename T>
