@@ -18,6 +18,7 @@ Array<T>& Array<T>::operator=(Array<T> dupl)
 {
 	this->table = dupl.table;
 	this->Size = dupl.Size;
+	return *this;
 }
 
 template <typename T>
