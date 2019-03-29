@@ -9,9 +9,9 @@ class Array
 public:
 	Array(size_t size);
 		~Array();
-	//friend std::ostream& operator<<(std::ostream& stream, Array<T>& output);
-	//friend std::istream& operator>>(std::istream& stream, Array<T>& input);
-	//Array& operator=(Array<T> dupl);
+	friend std::ostream& operator<<(std::ostream& stream, Array<T>& output);
+	friend std::istream& operator>>(std::istream& stream, Array<T>& input);
+	Array& operator=(Array<T> dupl);
 private:
 	const size_t size;
 	T* table;
