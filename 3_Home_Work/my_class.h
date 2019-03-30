@@ -14,11 +14,11 @@ public:
 	Zp operator+(Zp lal);
 	Zp operator*(Zp lal);
 	Zp operator^(int pow);
-	int val = 0;
 	Zp& operator=(const int lal);
 	friend std::ostream& operator<<(std::ostream& op, const Zp& output);
     	friend std::istream& operator>>(std::istream& in, Zp& input);
 private:
 	size_t Char = p; 
+	int val = 0;
 };
 #endif /*MY_CLASS_H*/
