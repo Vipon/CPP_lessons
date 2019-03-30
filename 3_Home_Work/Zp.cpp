@@ -2,15 +2,6 @@
 
 Zp Zp::operator+(Zp lal)
 {
-	while (lal.val < 0)
-	{
-		lal.val = lal.val + this->Char;
-	}
-
-	while (val < 0)
-	{
-		val = val + this->Char;
-	}
 	Zp buf;
 	buf.val = (val + lal.val) % this->Char;
 
@@ -19,15 +10,6 @@ Zp Zp::operator+(Zp lal)
 
 Zp Zp::operator*(Zp lal)
 {
-	while (lal.val < 0)
-	{
-		lal.val = lal.val + this->Char;
-	}
-
-	while (val < 0)
-	{
-		val = val + this->Char;
-	}
 	Zp buf;
 	buf.val=(val*lal.val) % this->Char;
 
@@ -36,29 +18,26 @@ Zp Zp::operator*(Zp lal)
 
 Zp Zp::operator^(int pow)
 {
-	while (val < 0)
-	{
-		val = val + this->Char;
-	}
-
-	int lal = val;
+	int lal = this->val;
 
 	if (pow > 0)
 	{
 		for (int i = 1; i < pow; i++)
 		{
-			lal = lal*val % this->Char;
+			lal = lal*this->val % this->Char;
 		}
 	}
 
 	if (pow < 0)
 	{
-		while (lal*val % this->Char != 1)
+		while (lal != 1)
 		{
-			for (int i = 1; i < -pow; i++)
-			{
-				lal = val*val % this->Char;
-			}
+			lal = lal*this->val % this->Char;
+		}
+		
+		for (int i = 1; i < -pow; i++)
+		{
+			lal = lal*this->val % this->Char;
 		}
 	}
 
@@ -95,6 +74,11 @@ std::ostream& operator<<(std::ostream& op, const Zp& output)
 
 Zp& Zp::operator=(const int lal)
 {
-	val = lal;
+	this->val = lal;
+	while (this->val < 0)
+	{
+		this->val = this->val + this->Char;
+	}
+	this->val = val % this->Char;
 	return *this;
 }
