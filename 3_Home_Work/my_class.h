@@ -11,11 +11,11 @@ class Zp{
 public:
 	Zp() = default;
 	~Zp() = default;
-	Zp operator+(Zp lal);
+	Zp operator+(const Zp lal);
 	Zp operator*(Zp lal);
 	Zp operator^(int pow);
 	int val = 0;
-	Zp& operator=(int lal);
+	Zp& operator=(const int lal);
 	friend std::ostream& operator<<(std::ostream& op, const Zp& output);
     	friend std::istream& operator>>(std::istream& in, Zp& input);
 private:
