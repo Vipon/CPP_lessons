@@ -85,7 +85,7 @@ std::istream& operator>>(std::istream& in, Zp& input)
 	return in;
 }
 
-std::ostream& operator<<(std::ostream& op,const Zp& output)
+std::ostream& operator<<(std::ostream& op, const Zp& output)
 {
 	int val = output.val;
 	op << val;
@@ -93,7 +93,7 @@ std::ostream& operator<<(std::ostream& op,const Zp& output)
 	return op;
 }
 
-Zp& Zp::operator=(int lal)
+Zp& Zp::operator=(const int lal)
 {
 	val = lal;
 	return *this;
