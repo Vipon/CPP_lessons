@@ -11,7 +11,7 @@ class Zp{
 public:
 	Zp() = default;
 	~Zp() = default;
-	Zp operator+(const Zp lal);
+	Zp operator+(Zp lal);
 	Zp operator*(Zp lal);
 	Zp operator^(int pow);
 	int val = 0;
