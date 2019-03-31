@@ -24,3 +24,4 @@ void Regular_Polygon::draw(SDL_Renderer* renderer, int x, int y) {
     }
     delete[]px;
     delete[]py;
+}

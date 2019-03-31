@@ -1,8 +1,9 @@
 #include "Triangle.h"
 #include "Ellipse.h"
+#include "Circle.h"
 #include "Line.h"
-#include "Square.h"
 #include "Regular_Polygon.h"
+#include "Square.h"
 #include <SDL2/SDL.h>
 #include <cstdio>
 #include <cmath>
