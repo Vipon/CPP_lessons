@@ -4,7 +4,7 @@ LINKERFLAGS=-lSDL2
 
  EXAMPLE=gObject
 
- main: main.o $(EXAMPLE).o
+ main: main.o Line.o Triangle.o Ellipse.o Rectangle.o Regular_Polygon.o
 	$(CXX) $^ $(LINKERFLAGS) -o $@
 
 %.o: %.cpp %.h
@@ -14,4 +14,4 @@ exec: main
 	./main
 
 clean:
-	rm -f main.o main $(EXAMPLE).o 
+	rm -f main.o Line.o Triangle.o Ellipse.o Rectangle.o Regular_Polygon.o

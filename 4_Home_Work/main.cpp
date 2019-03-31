@@ -1,29 +1,35 @@
 #include "gObject.h"
+#include "Triangle.h"
+#include "Circle.h"
+#include "Line.h"
+#include "Ellipse.h"
+#include "Regular_Polygon.h"
+#include "Rectangle.h"
+#include "Square.h"
 #include <SDL2/SDL.h>
-#include <cmath>
 #include <cstdio>
+#include <cmath>
 
-
-//РќРµРєРѕС‚РѕСЂС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹ РЅР°С€РµРіРѕ РѕРєРЅР°
+//Некоторые константы нашего окна
 const int SCREEN_WIDTH = 720;
 const int SCREEN_HEIGHT = 720;
 
-int main()
+int main(int argc, char* args[])
 {
-    //РљР°РєРѕРµ РѕРєРЅРѕ Р±СѓРґРµС‚ СЂРµРЅРґРµСЂРёС‚СЃСЏ
+    //Какое окно будет рендерится
     SDL_Window* window = nullptr;
 
-    //РџРѕРІРµСЂС…РЅРѕСЃС‚СЊ РѕРєРЅР°
+    //Поверхность окна
     SDL_Surface* screenSurface = nullptr;
 
-    //Р’РєР»СЋС‡РёРј SDL
+    //Включим SDL
     SDL_Init(SDL_INIT_VIDEO);
 
 
-     //РЎРѕР·РґР°РµРј РѕРєРЅРѕ
+     //Создаем окно
      window = SDL_CreateWindow("Try", 400, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
-     //РћС‚СЂРёСЃРѕРІРєР° С„РёРіСѓСЂ РЅРµ 100% С‚РѕС‡РЅР°, С‚Рє СЏ СЂРµС€РёР» РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ int
+     //Отрисовка фигур не 100% точна, тк я решил использовать только int
 
      Triangle tr(35, 45, 55);
      Circle cr(45);
@@ -40,7 +46,7 @@ int main()
 
      while (!quit)
          {
-              while (SDL_PollEvent(&event) != 0) {
+              while (SDL_PollEvent(&event)) {
                   if (event.type == SDL_QUIT) {
                       quit = true;
                   }
@@ -55,14 +61,14 @@ int main()
               }
                
               SDL_RenderPresent(renderer);
-              //РѕР±РЅРѕРІР»СЏРµРј РѕРєРЅРѕ РєР°Р¶РґС‹Р№ С†РёРєР»
+              //обновляем окно каждый цикл
          } 
 
 
-    //РЈРґР°Р»СЏРµРј РёР· РїР°РјСЏС‚Рё РѕРєРЅРѕ
+    //Удаляем из памяти окно
     SDL_DestroyWindow(window);
 
-    //Р’С‹С…РѕРґ РёР· SDL
+    //Выход из SDL
     SDL_Quit();
 
     return 0;
