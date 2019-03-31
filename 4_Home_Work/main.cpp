@@ -1,6 +1,6 @@
 #include "Triangle.h"
-#include "Ellipse.h"
 #include "Circle.h"
+#include "Ellipse.h"
 #include "Line.h"
 #include "Regular_Polygon.h"
 #include "Square.h"
