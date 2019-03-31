@@ -16,13 +16,13 @@ public:
 
 class Line : public gObject {
 public:
-    Line(int a = 0) : a(a) {};
+    Line(int len = 0) : len(len) {};
     ~Line() {};
 
     virtual void draw(SDL_Renderer* renderer, int x, int y);
 
 protected:
-    int a;
+    int len; //length of line 
 };
 
 class Triangle : public gObject {
@@ -34,28 +34,28 @@ public:
     virtual void draw(SDL_Renderer* renderer, int x, int y);
 
 protected:
-    int a;
-    int b;
-    int c;
+    int a; //lenth of first side
+    int b; //lenth of second side
+    int c; //lenth of third side
 };
 
 class Ellipse : public gObject {
 public:
-    Ellipse() : a(0), b(0) {};
-    Ellipse(int a, int b) : a(a), b(b) {};
+    Ellipse() : width(0), hight(0) {};
+    Ellipse(int width, int hight) : width(width), hight(hight) {};
     ~Ellipse() {};
 
     virtual void draw(SDL_Renderer* renderer, int x, int y);
 
 protected:
-    int a;
-    int b;
+    int width;
+    int hight;
 };
 
 class Circle : public Ellipse {
 public:
     Circle() : Ellipse(0, 0) {};
-    Circle(int a) : Ellipse(a, a) {};
+    Circle(int r) : Ellipse(r, r) {}; // r for radius
     ~Circle() {};
 
 };
@@ -69,29 +69,29 @@ public:
     virtual void draw(SDL_Renderer* renderer, int x, int y);
 
 protected:
-    int a;
-    int b;
+    int a; //length of first side
+    int b; //length of second size
 };
 
 
 class Regular_Polygon : public gObject {
 public:
-    Regular_Polygon() : a(0), n(0) {};
-    Regular_Polygon(int a, int n) : a(a), n(n) {};
+    Regular_Polygon() : len(0), n(0) {};
+    Regular_Polygon(int len, int n) : len(len), n(n) {};
     ~Regular_Polygon() {};
 
     virtual void draw(SDL_Renderer* renderer, int x, int y);
 
 protected:
-    int a;
-    int n;
+    int len; // length of one side
+    int n; // number of sides
 };
 
 
 class Square : public Regular_Polygon {
 public:
     Square() : Regular_Polygon(0, 0) {};
-    Square(int a) : Regular_Polygon(a, 4) {};
+    Square(int len) : Regular_Polygon(len, 4) {};
     ~Square() {};
 };
 

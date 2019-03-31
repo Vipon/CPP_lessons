@@ -14,7 +14,7 @@ void pixel4(SDL_Renderer* renderer, int x, int y, int _x, int _y)
 
 void Line::draw(SDL_Renderer* renderer, int x, int y)
 {
-    SDL_RenderDrawLine(renderer, x, y, x + a, y);
+    SDL_RenderDrawLine(renderer, x, y, x + len, y);
 }
 
 
@@ -32,9 +32,9 @@ void Triangle::draw(SDL_Renderer* renderer, int x, int y)
 void Ellipse::draw(SDL_Renderer* renderer, int x, int y)
 {
     int _x = 0;
-    int _y = b;
-    int a_sqr = a * a;
-    int b_sqr = b * b;
+    int _y = hight;
+    int a_sqr = width * width;
+    int b_sqr = hight * hight;
     int delta = 4 * b_sqr * ((_x + 1) * (_x + 1)) + a_sqr * ((2 * _y - 1) * (2 * _y - 1)) - 4 * a_sqr * b_sqr; // Функция координат точки (x+1, y-1/2)
     while (a_sqr * (2 * _y - 1) > 2 * b_sqr * (_x + 1))
     {
@@ -76,29 +76,28 @@ void Rectangle::draw(SDL_Renderer* renderer, int x, int y)
 
 void Regular_Polygon::draw(SDL_Renderer* renderer, int x, int y) {
     int v = 0;
-    auto *px = new double[n+1]; //Массив для хранения точек x
-    auto *py = new double[n+1]; //Массив для хранения точек y
-  
+    auto *px = new double[n + 1]; //Массив для хранения точек x
+    auto *py = new double[n + 1]; //Массив для хранения точек y
+
     px[0] = x;
     py[0] = y;
 
     double pi = 3.1415926535897; //Это должно быть число ПИ
- 
+
    //ПОИСК ТОЧЕК
-    for (int i = 1; i < n+1 ; i++)
+    for (int i = 1; i < n + 1; i++)
     {
         {
-            px[i] = px[i-1] + a * cos(v*pi / 180);
-            py[i] = py[i-1] + a * sin(v*pi / 180);
+            px[i] = px[i - 1] + len * cos(v*pi / 180);
+            py[i] = py[i - 1] + len * sin(v*pi / 180);
         }
-        v = v + 360/n;
+        v = v + 360 / n;
     }
     //ПОСЛЕДОВАТЕЛЬНО СОЕДИНЯЕМ ТОЧКИ
-    for (int i = 1; i < n+1 ; i ++)
+    for (int i = 1; i < n + 1; i++)
     {
-        SDL_RenderDrawLine(renderer, int(px[i-1]), int(py[i-1]), int(px[i]), int(py[i]));
+        SDL_RenderDrawLine(renderer, int(px[i - 1]), int(py[i - 1]), int(px[i]), int(py[i]));
     }
     delete[]px; //Освобождаем память
     delete[]py; //Освобождаем память
 }
-   
