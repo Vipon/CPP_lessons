@@ -5,8 +5,8 @@
 #include "Regular_Polygon.h"
 #include "Square.h"
 #include <SDL2/SDL.h>
-#include <cstdio>
 #include <cmath>
+#include <cstdio>
 
 const int SCREEN_WIDTH = 720;
 const int SCREEN_HEIGHT = 720;
