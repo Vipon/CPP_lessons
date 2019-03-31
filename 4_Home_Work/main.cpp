@@ -1,11 +1,9 @@
-#include "gObject.h"
 #include "Triangle.h"
 #include "Circle.h"
 #include "Line.h"
+#include "Square.h"
 #include "Ellipse.h"
 #include "Regular_Polygon.h"
-#include "Rectangle.h"
-#include "Square.h"
 #include <SDL2/SDL.h>
 #include <cstdio>
 #include <cmath>
@@ -14,7 +12,7 @@
 const int SCREEN_WIDTH = 720;
 const int SCREEN_HEIGHT = 720;
 
-int main(int argc, char* args[])
+int main()
 {
     //Какое окно будет рендерится
     SDL_Window* window = nullptr;
