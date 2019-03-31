@@ -2,15 +2,14 @@
 
 void Regular_Polygon::draw(SDL_Renderer* renderer, int x, int y) {
     int v = 0;
-    auto *px = new double[n + 1]; //Массив для хранения точек x
-    auto *py = new double[n + 1]; //Массив для хранения точек y
+    auto *px = new double[n + 1];
+    auto *py = new double[n + 1];
 
     px[0] = x;
     py[0] = y;
 
-    double pi = 3.1415926535897; //Это должно быть число ПИ
+    double pi = 3.1415926535897;
 
-   //ПОИСК ТОЧЕК
     for (int i = 1; i < n + 1; i++)
     {
         {
@@ -19,11 +18,9 @@ void Regular_Polygon::draw(SDL_Renderer* renderer, int x, int y) {
         }
         v = v + 360 / n;
     }
-    //ПОСЛЕДОВАТЕЛЬНО СОЕДИНЯЕМ ТОЧКИ
     for (int i = 1; i < n + 1; i++)
     {
         SDL_RenderDrawLine(renderer, int(px[i - 1]), int(py[i - 1]), int(px[i]), int(py[i]));
     }
-    delete[]px; //Освобождаем память
-    delete[]py; //Освобождаем память
-}
+    delete[]px;
+    delete[]py;
