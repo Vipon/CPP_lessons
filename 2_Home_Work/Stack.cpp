@@ -16,7 +16,7 @@ Stack::~Stack()
 
 
 int Stack::push(int value) {
-    if (top > value) {
+    if (top > size) {
         int *temp = new int[size * 2];
 
         for (int i = 0; i < size; ++i) {
