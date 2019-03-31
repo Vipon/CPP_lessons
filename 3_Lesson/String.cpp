@@ -27,6 +27,7 @@ String::String(const String& s) :
 }
 
 
+// move constructor
 String::String(String&& s) noexcept :
     len(s.len),
     str(s.str)
@@ -90,18 +91,24 @@ String& String::operator+=(const String& s)
 }
 
 
-String String::operator+(const String& s) const
+String String::operator+(String& s)
 {
-    return (String(str) += s);
+    return (String(this->str) += s);
 }
 
 
-std::ostream& operator<<(std::ostream& os, const String& s)
+std::ostream& operator<<(std::ostream& os, String& s)
 {
     os << s.str;
     return os;
 }
 
+
+std::ostream& operator<<(std::ostream& os, String&& s)
+{
+    os << s.str;
+    return os;
+}
 
 std::istream& operator>>(std::istream& is, String& s)
 {
@@ -125,8 +132,8 @@ std::istream& operator>>(std::istream& is, String& s)
             delete [] temp;
         }
 
-        s.str[len] = buf;
-        ++len;
+        s.str[len++] = buf;
+        //++len;
     }
 
     char* temp = s.str;
@@ -156,7 +163,7 @@ int main()
     std::cout << "String len = " << str1.size() << std::endl;
 
     String sum_str(str + str1);
-    std::cout << "sum_str: " << sum_str << std::endl;
+    std::cout << "sum_str: " << sum_str << str + str1 << std::endl;
     std::cout << "String len = " << sum_str.size() << std::endl;
 
     str += str1;
