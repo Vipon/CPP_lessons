@@ -48,7 +48,7 @@ Zp Zp::operator^(const int pow) const
 
 }
 
-std::istream& operator>>(std::istream& in,const Zp& input)
+std::istream& operator>>(std::istream& in,Zp& input)
 {
 	int num;
 	in >> num;
