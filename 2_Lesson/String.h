@@ -7,6 +7,7 @@ class String {
 
 public:
     String(const char *str);
+    String(const String& s);
     ~String();
 
     size_t  size() const;
@@ -16,8 +17,9 @@ public:
     void    print() const;
 
 private:
-    char*   str;
     size_t  len;
+    char*   str;
+
 };
 
 #endif /* __STRING_H */

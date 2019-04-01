@@ -1,2 +1,2 @@
-Checks:             '*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory,-fuchsia-default-arguments,-fuchsia-overloaded-operator,-cppcoreguidelines-pro-bounds-constant-array-index,-cppcoreguidelines-pro-type-const-cast,-clang-analyzer-optin.cplusplus.VirtualCall'
+Checks:             '*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-hicpp-no-array-decay,-cppcoreguidelines-owning-memory,-fuchsia-default-arguments,-fuchsia-overloaded-operator,-cppcoreguidelines-pro-bounds-constant-array-index,-cppcoreguidelines-pro-type-const-cast,-clang-analyzer-optin.cplusplus.VirtualCall'
 WarningsAsErrors:   '*'

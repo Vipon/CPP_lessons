@@ -7,6 +7,12 @@
 # ignore object files in obj/ directory
 */obj/*
 
+# ignore binary files in install/ directory
+*/install/*
+
+# ignore binary files in build/ directory
+*/build/*
+
 # ignore *.out files
 *.out
 
