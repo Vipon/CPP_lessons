@@ -1,8 +1,8 @@
-#include "Array.h"
+#include "VArray.h"
 
 int main()
 {
-	Array<int> arr(5);
+	vArray<int, 5> arr;
 	std::cin >> arr;
 	std::cout << arr;
 
