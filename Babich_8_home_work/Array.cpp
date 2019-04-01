@@ -14,7 +14,7 @@ Array<T>::~Array()
 }
 
 template <typename T>
-Array<T>& Array<T>::operator=(Array<T> dupl)
+Array<T>& Array<T>::operator=(Array dupl)
 {
 	this->table = dupl.table;
 	this->Size = dupl.Size;
@@ -22,7 +22,7 @@ Array<T>& Array<T>::operator=(Array<T> dupl)
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& stream, Array<T>& output)
+std::ostream& operator<<(std::ostream& stream, Array<T> output)
 {
 	for (int i = 0; i < output.Size; i++)
 	{
@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream& stream, Array<T>& output)
 }
 
 template <typename T>
-std::istream& operator>>(std::istream& stream, Array<T>& input)
+std::istream& operator>>(std::istream& stream, Array<T> input)
 {
 	for (int i = 0; i < input.Size; i++)
 	{
