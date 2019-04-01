@@ -1,6 +1,6 @@
 #include "my_class.h"
 
-Zp Zp::operator+(Zp lal)
+Zp Zp::operator+(const Zp lal) const
 {
 	Zp buf;
 	buf.val = (val + lal.val) % this->Char;
@@ -8,7 +8,7 @@ Zp Zp::operator+(Zp lal)
 	return buf;
 }
 
-Zp Zp::operator*(Zp lal)
+Zp Zp::operator*(const Zp lal) const
 {
 	Zp buf;
 	buf.val=(val*lal.val) % this->Char;
@@ -16,7 +16,7 @@ Zp Zp::operator*(Zp lal)
 	return buf;
 }
 
-Zp Zp::operator^(int pow)
+Zp Zp::operator^(const int pow) const
 {
 	int lal = this->val;
 
@@ -48,7 +48,7 @@ Zp Zp::operator^(int pow)
 
 }
 
-std::istream& operator>>(std::istream& in, Zp& input)
+std::istream& operator>>(std::istream& in,const Zp& input)
 {
 	int num;
 	in >> num;
