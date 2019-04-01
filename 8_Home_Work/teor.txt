@@ -1,0 +1,141 @@
+0. Шаблон Класса
+
+Шаблоны позволяют определить конструкции (функции, классы), который используют 
+определенные типы, но на момент написания кода точно не известно, что это 
+будут за типы. Иными словами, шаблоны позволяют определить универсальные 
+конструкции, которые не зависят от определенного типа.
+
+Шаблоны классов идеально подходят для реализации контейнерных классов, так как 
+очень часто таким классам приходится работать с разными типами данных, а 
+шаблоны позволяют это организовать в минимальном количестве кода
+
+
+1. Аргументы Шаблона
+
+Параметрами(аргументами) шаблонов могут быть: параметры-типы, параметры 
+обычных типов, параметры-шаблоны.
+
+template <class T1,                    // параметр-тип
+          typename T2,                 // параметр-тип
+          int I,                       // параметр обычного типа
+          T1 DefaultValue,             // параметр обычного типа
+          template<class> class T3,    // параметр-шаблон
+          class Character = char       // параметр по умолчанию
+        >
+
+Non-type parameters
+
+A template non-type parameter is a special type of parameter that does not 
+substitute for a type, but is instead replaced by a value. A non-type 
+parameter can be any of the following:
+
+a) A value that has an integral type or enumeration
+b) A pointer or reference to a class object
+c) A pointer or reference to a function
+d) A pointer or reference to a class member function
+e) std::nullptr_t
+
+Float, double are prohabited
+
+
+2. Рекурсивное использование шаблонов
+состоит в том, что некоторый класс X наследуется от шаблона класса, 
+использующего X как шаблонный параметр.
+______________________________________
+#include <iostream>
+using namespace std;
+
+template <int i> int func() {
+    return func<i-1>()+i;
+};
+
+template <> int func<0>() {
+    return 0;
+};
+
+int main () {
+   cout << func<12>() << endl;
+   return 0;
+};
+______________________________________
+
+
+3. Кол-во аргументов у шаблонов
+
+Ответ был дан в вопросе 1, специфических ограничений нет.
+
+
+4. Значения параметров шаблона по умолчанию
+
+Default template arguments are specified in the parameter lists after the = 
+sign. Defaults can be specified for any kind of template parameter (type, 
+non-type, or template), but not to parameter packs.
+
+template <class TYPE = int, int NMAX = 10> class Vector
+ { private:
+    int  size;
+    TYPE v[NMAX];
+   ...
+  };
+
+Vector<> v;//allowed
+
+template<auto...> struct C {};
+C<'C', 0, 2L, nullptr> x; //prohabited
+
+Проверка семантики аргумента по умолчанию для параметра шаблона осуществляется 
+тогда и только тогда, когда аргумент по умолчанию действительно используется.
+
+
+5. Специализация Шаблонов
+
+Возможность специализации класса существует для того, чтобы мы могли 
+скорректировать поведение чего-либо под нужды неподходящего наиболее общему 
+решению типа.
+
+Чтобы специализировать шаблон класса, следует объявить класс, предварив его 
+конструкцией template< >, и указать типы, для которых специализируется шаблон 
+класса. Типы используются в качестве аргументов шаблона и задаются 
+непосредственно после имени класса.
+
+#include <iostream>
+ 
+using std::cin;
+using std::cout;
+ 
+/*ШАБЛОННЫЙ КЛАСС*/
+template <typename T1>
+class MyClass {
+public:
+    int foo();
+};
+ 
+ 
+template <typename T>
+int MyClass<T>::foo() {     //Наиболее общий вариант решения
+    return 0;
+}
+ 
+ 
+template <>                     //специализация
+class MyClass<char*>{   //шаблонного класса под тип char*
+public:
+    int foo();
+};
+ 
+int MyClass<char*>::foo() {     //Реализация под специализацию
+    return 0;
+}
+ 
+ 
+int main() {
+    cin.get();
+}
+
+
+6. 
+Можно передать классы в ф-ю, если она корректно работает с эти типом данных.
+
+
+7.
+Передается только первый объект. Тк функция принимает только объекты класса myClass<int, 100>, а второй объект шаблонного класса явлвяется экземпляром myClass<int,1000>
