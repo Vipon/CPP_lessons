@@ -16,7 +16,7 @@ public:
 	Zp operator^(const int pow) const; // возведение в степень (положительную или отрицательную) по модулю p
 	Zp& operator=(const int lal); // присваивание элементу целое значение, которое преобразовывается в элемент поля
 	friend std::ostream& operator<<(std::ostream& op, const Zp& output); // вывод значение элемента 
-    	friend std::istream& operator>>(std::istream& in, const Zp& input); // аналогично оператору "=", только ввод с клавиатуры 
+    	friend std::istream& operator>>(std::istream& in, Zp& input); // аналогично оператору "=", только ввод с клавиатуры 
 private:
 	size_t Char = p; // характеристика поля
 	int val = 0; // значение элемента поля по умолчанию (для дефолтного конструктора, который упрощает работу с элементами
