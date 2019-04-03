@@ -62,10 +62,11 @@ public:
 		int count=0;
 		for (size_t i = Size + 1; i <= Size + add.Size; i++)
 		{
-			this->table[i-1] = add.table[count];
+			buf[i-1] = add.table[count];
 			count++;
 		}
 		this->Size += add.Size;
+		memcpy(this->table, buf, sizeof(T)*this->Size);
 		delete[] buf;
 		return *this;
 	}
