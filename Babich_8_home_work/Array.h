@@ -6,7 +6,7 @@ template <typename T, size_t Size>
 class Array
 {
 public:
-	Array(size_t Size) : table(new T[Size]) {}
+	Array() : table(new T[Size]) {}
 
 	~Array()
 	{
