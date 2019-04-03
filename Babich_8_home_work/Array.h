@@ -1,6 +1,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include <iostream>
+#include <string.h>
 
 template <typename T, size_t Size>
 class Array
