@@ -66,8 +66,7 @@ public:
 			count++;
 		}
 		this->Size += add.Size;
-		memcpy(this->table, buf, sizeof(T)*this->Size);
-		delete[] buf;
+		this->table = buf;
 		return *this;
 	}
 
