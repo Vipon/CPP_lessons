@@ -66,6 +66,7 @@ public:
 			count++;
 		}
 		this->Size += add.Size;
+		delete[] buf;
 		return *this;
 	}
 
