@@ -80,7 +80,7 @@ public:
 	{
 		T ret = this->table[Size - 1];
 		state(this->Size - 1);
-		return T;
+		return ret;
 	}
 
 
