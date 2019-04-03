@@ -1,6 +1,7 @@
 #ifndef VARRAY_H
 #define VARRAY_H
 #include <iostream>
+#include <string.h>
 
 template <typename T>
 class vArray 
