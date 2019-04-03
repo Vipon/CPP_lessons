@@ -2,7 +2,7 @@
 
 int main()
 {
-	Array<int> arr(5);
+	Array<int> arr;
 	std::cin >> arr;
 	std::cout << arr;
 
