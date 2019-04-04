@@ -6,10 +6,10 @@ all: main_Array main_vArray List_main
 main_Array: main_Array.cpp Array.h 
 	$(CXX) main_Array.cpp $(CXXFLAGS) -o main_Array
 
-testvArray: main_vArray.cpp vArray.h 
+main_vArray: main_vArray.cpp vArray.h 
 	$(CXX) main_vArray.cpp $(CXXFLAGS) -o main_vArray
 
-testvArray: List_main.cpp List.h 
+List_main: List_main.cpp List.h 
 	$(CXX) List_main.cpp $(CXXFLAGS) -o List_main
 
 exec_all: main_Array main_vArray List_mian
