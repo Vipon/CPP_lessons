@@ -5,10 +5,7 @@ class Stack
 {
 	public:
 		Stack(int size = 0);
-		~Stack()
-		{
-
-		};
+		~Stack();
 		void push(int data);
 		int pop();
 		bool isFull();

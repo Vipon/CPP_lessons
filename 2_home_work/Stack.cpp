@@ -10,14 +10,30 @@ Stack::Stack(int size)
 	head = 0;
 }
 
+Stack::~Stack()
+{
+	head = 0;
+	delete [] value;
+}
+
 void Stack::push(int data)
 {
+	if(isFull())
+	{
+		std::cout<<"Stack is full."<<std::endl;
+		return;
+	}
 	value[head] = data;
-	head++;
+	head++;	
 }
 
 int Stack::pop()
 {
+	if(isEmpty())
+	{
+		std::cout<<"Stack is empty."<<std::endl;
+		return 0;
+	}
 	return value[--head];
 }
 
@@ -32,7 +48,7 @@ void Stack::dump()
 
 bool Stack::isFull()
 {
-	return (head == size - 1);
+	return (head == size);
 }
 bool Stack::isEmpty()
 {

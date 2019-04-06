@@ -6,6 +6,8 @@
 int main()
 {
 	Stack st(5);
+	std::cout << st.isFull() << std::endl;
+	std::cout << st.isEmpty() << std::endl;
 	int i = 0;
 	while (i < 5)
 	{
@@ -14,5 +16,7 @@ int main()
 	st.dump();
 	std::cout << st.isFull() << std::endl;
 	st.~Stack();
+	std::cout << st.isFull() << std::endl;
+	std::cout << st.isEmpty() << std::endl;
 	return 0;
 }
