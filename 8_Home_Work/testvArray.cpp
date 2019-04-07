@@ -6,5 +6,9 @@ int main() {
 	std::cout << iArr;
 	std::cin >> iArr;
 	std::cout << iArr;
+	vArray<int> iArr2(arr, 2);
+	std::cout << iArr2;
+	iArr = iArr2;
+	std::cout << iArr;
 	return 0;
 }

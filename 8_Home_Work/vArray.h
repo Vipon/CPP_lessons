@@ -4,6 +4,12 @@
 #include <cstddef>
 #include <cstring>
 #include <iostream>
+#include <exception>
+
+class vArr_excess_of_size : public std::exception {
+public:
+	const char* what() { return "The size of the vArray is exceeded"; }
+};
 
 template <typename T>
 class vArray {
@@ -37,7 +43,7 @@ public:
 
 	~vArray() { delete [] elements; }
 
-	vArray operator=(const vArray<T>& arr) {
+	vArray& operator=(const vArray<T>& arr) {
 		num = arr.num;
 		delete [] elements;
 		elements = new T[num];
@@ -45,12 +51,12 @@ public:
 		return *this;
 	}
 
-	T operator[](size_t pos) {
+	T& operator[](size_t pos) {
 		if (pos >= num) {
-			abort();
+			throw vArr_excess_of_size();
 		}
 
-		return elements[pos];
+		return &(elements[pos]);
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const vArray& arr) {
@@ -63,19 +69,19 @@ public:
 		return os;
 	}
 
-	//Example of vArray input: (x1; x2; x3) for num = 3; x1, x2, x3 - values.
+	//Example of vArray input: ; x1; x2; x3) for num = 3; x1, x2, x3 - values;
+	// ; - separating symbol, terminative symbol is a char symbol
+	// that is different from the separating symbol (in this example - ) ).
 	friend std::istream& operator>>(std::istream& is, vArray& arr)
 	{
 		char buf = 0;
-		is >> buf;
-
-		if (buf != '(') {
-			return is;
-		}
+		char sep = 0; //separating symbol
+		is >> sep;
+		buf = sep;
 
 		size_t i = 0;
 
-		while (buf != ')') {
+		while (buf == sep) {
 			if (i >= arr.num) {
 				T* temp = arr.elements;
 				arr.elements = new T[arr.num * 2];
@@ -93,8 +99,25 @@ public:
 		arr.elements = new T[i];
 		memcpy(arr.elements, temp, (i * (sizeof(T))));
 		delete [] temp;
+		arr.num = i;
 		return is;
 	} 
+
+	void set_size(size_t new_size) {
+		if (new_size == num) {
+			return;
+		}
+
+		T* temp = elements;
+		elements = new T[new_size];
+		if (new_size < num) {
+			memcpy(elements, temp, (new_size * (sizeof(T))));
+		}
+		else {
+			memcpy(elements, temp, (num * (sizeof(T))));
+		}
+		num = new_size;
+	}
 
 private:
 	size_t num;

@@ -4,29 +4,34 @@
 #include <cstddef>
 #include <cstring>
 #include <iostream>
+#include <exception>
+
+class Arr_excess_of_size : public std::exception {
+public:
+	const char* what() { return "The size of the array is exceeded"; }
+};
 
 template <typename T, size_t NUM = 10>
 class Array {
 public:
 	Array(T (&val)[NUM]) { 
-		elements = new T[NUM];
 		memcpy(elements, val, ((sizeof(T)) * NUM)); 
 	}
 
 	Array(T (&&val)[NUM]) : elements(val) {}
-	~Array() { delete [] elements; }
+	~Array() {}
 
 	Array& operator=(const Array<T, NUM>& arr) {
 		memcpy(this->elements, arr.elements, ((sizeof(T)) * NUM));
 		return *this;
 	}
 
-	T operator[](size_t pos) {
+	T& operator[](size_t pos) {
 		if (pos >= NUM) {
-			abort();
+			throw Arr_excess_of_size();
 		}
 
-		return elements[pos];
+		return &(elements[pos]);
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const Array& arr) {
@@ -47,7 +52,7 @@ public:
 	}
 
 private:
-	T* elements;
+	T elements[NUM];
 };
 
 #endif //__ARRAY_H
