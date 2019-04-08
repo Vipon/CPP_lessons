@@ -29,7 +29,7 @@ bool Stack::isEmpty(){
 
 void Stack::push(uint64_t entry){
 	if(isFull()){
-		auto repository = new uint64_t[++size];
+		auto repository = new uint64_t[2*size];
 
 		for (size_t i = 0; i < size; i++)
 		{
@@ -44,11 +44,13 @@ void Stack::push(uint64_t entry){
 
 
 uint64_t Stack::pop(){
-	if(isEmpty()){
-	std::cout << "The stack is empty" << std::endl;
-	abort();
+	if(isEmpty())
+	{
+		std::cout << "The stack is empty" << std::endl;
+		abort();
 	}
-	return STACK[--head];
+	
+	return (STACK[--head]);
 }
 
 
