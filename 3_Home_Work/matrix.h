@@ -12,7 +12,7 @@ class matrix
 public:
 
 	matrix() {};//default constructor
-	matrix(const int& h, const int& w);
+	matrix(int h, int w);
 	matrix (const matrix& A);//copy constructor
 	matrix(matrix&& A) noexcept;//move constructor
 
