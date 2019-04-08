@@ -5,7 +5,9 @@
 
 #include "matrix.h"
 
-matrix::matrix(const int& h, const int& w) : height(h), width(w)
+matrix::matrix(int h, int w):
+	height(h), 
+	width(w)
 {
 
 	m = new int* [height];
@@ -21,10 +23,10 @@ matrix::matrix(const int& h, const int& w) : height(h), width(w)
 	}
 }
 
-matrix::matrix(const matrix& A)
-{
-	height = A.height;
-	width = A.width;
+matrix::matrix(const matrix& A):
+	height(A.height),
+	width(A.width)
+{	
 	m = new int * [height];
 	for (int i = 0; i < height; ++i)
 	{
@@ -36,9 +38,11 @@ matrix::matrix(const matrix& A)
 	}	
 }
 	
-matrix::matrix(matrix&& A) noexcept : m(A.m), height(A.height), width(A.width)
+matrix::matrix(matrix&& A) noexcept	:	
+	m(A.m), 
+	height(A.height), 
+	width(A.width)
 {
-	*A.m = nullptr;
 	A.m = nullptr;
 	A.height = 0;
 	A.width = 0;
@@ -46,14 +50,11 @@ matrix::matrix(matrix&& A) noexcept : m(A.m), height(A.height), width(A.width)
 
 matrix::~matrix()
 {
-	if (m != nullptr)
+	for (int i = 0; i < height; ++i)
 	{
-		for (int i = 0; i < height; ++i)
-		{
-			delete[] m[i];
-		}
-		delete[] m;
+		delete[] m[i];
 	}
+	delete[] m;
 }
 
 
