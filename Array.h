@@ -2,6 +2,7 @@
 #define ARRAY_H_INCLUDED
 
 #include <cstddef>
+#include <iostream>
 
 template <typename T, std::size_t I>
 class Array{
