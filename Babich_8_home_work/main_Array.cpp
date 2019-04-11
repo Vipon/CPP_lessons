@@ -6,5 +6,5 @@ int main()
 	std::cin >> arr;
 	std::cout << arr;
 
-	system("pause");
+//	system("pause");
 }
