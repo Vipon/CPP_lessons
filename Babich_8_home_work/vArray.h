@@ -1,7 +1,10 @@
 #ifndef VARRAY_H
 #define VARRAY_H
+#include "my_Exception.h"
 #include <iostream>
 #include <string.h>
+#include <iterator>
+#include <algorithm>
 
 template <typename T>
 class vArray 
@@ -10,6 +13,29 @@ public:
 	vArray()
 	{
 		this->table = new T[Size];
+	}
+
+	vArray(vArray<T>& seq, T& begin, T& end)
+	{
+		int start = -1;
+		int stop = -1;
+		for (size_t i = 0; i < seq.Size; i++)
+		{
+			if (&(seq.table[i]) == &begin)
+				start = i;
+			if (&(seq.table[i]) == &end)
+				stop = i;
+		}
+		if (start < 0 || stop < 0)
+		{
+			throw ArrayException("no such element.");
+		}
+		this->Size = std::max(stop,start) - std::min(start,stop) + 1;
+		this->table = new T[Size];
+		for (size_t i = 0; i < Size; i++)
+		{
+			this->table[i] = seq.table[i + std::min(start,stop)];
+		}
 	}
 
 	~vArray()
@@ -81,10 +107,59 @@ public:
 	{
 		T ret = this->table[Size - 1];
 		state(this->Size - 1);
-		return ret;
+		return T;
 	}
 
+	T& operator[] (size_t pos)
+	{
+		if (pos < Size)
+		{
+			return table[pos-1];
+		}
+		else
+		{
+			throw ArrayException("out of range");
+		}
+	}
 
+	void sortUp() //shellsort
+	{
+		for (size_t gap = Size / 2; gap > 0; gap /= 2)
+		{
+			for (size_t i = gap; i < Size; i ++)
+			{
+				T buf = table[i];
+				size_t j;
+				for (j = i; j >= gap && table[j - gap] > buf; j -= gap)
+					table[j] = table[j - gap];
+				table[j] = buf;
+			}
+		}
+		return;
+	}
+
+	void revert()
+	{
+		T buf = 0;
+		for (size_t i = 0; i < (Size/2); i++)
+		{
+			buf = table[i];
+			table[i] = table[Size - 1 - i];
+			table[Size - 1 - i] = buf;
+		}
+		return;
+	}
+
+	T& findElem(T elem)
+	{
+		for (size_t i = 0; i < Size; i++)
+		{
+			if (table[i] == elem)
+				return table[i];
+		}
+
+		throw ArrayException("no such element");
+	}
 private:
 	size_t Size = 10;
 	T* table;

@@ -1,7 +1,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include <iostream>
-#include <string.h>
+#include "my_Exception.h"
 
 template <typename T, size_t Size>
 class Array
@@ -36,6 +36,46 @@ public:
 	{
 		memcpy(this->table, dupl.table, sizeof(T)*Size);
 		return *this;
+	}
+
+	T& operator[] (size_t pos)
+	{
+		if (pos < Size)
+		{
+			return table[pos - 1];
+		}
+		else
+		{
+			throw ArrayException("out of range");
+		}
+	}
+
+	void sortUp() //shellsort
+	{
+		for (size_t gap = Size / 2; gap > 0; gap /= 2)
+		{
+			for (size_t i = gap; i < Size; i++)
+			{
+				T buf = table[i];
+				size_t j;
+				for (j = i; j >= gap && table[j - gap] > buf; j -= gap)
+					table[j] = table[j - gap];
+				table[j] = buf;
+			}
+		}
+		return;
+	}
+
+	void revert()
+	{
+		T buf = 0;
+		for (size_t i = 0; i < (Size / 2); i++)
+		{
+			buf = table[i];
+			table[i] = table[Size - 1 - i];
+			table[Size - 1 - i] = buf;
+		}
+		return;
 	}
 
 private:

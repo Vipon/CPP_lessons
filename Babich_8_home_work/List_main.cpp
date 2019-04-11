@@ -1,5 +1,5 @@
 #include "List.h" 
-
+/*
 int main()
 {
 	List<int> ls(5);
@@ -10,3 +10,4 @@ int main()
 	std::cout << ls;
 //	system("pause");
 }
+*/
