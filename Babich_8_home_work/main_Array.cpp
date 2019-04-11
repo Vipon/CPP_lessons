@@ -1,5 +1,5 @@
 #include "Array.h"
-/*
+
 int main()
 {
 	Array<double,5> arr;
@@ -8,4 +8,3 @@ int main()
 
 	system("pause");
 }
-*/
