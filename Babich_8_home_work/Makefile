@@ -3,13 +3,13 @@ CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
 
 all: main_Array main_vArray List_main
 
-main_Array: main_Array.cpp Array.h 
+main_Array: main_Array.cpp Array.h my_Exception.h
 	$(CXX) main_Array.cpp $(CXXFLAGS) -o main_Array
 
-main_vArray: main_vArray.cpp vArray.h 
+main_vArray: main_vArray.cpp vArray.h my_Exception.h
 	$(CXX) main_vArray.cpp $(CXXFLAGS) -o main_vArray
 
-List_main: List_main.cpp List.h 
+List_main: List_main.cpp List.h my_Exception.h
 	$(CXX) List_main.cpp $(CXXFLAGS) -o List_main
 
 exec_all: main_Array main_vArray List_mian
