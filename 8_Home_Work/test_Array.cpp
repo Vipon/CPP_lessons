@@ -13,7 +13,7 @@ void testing_of_constructor_of_copy(Array<int,3> arr)
 int main()
 {
     int a[3] = {1,2,3};
-    Array<int,3> arr1(a);
+    Array<int,3> arr1(a); 
     std::cout <<"arr1 = " << arr1 << std::endl;
     a[2] = 4;
     Array<int,3> arr2(a);

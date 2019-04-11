@@ -2,7 +2,7 @@
 #define ARRAY
 
 #include <cstdlib>
-#include <iostream>
+#include <iostream> 
 #include <cstring>
 
 template <typename Type, size_t size>

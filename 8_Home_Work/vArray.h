@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstring>
 
-template <typename Type>
+template <typename Type> 
 class vArray
 {
 private:
