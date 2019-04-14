@@ -158,7 +158,7 @@ public:
 
 		if (i < list.size) {
 			for ( ; i < list.size; ++i) {
-				delete_elem(i);
+				list.delete_elem(i);
 			}
 		}
 
