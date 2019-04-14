@@ -6,10 +6,6 @@
 #include <iostream>
 #include <exception>
 
-class vArr_excess_of_size : public std::exception {
-public:
-	const char* what() { return "The size of the vArray is exceeded"; }
-};
 
 template <typename T>
 class vArray {
@@ -19,7 +15,7 @@ public:
 		elements(new T[num])
 	{
 		if (elem == nullptr) {
-			abort();
+			throw std::invalid_argument("nullptr argument to vArray constructor");
 		}
 
 		memcpy(elements, elem, (num*(sizeof(T))));
@@ -51,12 +47,59 @@ public:
 		return *this;
 	}
 
+	vArray& operator=(vArray<T>&& arr) {
+		num = arr.num;
+		elements = arr.elements;
+		arr.num = 0;
+		arr.elements = nullptr;
+		return *this;
+	}
+
+	vArray& operator+=(const vArray<T>& arr) {
+		size_t newnum = num + arr.num;
+		T* temp = new T[newnum];
+		memcpy(temp, elements, (num * (sizeof(T))));
+		memcpy(temp + num, arr.elements, (arr.num * (sizeof(T))));
+		delete [] elements;
+		num = newnum;
+		elements = temp;
+		return *this;
+	}
+
+	vArray operator+(vArray<T>& arr) {
+		return (vArray<T>(elements, num) += arr);
+	}
+
 	T& operator[](size_t pos) {
 		if (pos >= num) {
-			throw vArr_excess_of_size();
+			throw std::out_of_range("The size of the vArray is exceeded");
 		}
 
-		return &(elements[pos]);
+		return (elements[pos]);
+	}
+
+	void sort() {
+		T temp; 
+
+		for (size_t i = 0; i < num - 1; i++) {
+			for (size_t j = 0; j < num - i - 1; j++) {
+				if (elements[j] > elements[j + 1]) {
+					temp = elements[j];
+					elements[j] = elements[j + 1];
+					elements[j + 1] = temp;
+				}
+			}
+		}
+	}
+
+	size_t find(T& value) const {
+		for (size_t i = 0; i < num; i++) {
+			if ((*this)[i] == value) {
+				return i;
+			}
+		};
+
+		return (num + 1);
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const vArray& arr) {

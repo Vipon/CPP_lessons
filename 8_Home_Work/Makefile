@@ -18,4 +18,4 @@ exec_all: testArray testvArray testList
 	./testList
 
 clean:
-	rm -f testvArray.o testvArray testArray testArray.o
+	rm -f testvArray.o testvArray testArray testArray.o testList testList.o

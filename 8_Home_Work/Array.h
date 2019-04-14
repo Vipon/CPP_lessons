@@ -6,11 +6,6 @@
 #include <iostream>
 #include <exception>
 
-class Arr_excess_of_size : public std::exception {
-public:
-	const char* what() { return "The size of the array is exceeded"; }
-};
-
 template <typename T, size_t NUM = 10>
 class Array {
 public:
@@ -28,10 +23,34 @@ public:
 
 	T& operator[](size_t pos) {
 		if (pos >= NUM) {
-			throw Arr_excess_of_size();
+			throw std::out_of_range("The size of the Array is exceeded");
 		}
 
-		return &(elements[pos]);
+		return (elements[pos]);
+	}
+
+	void sort() {
+		T temp; 
+
+		for (size_t i = 0; i < NUM - 1; i++) {
+			for (size_t j = 0; j < NUM - i - 1; j++) {
+				if (elements[j] > elements[j + 1]) {
+					temp = elements[j];
+					elements[j] = elements[j + 1];
+					elements[j + 1] = temp;
+				}
+			}
+		}
+	}
+
+	size_t find(T& value) const {
+		for (size_t i = 0; i < NUM; i++) {
+			if ((*this)[i] == value) {
+				return i;
+			}
+		};
+
+		return (NUM + 1);
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const Array& arr) {

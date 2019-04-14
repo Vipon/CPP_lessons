@@ -5,11 +5,6 @@
 #include <iostream>
 #include <exception>
 
-class List_excess_of_size : public std::exception {
-public:
-	const char* what() { return "The size of the List is exceeded"; }
-};
-
 template <typename T>
 class List {
 public:
@@ -28,8 +23,9 @@ public:
 		}
 		else {
 			entry->next = begin;
+			entry->prev = nullptr;
 			begin = entry;
-			(entry->next)->prev = entry;
+			(entry->next)->prev = entry; 
 			size++;
 		}
 	}
@@ -46,6 +42,7 @@ public:
 			size++;
 		}
 		else {
+			entry->next = nullptr;
 			entry->prev = end;
 			end = entry;
 			(entry->prev)->next = entry;
@@ -54,13 +51,13 @@ public:
 	}
 
 	T& operator[](size_t pos) {
-		if (pos > size) {
-			throw List_excess_of_size();
+		if (pos >= size) {
+			throw std::out_of_range("The size of the List is exceeded");
 		}
 
 		Elem* t = begin;
 
-		for (size_t i = 0; i < size; i++) {
+		for (size_t i = 0; i < pos; i++) {
 			t = t->next;
 		}
 
@@ -99,12 +96,24 @@ public:
 		delete entry;
 	}
 
+	T& find(T& val) const {
+		Elem* t = begin;
+
+		while((t) && ((t->value) != val)) {
+			t = t->next;
+		}
+
+		return t->value;
+	}
+
 	~List() {
 		Elem* entry = begin;
 
-		while (entry->next) {
-			entry = entry->next;
-			delete entry->prev;
+		if (entry) {
+			while (entry->next) {
+				entry = entry->next;
+				delete entry->prev;
+			}
 		}
 
 		delete entry;
