@@ -109,8 +109,8 @@ vArray<T>& vArray<T>::operator+= (const vArray<T>& arr)
     T* new_varray = new T [varray_size + arr.varray_size];
     memcpy(new_varray, varray, varray_size * sizeof(T));
     memcpy(new_varray + varray_size, arr.varray, arr.varray_size * sizeof(T));
-    varray = new_varray;
     varray_size = varray_size + arr.varray_size;
+    varray = new_varray;
     return (*this);
 }
 
