@@ -7,7 +7,7 @@ void testing_of_constructor_of_copy(vArray<int> arr)
     int a[3] = {};
     vArray<int> arr1(a, 3);
     arr = arr1;
-    std::cout <<"arr =  " << arr << std::endl; 
+    std::cout <<"arr =  " << arr << std::endl;
 }
 
 int main()
