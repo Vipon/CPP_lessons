@@ -29,17 +29,37 @@ public:
 		return (elements[pos]);
 	}
 
-	void sort() {
-		T temp; 
+	void sort(int begin, int end) {
+		if ((begin < 0) || (end >= NUM)) {
+			throw std::out_of_range("The size of the Array is exceeded");
+		}
 
-		for (size_t i = 0; i < NUM - 1; i++) {
-			for (size_t j = 0; j < NUM - i - 1; j++) {
-				if (elements[j] > elements[j + 1]) {
-					temp = elements[j];
-					elements[j] = elements[j + 1];
-					elements[j + 1] = temp;
-				}
+		T temp; 
+		int l = begin;
+		int r = end;
+		T piv = elements[((l + r) / 2)];
+		while (l <= r) {
+			while (elements[l] < piv) {
+				l++;
 			}
+
+			while (elements[r] > piv) {
+				r--;
+			}
+
+			if (l <= r) {
+				temp = elements[l];
+				elements[l++] = elements[r];
+				elements[r--] = temp;
+			}
+		}
+
+		if (begin < r) {
+			sort(begin, r);
+		}
+
+		if (end > l) {
+			sort(l, end);
 		}
 	}
 
@@ -62,13 +82,31 @@ public:
 		return os;
 	}
 
-	friend std::istream& operator>>(std::istream& is, Array& arr) {
-		for (size_t i = 0; i < NUM; i++) {
-			is >> (arr.elements)[i];
-		};
+	//Example of Array input: ; x1; x2; x3) for NUM = 3; x1, x2, x3 - values;
+	// ; - separating symbol, terminative symbol is a char symbol
+	// that is different from the separating symbol (in this example - ) ).
+	//If the amount of entered values is less than NUM, then the other elements are not changed
+	friend std::istream& operator>>(std::istream& is, Array<T, NUM>& arr)
+	{
+		char buf = 0;
+		char sep = 0; //separating symbol
+		is >> sep;
+		buf = sep;
+
+		size_t i = 0;
+
+		while (buf == sep) {
+			if (i >= NUM) {
+				return is;
+			}
+
+			is >> arr.elements[i];
+			is >> buf;
+			i++;
+		}
 
 		return is;
-	}
+	} 
 
 private:
 	T elements[NUM];

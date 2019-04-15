@@ -78,17 +78,37 @@ public:
 		return (elements[pos]);
 	}
 
-	void sort() {
+	void sort(int begin, int end) {
+		if ((begin < 0) || (end >= num)) {
+			throw std::out_of_range("The size of the vArray is exceeded");
+		}
+		
 		T temp; 
-
-		for (size_t i = 0; i < num - 1; i++) {
-			for (size_t j = 0; j < num - i - 1; j++) {
-				if (elements[j] > elements[j + 1]) {
-					temp = elements[j];
-					elements[j] = elements[j + 1];
-					elements[j + 1] = temp;
-				}
+		int l = begin;
+		int r = end;
+		T piv = elements[((l + r) / 2)];
+		while (l <= r) {
+			while (elements[l] < piv) {
+				l++;
 			}
+
+			while (elements[r] > piv) {
+				r--;
+			}
+
+			if (l <= r) {
+				temp = elements[l];
+				elements[l++] = elements[r];
+				elements[r--] = temp;
+			}
+		}
+
+		if (begin < r) {
+			sort(begin, r);
+		}
+
+		if (end > l) {
+			sort(l, end);
 		}
 	}
 
