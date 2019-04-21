@@ -1,8 +1,7 @@
+#include "Array.h"
 #include <iostream>
 #include <algorithm>
-#include <functional>
 #include <numeric>
-#include "Array.h"
 #include "vArray.h"
 
 
