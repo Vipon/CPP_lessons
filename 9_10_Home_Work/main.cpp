@@ -1,8 +1,8 @@
 #include "Array.h"
 #include "vArray.h"
 #include <algorithm>
-#include <numeric>
 #include <iostream>
+#include <numeric>
 
 
 int main()
