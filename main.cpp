@@ -65,7 +65,7 @@ int main() {
     //std::cout<<"Simple form of z = -5/15 is "<<Rational(5,15)<<std::endl;
     //std::cout<<"z - 1 = "<<Rational(-5,15)-1<<std::endl;
         
-    } catch(std::invalid_argument msg) {
+    } catch(std::invalid_argument& msg) {
         std::cerr<<std::endl;
         std::cerr<< msg.what()<<std::endl;
     }

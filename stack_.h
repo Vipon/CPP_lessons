@@ -255,7 +255,7 @@ private:
     int denominator;
 };
 
-template<typename data, int N = 64>
+/*template<typename data, int N = 64>
 class Stack {
 public:
     
@@ -297,10 +297,10 @@ public:
     
     Stack() = default;
     Stack(const Stack& p);
-      /*  while(auto: w *_ar){
+        while(auto: w *_ar){
             _ar[n] = 0;
             N--;
-        } */ //TODO!
+        }  //TODO!
     ~Stack() = default;
     
     
@@ -308,7 +308,7 @@ public:
 private:
     data _ar[N];
     unsigned int current = 0;
-};
+};*/
 
 #endif /* stack__h */
 
