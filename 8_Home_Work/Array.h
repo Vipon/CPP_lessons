@@ -39,11 +39,11 @@ public:
     //destructor
     ~Array() {}
 
-    template <typename T, size_t SIZE>
-    friend std::ostream& operator<<(std::ostream &out, const Array<T, SIZE> &A);
+    template <typename T0 = T, size_t SIZE0 = SIZE>
+    friend std::ostream& operator<<(std::ostream &out, const Array<T0, SIZE0> &A);
 
-    template <typename T, size_t SIZE>
-    friend std::istream& operator>>(std::istream &in, Array<T, SIZE> &A);
+    template <typename T0 = T, size_t SIZE0 = SIZE>
+    friend std::istream& operator>>(std::istream &in, Array<T0, SIZE0> &A);
 
     Array& operator=(const Array<T, SIZE>& A) {
         memcpy(val, A.val, SIZE * sizeof(T));
@@ -65,7 +65,7 @@ private:
     T val[SIZE];
 };
 
-template <typename T, size_t SIZE>
+template <typename T, size_t SIZE> 
 std::istream& operator>>(std::istream &in, Array<T, SIZE> &A) {
     for (int i = 0; i < SIZE; i++) {
         in >> (A.val)[i];
@@ -73,7 +73,7 @@ std::istream& operator>>(std::istream &in, Array<T, SIZE> &A) {
     return in;
 }
 
-template <typename T, size_t SIZE>
+template <typename T, size_t SIZE> 
 int Array<T,SIZE>::find(T Req_val) {
     for (size_t i = 0; i < SIZE; i++) {
         if (Req_val == val[i]) {
