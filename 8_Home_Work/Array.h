@@ -39,10 +39,10 @@ public:
     //destructor
     ~Array() {}
 
-    template <typename T0 = T, size_t SIZE0 = SIZE>
+    template <typename T0, size_t SIZE0>
     friend std::ostream& operator<<(std::ostream &out, const Array<T0, SIZE0> &A);
 
-    template <typename T0 = T, size_t SIZE0 = SIZE>
+    template <typename T0, size_t SIZE0>
     friend std::istream& operator>>(std::istream &in, Array<T0, SIZE0> &A);
 
     Array& operator=(const Array<T, SIZE>& A) {
