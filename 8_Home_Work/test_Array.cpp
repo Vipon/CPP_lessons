@@ -8,7 +8,6 @@ void testing_of_constructor_of_copy(Array<int,3> arr)
     int a[3] = {};
     Array<int,3> arr1(a);
     arr = arr1;
-    std::cout <<"arr =  " << arr << std::endl;
 }
 
 int main()
@@ -36,7 +35,7 @@ int main()
     std::cout <<"b[2] = " << b[2] << std::endl;
     std::cout <<"b[3] = " << b[3] << std::endl;
     std::cout <<"b[4] = " << b[4] << std::endl;
-    b.qsort(std::less<int>());
+    b.qsort(std::less<>());
     std::cout <<"After b.qsort:" << std::endl;
     std::cout <<"b[0] = " << b[0] << std::endl;
     std::cout <<"b[1] = " << b[1] << std::endl;
