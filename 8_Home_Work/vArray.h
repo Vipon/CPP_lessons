@@ -17,6 +17,7 @@ public:
     vArray(const vArray& arr);
     vArray(vArray&& arr);
     ~vArray();
+    size_t get_size() { return varray_size; };
     void change_size(const size_t new_varray_size);
     int find(Type date);
 
@@ -149,6 +150,7 @@ vArray<T>& vArray<T>::operator+= (const vArray<T>& arr)
     T* new_varray = new T [varray_size + arr.varray_size];
     memcpy(new_varray, varray, varray_size * sizeof(T));
     memcpy(new_varray + varray_size, arr.varray, arr.varray_size * sizeof(T));
+    delete [] varray;
     varray_size = varray_size + arr.varray_size;
     varray = new_varray;
     return (*this);
