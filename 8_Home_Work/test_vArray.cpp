@@ -4,16 +4,7 @@
 
 void testing_of_constructor_of_copy(vArray<int> arr)
 {
-    int a[3] = {};
-    vArray<int> arr1(a, 3);
-    if(arr.get_size() == arr1.get_size())
-    {
-        arr = arr1;
-    }
-    /*My programm works correctly, when arr.varray_size != arr1.varray_size,
-    but without "if(arr.get_size() == arr1.get_size())" statistical analyzer thinks,
-    that testing_of_constructor_of_copy() has a potential of causing
-    a memory leak*/
+    arr[0] = 1234;
 }
 
 int main()
