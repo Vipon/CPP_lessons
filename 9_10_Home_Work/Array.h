@@ -62,7 +62,7 @@ public:
 
 template <typename T, std::size_t I>
 Array<T, I>::Array(const Array<T, I> &A){
-    memcpy(this->arr, A.arr, I + 1);
+    memcpy(this->arr, A.arr, (I + 1) * sizeof(T));
 }
 
 template <typename T, std::size_t I>
@@ -74,7 +74,7 @@ Array<T, I>::Array(Array<T, I> &&A){
 
 template <typename T, std::size_t I>
 Array<T, I>::Array(const T A[I]){
-    memcpy(this->arr + 1, A, I);
+    memcpy(this->arr + 1, A, I * sizeof(T));
 }
 
 template <typename T, std::size_t I>
@@ -331,7 +331,7 @@ std::istream &operator>> (std::istream &in, Array<T,I> &A){
 
 template <typename T, std::size_t I>
 Array<T, I> Array<T, I>::operator=(const Array<T, I> &A){
-    memcpy(this->arr, A.arr, I + 1);
+    memcpy(this->arr, A.arr, (I + 1) * sizeof(T));
     return *this;
 }
 
