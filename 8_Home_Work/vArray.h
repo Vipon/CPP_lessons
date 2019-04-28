@@ -5,6 +5,9 @@
 #include <iostream>
 #include <cstring>
 
+template <typename Type, typename Function>
+void my_qsort (Type* arr, int b, int e, Function Func);
+
 template <typename Type>
 class vArray
 {
@@ -15,13 +18,20 @@ public:
     vArray(vArray&& arr);
     ~vArray();
     void change_size(const size_t new_varray_size);
+    int find(Type date);
+
+    template <typename Func>
+    void qsort(Func f){ my_qsort(varray, 0, varray_size - 1, f); };
+
     vArray& operator= (const vArray&& arr);
     vArray& operator= (const vArray& arr);
     vArray& operator+= (const vArray& arr);
     vArray operator+ (const vArray& arr) const;
-    Type& operator[] (const size_t num);
+    Type& operator[] (size_t num);
+
     template <typename T>
     friend std::ostream& operator<<(std::ostream & os, const vArray<T>& arr);
+
     template <typename T>
     friend std::istream& operator>>(std::istream & os, vArray<T>& arr);
 private:
@@ -82,6 +92,36 @@ void vArray<T>::change_size(const size_t new_varray_size)
 }
 
 template <typename T>
+int vArray<T>::find(T date)
+{
+    for (size_t i = 0; i < varray_size; ++i)
+    {
+        if (varray[i] == date) { return i; };
+    }
+    return -1; // if there isn't date in array
+}
+
+
+template <typename T, typename Function>
+void my_qsort (T* arr, int b, int e, Function Func)
+{
+    int l = b;
+    int r = e;
+    T piv = arr[(l + r) / 2];
+    while(l <= r)
+    {
+        while (Func(arr[l], piv)) { l++; };
+        while ((!Func(arr[r], piv)) && (arr[r] != piv)) { r--; };
+        if (l <= r)
+        {
+            std::swap (arr[l++], arr[r--]);
+        }
+    }
+    if (b < r) { my_qsort (arr, b, r, Func); };
+    if (e > l) { my_qsort (arr, l, e, Func); };
+}
+
+template <typename T>
 vArray<T>& vArray<T>::operator= (const vArray<T>&& arr)
 {
     if (arr.varray_size > varray_size)
@@ -121,7 +161,7 @@ vArray<T> vArray<T>::operator+ (const vArray<T>& arr) const
 }
 
 template <typename T>
-T& vArray<T>::operator[] (const size_t num)
+T& vArray<T>::operator[] (size_t num)
 {
     if (num > varray_size - 1)
     {

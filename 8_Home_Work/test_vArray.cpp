@@ -35,11 +35,28 @@ int main()
     std::cout <<"arr2 = " << arr2 << std::endl;
     std::cout <<"arr1 + arr2 = " << arr1 + arr2 << std::endl;
     std::cout <<"Enter array b:" << std::endl;
-    vArray<int> b(3);
+    int l[5] = {};
+    vArray<int> b(l, 5);
     std::cin >> b;
     std::cout <<"b = " << b << std::endl;
     std::cout <<"b[0] = " << b[0] << std::endl;
     std::cout <<"b[1] = " << b[1] << std::endl;
     std::cout <<"b[2] = " << b[2] << std::endl;
+    std::cout <<"b[3] = " << b[3] << std::endl;
+    std::cout <<"b[4] = " << b[4] << std::endl;
+    b.qsort(std::less<int>());
+    std::cout <<"After b.qsort:" << std::endl;
+    std::cout <<"b[0] = " << b[0] << std::endl;
+    std::cout <<"b[1] = " << b[1] << std::endl;
+    std::cout <<"b[2] = " << b[2] << std::endl;
+    std::cout <<"b[3] = " << b[3] << std::endl;
+    std::cout <<"b[4] = " << b[4] << std::endl;
+    int c = 0;
+    while (c != 1234)
+    {
+        std::cout <<"Enter date you want to find or write 1234 to finish:" << std::endl;
+        std::cin >> c;
+        std::cout <<"Number of that element is" << b.find(c) << std::endl;
+    }
     return 0;
 }
