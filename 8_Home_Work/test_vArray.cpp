@@ -4,14 +4,14 @@
 
 void testing_of_constructor_of_copy(vArray<int> arr)
 {
-    if(arr.get_size() == 3)
+    int a[3] = {};
+    vArray<int> arr1(a, 3);
+    if(arr.get_size() == arr1.get_size())
     {
-        int a[3] = {};
-        vArray<int> arr1(a, 3);
         arr = arr1;
     }
-    /*My programm works correctly, when arr.varray_size != 3,
-    but without "if(arr.varray_size == 3)" statistical analyzer thinks,
+    /*My programm works correctly, when arr.varray_size != arr1.varray_size,
+    but without "if(arr.get_size() == arr1.get_size())" statistical analyzer thinks,
     that testing_of_constructor_of_copy() has a potential of causing
     a memory leak*/
 }
