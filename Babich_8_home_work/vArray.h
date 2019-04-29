@@ -118,7 +118,7 @@ public:
 
 		this->Size = newSize;
 		T* buf = new T[newSize];
-		memcpy(buf, this->table, this->Size * sizeof(T));
+		std::memcpy(buf, this->table, this->Size * sizeof(T));
 		delete[] this->table;
 		this->table = buf;
 
@@ -128,7 +128,7 @@ public:
 	vArray& operator+=(const vArray<T>& add)
 	{
 		T* buf = new T[this->Size + add.Size];
-		memcpy(buf, this->table, sizeof(T)*this->Size);
+		std::memcpy(buf, this->table, sizeof(T)*this->Size);
 		int count = 0;
 		for (size_t i = Size + 1; i <= Size + add.Size; i++)
 		{
@@ -144,7 +144,7 @@ public:
 	vArray& operator=(const vArray<T>&& dupl)
 	{
 		this->Size = dupl.Size;
-		memcpy(this->table, dupl.table, sizeof(T)*dupl.Size);
+		std::memcpy(this->table, dupl.table, sizeof(T)*dupl.Size);
 		this->last_pos = dupl.last_pos;
 		return *this;
 	}
@@ -155,7 +155,7 @@ public:
 			throw ArrayException("Array is empty.");
 		T ret = this->table[Size - 1];
 		this->last_pos--;
-		return T;
+		return ret;
 	}
 
 	T& operator[] (size_t pos)
