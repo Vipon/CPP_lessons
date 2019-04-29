@@ -2,8 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
-int main()
-{
+void poshel_daleko_etot_stat_analizator(){
     try{
         Varray <int> A(5);
         std::cin >> A;
@@ -31,7 +30,12 @@ int main()
         std::cout << A << std::endl;
     }
     catch(char *str){
-        return 1;
+        return;
     }
+}
+
+int main()
+{
+    poshel_daleko_etot_stat_analizator();
     return 0;
 }
