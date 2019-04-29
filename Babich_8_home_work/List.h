@@ -8,6 +8,8 @@ struct Line {
 	struct Line<T>* next;
 };
 
+
+
 template <typename T>
 class List
 {
@@ -16,6 +18,12 @@ public:
 	{
 		this->enter = new struct Line<T>;
 		this->enter->data = firstline;
+		this->enter->next = nullptr;
+		this->length++;
+	}
+	List()
+	{
+		this->enter = new struct Line<T>;
 		this->enter->next = nullptr;
 		this->length++;
 	}
@@ -55,6 +63,18 @@ public:
 			buf = buf->next;
 		}
 		return stream;
+	}
+
+	struct Line<T>* operator[](size_t pos)
+	{
+		if (size_t > length)
+			return nullptr;
+		struct Line<T> buf = enter;
+		for (size_t i = 0; i < pos; i++)
+		{
+			buf = buf->next;
+		}
+		return buf;
 	}
 
 	void DelLine(struct Line<T>* prev)

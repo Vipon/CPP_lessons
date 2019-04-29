@@ -79,6 +79,6 @@ public:
 	}
 
 private:
-	T* const table;
+	T* table;
 };
 #endif /*ARRAY_H*/

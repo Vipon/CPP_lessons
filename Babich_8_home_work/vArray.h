@@ -2,9 +2,10 @@
 #define VARRAY_H
 #include "my_Exception.h"
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <iterator>
 #include <algorithm>
+
 
 template <typename T>
 class vArray 
@@ -12,7 +13,7 @@ class vArray
 public:
 	vArray()
 	{
-		this->table = new T[Size];
+		this->table = new T[this->Size];
 	}
 
 	vArray(vArray<T>& seq, T& begin, T& end)
@@ -36,6 +37,22 @@ public:
 		{
 			this->table[i] = seq.table[i + std::min(start,stop)];
 		}
+		if (seq.last_pos <= std::max(stop, start))
+		{
+			this->last_pos = seq.last_pos - std::min(stop, start);
+		}
+		else
+		{
+			this->last_pos = this->Size + 1;
+		}
+
+	}
+
+	vArray(size_t Size)
+	{
+		this->Size = Size;
+		this->last_pos = 0;
+		this->table = new T[Size];
 	}
 
 	~vArray()
@@ -45,7 +62,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, vArray<T>& output)
 	{
-		for (size_t i = 1; i < output.Size + 1; i++)
+		for (size_t i = 1; i < output.last_pos + 1; i++)
 		{
 			stream << output.table[i-1] << ' ';
 		}
@@ -56,25 +73,52 @@ public:
 
 	friend std::istream& operator>>(std::istream& stream, vArray<T>& input)
 	{
-		for (size_t i = 1; i < input.Size + 1; i++)
+		std::string buf = "oh shit";
+		while (true)
 		{
-			stream >> input.table[i-1];
+			std::getline(stream, buf);
+
+			if (buf == " ")
+			{
+				return stream;
+			}
+
+			if (input.last_pos == input.Size)
+			{
+				input.set_size(2 * (input.Size + 1));
+			}
+
+			input.table[input.last_pos] = (T)stod(buf);
+			input.last_pos++;
 		}
+
+		if (input.last_pos < input.Size)
+		{
+			input.Size = input.last_pos - 1;
+		}
+
 		return stream;
 	}
 
-	void push(T data)
+	void push_back(T data)
 	{
-		state(this->Size + 1);
-		this->table[this->Size -1] = data;
+		if (this->last_pos > this->Size)
+			set_size(2 * (this->Size));
+		this->table[this->last_pos] = data;
+		this->last_pos++;
 		return;
 	}
 
-	void state(size_t newSize)
+	void set_size(size_t newSize)
 	{
+		if (this->last_pos > newSize)
+		{
+			this->last_pos = newSize;
+		}
+
 		this->Size = newSize;
-		T* buf = new T[Size];
-		memcpy(buf, this->table, Size * sizeof(T));
+		T* buf = new T[newSize];
+		memcpy(buf, this->table, this->Size * sizeof(T));
 		delete[] this->table;
 		this->table = buf;
 
@@ -85,29 +129,33 @@ public:
 	{
 		T* buf = new T[this->Size + add.Size];
 		memcpy(buf, this->table, sizeof(T)*this->Size);
-		int count=0;
+		int count = 0;
 		for (size_t i = Size + 1; i <= Size + add.Size; i++)
 		{
 			buf[i-1] = add.table[count];
 			count++;
 		}
 		this->Size += add.Size;
+		this->last_pos += (add.last_pos - 1);
 		this->table = buf;
 		return *this;
 	}
 
-	vArray& operator=(const vArray<T>& dupl)
+	vArray& operator=(const vArray<T>&& dupl)
 	{
-		memcpy(this->table, dupl.table, sizeof(T)*dupl.Size);
 		this->Size = dupl.Size;
+		memcpy(this->table, dupl.table, sizeof(T)*dupl.Size);
+		this->last_pos = dupl.last_pos;
 		return *this;
 	}
 
 	T pop()
 	{
+		if (this->last_pos == 0)
+			throw ArrayException("Array is empty.");
 		T ret = this->table[Size - 1];
-		state(this->Size - 1);
-		return ret;
+		this->last_pos--;
+		return T;
 	}
 
 	T& operator[] (size_t pos)
@@ -124,9 +172,11 @@ public:
 
 	void sortUp() //shellsort
 	{
-		for (size_t gap = Size / 2; gap > 0; gap /= 2)
+		if (last_pos <= 1)
+			return;
+		for (size_t gap = (last_pos - 1) / 2; gap > 0; gap /= 2)
 		{
-			for (size_t i = gap; i < Size; i ++)
+			for (size_t i = gap; i < last_pos - 1; i ++)
 			{
 				T buf = table[i];
 				size_t j;
@@ -141,18 +191,18 @@ public:
 	void revert()
 	{
 		T buf = 0;
-		for (size_t i = 0; i < (Size/2); i++)
+		for (size_t i = 0; i < ((last_pos - 1) / 2); i++)
 		{
 			buf = table[i];
-			table[i] = table[Size - 1 - i];
-			table[Size - 1 - i] = buf;
+			table[i] = table[last_pos - 2 - i];
+			table[last_pos - 2 - i] = buf;
 		}
 		return;
 	}
 
 	T& findElem(T elem)
 	{
-		for (size_t i = 0; i < Size; i++)
+		for (size_t i = 0; i < this->last_pos - 1; i++)
 		{
 			if (table[i] == elem)
 				return table[i];
@@ -161,6 +211,7 @@ public:
 		throw ArrayException("no such element");
 	}
 private:
+	size_t last_pos = 0;
 	size_t Size = 10;
 	T* table;
 };
