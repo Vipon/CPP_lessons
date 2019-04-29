@@ -34,7 +34,7 @@ public:
 
 	Array& operator=(const Array<T, Size>& dupl)
 	{
-		memcpy(this->table, dupl.table, sizeof(T)*Size);
+		std::memcpy(this->table, dupl.table, sizeof(T)*Size);
 		return *this;
 	}
 
