@@ -63,7 +63,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, vArray<T>& output)
 	{
-		for (size_t i = 1; i < output.last_pos + 1; i++)
+		for (size_t i = 1; i < output.last_pos; i++)
 		{
 			stream << output.table[i-1] << ' ';
 		}
