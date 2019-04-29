@@ -1,6 +1,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include <iostream>
+#include <cstring>
 #include "my_Exception.h"
 
 template <typename T, size_t Size>
@@ -34,7 +35,7 @@ public:
 
 	Array& operator=(const Array<T, Size>& dupl)
 	{
-		std::memcpy(this->table, dupl.table, sizeof(T)*Size);
+		memcpy(this->table, dupl.table, sizeof(T)*Size);
 		return *this;
 	}
 
