@@ -67,7 +67,7 @@ public:
 
 	struct Line<T>* operator[](size_t pos)
 	{
-		if (size_t pos > length)
+		if (pos > length)
 			return nullptr;
 		struct Line<T> buf = enter;
 		for (size_t i = 0; i < pos; i++)
