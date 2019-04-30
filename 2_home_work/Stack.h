@@ -1,12 +1,14 @@
 #ifndef _STACK_H
 #define _STACK_H
 
+extern int error;
+
 class Stack
 {
 	public:
 		Stack(int size = 0);
 		~Stack();
-		void push(int data);
+		int push(int data);
 		int pop();
 		bool isFull();
 		bool isEmpty();
