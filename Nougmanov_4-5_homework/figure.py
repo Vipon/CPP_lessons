@@ -8,7 +8,7 @@ class gObject:
         self.y = y
 
     def draw(self):
-        print(str(type(self))[len('<class .__main__.'):-2] + ':' + str(self))
+        print(type(self).__name__ + ':' + str(self))
 
     def move(self, dx, dy):
         self.x += dx
