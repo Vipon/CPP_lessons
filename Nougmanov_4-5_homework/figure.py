@@ -103,7 +103,7 @@ class rectangle(gObject):
 class square(rectangle):
     def __init__(self, a, x=0, y=0):
         self.a = a
-        super().__init__(self, a, a, x, y)
+        super().__init__(a, a, x, y)
 
     def axial_tension(self, t_x, t_y):
         if t_x == t_y:
