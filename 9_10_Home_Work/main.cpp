@@ -42,7 +42,7 @@ int main()
 	std::cout << ls << '\n';
 	std::for_each(ls.begin(), ls.end(), [](int& n){ n++; });
 	std::cout << ls << '\n';
-	std::transform(ls.begin(), ls.end(), vAr.begin(), [](int& n){ n++; return n; });
+	std::transform(ls.begin(), ls.end(), vAr.begin(), [](int& n){ return ++n; });
 	std::cout << vAr << '\n';
 	return 0;
 }

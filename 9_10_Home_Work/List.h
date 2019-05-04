@@ -26,6 +26,8 @@ public:
 	void insert_after(T val, size_t num);
 	void delete_elem(size_t num);
 	T& find(T& val) const;
+	List(const List& ls);
+	List(List&& ls) noexcept;
 	~List();
 
 	template <typename Type>
@@ -164,12 +166,14 @@ template <typename T>
 List<T>::~List() {
 	Elem* entry = Begin;
 
-	while (entry != End) {
-		entry = entry->next;
-		delete entry->prev;
-	}
+	if (entry) {
+		while (entry != End) {
+			entry = entry->next;
+			delete entry->prev;
+		}
 
-	delete entry;
+		delete entry;
+	}
 }
 
 template <typename T>
@@ -218,6 +222,28 @@ std::istream& operator>>(std::istream& is, List<T>& list) {
 
 	return is;
 } 
+
+template <typename T>
+List<T>::List(const List& ls) {
+	size = 0;
+	Begin = new Elem;
+	End = Begin;
+	End->prev = nullptr;
+	End->next = End;
+	Elem* t = ls.Begin;
+
+	while (t != ls.End) {
+		insert_start(t->value);
+		t = t->next;
+	}
+}
+
+template <typename T>
+List<T>::List(List&& ls) noexcept : size(ls.size), Begin(ls.Begin), End(ls.End) {
+	ls.size = 0;
+	ls.Begin = nullptr;
+	ls.End = nullptr;
+}
 
 
 
