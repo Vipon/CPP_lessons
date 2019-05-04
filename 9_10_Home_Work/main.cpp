@@ -1,6 +1,6 @@
 #include "Array.h"
-#include "vArray.h"
 #include "List.h"
+#include "vArray.h"
 #include <algorithm>
 #include <iostream>
 #include <numeric>
