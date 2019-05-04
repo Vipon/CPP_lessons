@@ -1,5 +1,6 @@
 #include "Array.h"
 #include "vArray.h"
+#include "List.h"
 #include <algorithm>
 #include <iostream>
 #include <numeric>
@@ -31,5 +32,17 @@ int main()
 	int value = 6;
 	vArray<int>::Iterator it = std::find(vAr.begin(), vAr.end(), value);
 	std::cout << (*it) << '\n';
+
+	std::cout << "List\n";
+	List<int> ls;
+	ls.insert_start(5);
+	ls.insert_start(7);
+	ls.insert_end(10);
+	ls.insert_end(9);
+	std::cout << ls << '\n';
+	std::for_each(ls.begin(), ls.end(), [](int& n){ n++; });
+	std::cout << ls << '\n';
+	std::transform(ls.begin(), ls.end(), vAr.begin(), [](int& n){ n++; return n; });
+	std::cout << vAr << '\n';
 	return 0;
 }

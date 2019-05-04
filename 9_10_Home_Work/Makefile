@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-Wall -Wextra -Werror -std=c++14 -O3
 
-main: main.cpp Array.h vArray.h
+main: main.cpp Array.h vArray.h List.h
 	$(CXX) $(CXXFLAGS) main.cpp -o main
 
 exec: main
