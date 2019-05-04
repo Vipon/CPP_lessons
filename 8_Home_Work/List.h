@@ -106,6 +106,28 @@ public:
 		return t->value;
 	}
 
+
+	List(const List& ls) {
+		size = 0;
+		begin = new Elem;
+		end = begin;
+		end->prev = nullptr;
+		end->next = end;
+		Elem* t = ls.begin;
+
+		while (t != ls.end) {
+			insert_start(t->value);
+			t = t->next;
+		}
+	}
+
+
+	List(List&& ls) noexcept : size(ls.size), begin(ls.begin), end(ls.end) {
+		ls.size = 0;
+		ls.begin = nullptr;
+		ls.end = nullptr;
+	}
+
 	~List() {
 		Elem* entry = begin;
 
