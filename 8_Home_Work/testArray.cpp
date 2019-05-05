@@ -14,15 +14,15 @@ int main() {
     }
 
     bArr = aArr;
-    std::cout << aArr;
+    std::cout << bArr;
     std::cin >> bArr;
     std::cout << bArr;
 
     try { 
-        std::cout << aArr[7]; 
+        std::cout << aArr[7] << '\n'; 
     } catch(ArrException& problem) {
-        std::cout << problem.what();
+        std::cout << problem.what() << '\n';
     }
 
-    std::cout << aArr.find(10);
+    std::cout << aArr.find(19);
 }

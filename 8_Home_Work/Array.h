@@ -51,7 +51,7 @@ public:
     }
 
     T& operator[](size_t pos) {
-        if (pos > SIZE) {
+        if (pos > SIZE-1) {
             throw ArrException("OUT OF SIZE");
         }
         return val[pos];
@@ -75,7 +75,7 @@ std::istream& operator>>(std::istream &in, Array<T, SIZE> &A) {
 
 template <typename T, size_t SIZE> 
 int Array<T,SIZE>::find(T Req_val) {
-    for (size_t i = 0; i < SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) {
         if (Req_val == val[i]) {
             return i;
         }
