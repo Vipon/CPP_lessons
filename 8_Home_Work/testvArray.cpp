@@ -1,7 +1,7 @@
 #include "vArray.h"
 
 int main() {
-	try {
+try {
     vArray<int> a, b;
     std::cin >> a;
     std::cin >> b;
@@ -12,6 +12,9 @@ int main() {
     std::cout << a << std::endl;
     auto c = a + b;
     std::cout << c[1000];
-} catch;
+} catch (std::exception error) {
+    std::cout << error.what();
+    exit (1);
+};
     return 0;
 }
