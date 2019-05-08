@@ -9,4 +9,9 @@ int main() {
     std::cout << list2;
     list2.search_and_remove('k');
     std::cout << list2;
+    List<char> list3;
+    std::cin >> list3;
+    std::cout << list3;
+    getchar();
+    getchar();
 }

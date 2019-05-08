@@ -129,10 +129,37 @@ public:
 
     friend std::istream& operator>>(std::istream& is, List& list) {
         T closing_el;
-        T val;
+        T value;
+        Elem* current;
         //first element you write wil be used only as closing one and not be put in list
         is >> closing_el;
-        while(val != closing_el)
+        is >> value;
+        
+        if (value != closing_el) {
+            list.size = 1;
+            list.begin = new Elem;
+            list.begin->val = value;
+            current = list.begin;
+            is >> value;
+        }
+        else {
+            list.size = 0;
+            return is;
+        }
+
+        while (value != closing_el) {
+            current->next = new Elem;
+            current->next->val = value;
+            list.size = list.size + 1;
+            is >> value;
+            if (value == closing_el) {
+                current = current->next;
+                current->next = nullptr;
+            }
+            else {
+                current = current->next;
+            }
+        }
         return is;
     }
     
