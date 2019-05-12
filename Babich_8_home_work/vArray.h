@@ -164,7 +164,7 @@ public:
 	{
 		if (pos < Size)
 		{
-			return &table[pos-1];
+			return table[pos-1];
 		}
 		else
 		{
