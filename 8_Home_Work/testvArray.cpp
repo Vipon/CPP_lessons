@@ -2,7 +2,13 @@
 
 int main() {
     int arr[7] = { 4, 2, 12, 8, 14, 6, 10 };
+    try {
     vArray<int> aArr(arr, 7);
+    }
+        catch (vArrException& problem) {
+        std::cout << problem.what();
+    }
+
     aArr.push_back(3);
     vArray<int> bArr;
 
