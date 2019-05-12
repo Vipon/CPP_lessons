@@ -10,10 +10,7 @@ class Array
 public:
 	Array() = default;
 
-	~Array()
-	{
-		delete[] table;
-	}
+	~Array() = default;
 
 	friend std::ostream& operator<<(std::ostream& stream, Array<T, Size>& output)
 	{
