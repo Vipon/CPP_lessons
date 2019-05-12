@@ -11,6 +11,8 @@ int main() {
 		std::cout << iArr2;
 		iArr = iArr2;
 		std::cout << iArr;
+		iArr.push_back(10);
+		std::cout << iArr;
 	}
 	catch (std::exception& er) {
 		std::cerr << er.what();

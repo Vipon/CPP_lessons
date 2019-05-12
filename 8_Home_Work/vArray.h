@@ -10,7 +10,13 @@
 template <typename T>
 class vArray {
 public:
+	vArray(size_t num = 1) :
+		size(num),
+		num(num), 
+		elements(new T[num]) {};
+
 	vArray(T* elem, size_t num = 1) : 
+		size(num),
 		num(num), 
 		elements(new T[num])
 	{
@@ -22,6 +28,7 @@ public:
 	}
 
 	vArray(const vArray& v) :
+		size(v.num),
 		num(v.num),
 		elements(new T[num])
 	{
@@ -30,39 +37,96 @@ public:
 
 
 	vArray(vArray&& v) noexcept :
+		size(v.size),
 		num(v.num),
 		elements(v.elements)
 	{
 		v.elements = nullptr;
 		v.num = 0;
+		v.size = 0;
 	}
 
 	~vArray() { delete [] elements; }
 
+	size_t arr_num() {
+		return num;
+	}
+
+	void set_num(size_t new_num) {
+		if (new_num == num) {
+			return;
+		}
+
+		if (new_num <= size) {
+			num = new_num;
+			return;
+		}
+
+		T* temp = elements;
+		elements = new T[new_num];
+
+		if (new_num < num) {
+			memcpy(elements, temp, (new_num * (sizeof(T))));
+		}
+		else {
+			memcpy(elements, temp, (num * (sizeof(T))));
+		}
+		num = new_num;
+		size = new_num;
+		delete [] temp;
+	}
+
+	void set_size(size_t new_size) {
+		if (new_size == size) {
+			return;
+		}
+
+		T* temp = elements;
+		elements = new T[new_size];
+		if (new_size < num) {
+			memcpy(elements, temp, (new_size * (sizeof(T))));
+			num = new_size;
+		}
+		else {
+			memcpy(elements, temp, (num * (sizeof(T))));
+		}
+		size = new_size;
+		delete [] temp;
+	}
+
+	void push_back(T value) {
+		if (num < size) {
+			elements[num++] = value;
+		}
+		else {
+			set_size((size * 2) + 1);
+			elements[num++] = value;
+		}
+	}
+
 	vArray& operator=(const vArray<T>& arr) {
 		num = arr.num;
+		size = arr.num;
 		delete [] elements;
 		elements = new T[num];
 		memcpy(this->elements, arr.elements, (num * (sizeof(T))));
 		return *this;
 	}
 
+
 	vArray& operator=(vArray<T>&& arr) {
+		size = arr.size;
 		num = arr.num;
 		elements = arr.elements;
 		arr.num = 0;
+		arr.size = 0;
 		arr.elements = nullptr;
 		return *this;
 	}
 
 	vArray& operator+=(const vArray<T>& arr) {
-		size_t newnum = num + arr.num;
-		T* temp = new T[newnum];
-		memcpy(temp, elements, (num * (sizeof(T))));
-		memcpy(temp + num, arr.elements, (arr.num * (sizeof(T))));
-		delete [] elements;
-		num = newnum;
-		elements = temp;
+		set_num(num + arr.num);
+		memcpy(elements + num, arr.elements, (arr.num * (sizeof(T))));
 		return *this;
 	}
 
@@ -139,52 +203,27 @@ public:
 	{
 		char buf = 0;
 		char sep = 0; //separating symbol
+		T temp;
 		is >> sep;
 		buf = sep;
+		arr.num = 0;
 
 		size_t i = 0;
 
 		while (buf == sep) {
-			if (i >= arr.num) {
-				T* temp = arr.elements;
-				arr.elements = new T[arr.num * 2];
-				memcpy(arr.elements, temp, (arr.num * (sizeof(T))));
-				arr.num *= 2;
-				delete [] temp;
-			}
-
-			is >> arr.elements[i];
+			is >> temp;
+			arr.push_back(temp);
 			is >> buf;
-			i++;
 		}
-
-		T* temp = arr.elements;
-		arr.elements = new T[i];
-		memcpy(arr.elements, temp, (i * (sizeof(T))));
-		delete [] temp;
-		arr.num = i;
+		
 		return is;
 	} 
 
-	void set_size(size_t new_size) {
-		if (new_size == num) {
-			return;
-		}
-
-		T* temp = elements;
-		elements = new T[new_size];
-		if (new_size < num) {
-			memcpy(elements, temp, (new_size * (sizeof(T))));
-		}
-		else {
-			memcpy(elements, temp, (num * (sizeof(T))));
-		}
-		num = new_size;
-	}
-
 private:
-	size_t num;
+	size_t size; // the size of the allocated memory for the array
+	size_t num; //the size of the array
 	T* elements;
+
 };
 
 

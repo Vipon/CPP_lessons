@@ -9,6 +9,7 @@
 template <typename T, size_t NUM = 10>
 class Array {
 public:
+	Array(){};
 	Array(T (&val)[NUM]) { 
 		memcpy(elements, val, ((sizeof(T)) * NUM)); 
 	}
