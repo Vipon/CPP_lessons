@@ -179,7 +179,7 @@ List<T>::~List() {
 template <typename T>
 std::ostream& operator<<(std::ostream& os, List<T>& list) {
 	typename List<T>::Elem* t = list.Begin;
-		
+
 	while ((t) && (t != list.End)) {
 		os << t->value << "  ";
 		t = t->next;

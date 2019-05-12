@@ -32,6 +32,8 @@ int main()
 	int value = 6;
 	vArray<int>::Iterator it = std::find(vAr.begin(), vAr.end(), value);
 	std::cout << (*it) << '\n';
+	value = std::count_if(vAr.begin(), vAr.end(), [](int n) { return (n % 2) == 0; });
+	std::cout << "The amount of numbers that divide by 2: " << value << '\n';
 
 	std::cout << "List\n";
 	List<int> ls;
@@ -44,5 +46,8 @@ int main()
 	std::cout << ls << '\n';
 	std::transform(ls.begin(), ls.end(), vAr.begin(), [](int& n){ return ++n; });
 	std::cout << vAr << '\n';
+	value = 9;
+	List<int>::Iterator it2 = std::find(ls.begin(), ls.end(), value);
+	std::cout << (*it2) << '\n';
 	return 0;
-}
+} 

@@ -272,7 +272,7 @@ typename vArray<T>::Iterator vArray<T>::Iterator::operator++() {
 	if (pos == (*size)) {
 		return (*this);
 	};
-			
+
 	++pos;
 	return (*this);
 };
@@ -301,7 +301,7 @@ typename vArray<T>::Iterator vArray<T>::Iterator::operator--(int) {
 	if (pos == 0) {
 		return (*this);
 	}
-	
+
 	return Iterator(this->ptr, (pos--), size);
 };
 

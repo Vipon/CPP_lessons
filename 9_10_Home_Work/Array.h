@@ -180,7 +180,7 @@ typename Array<T, NUM>::Iterator Array<T, NUM>::Iterator::operator++() {
 	if (pos == NUM) {
 		return (*this);
 	};
-			
+
 	++pos;
 	return (*this);
 };
@@ -209,7 +209,7 @@ typename Array<T, NUM>::Iterator Array<T, NUM>::Iterator::operator--(int) {
 	if (pos == 0) {
 		return (*this);
 	}
-			
+
 	return Iterator(this->ptr, (pos--));
 };
 
@@ -309,4 +309,4 @@ typename Array<T, NUM>::Iterator Array<T, NUM>::end() {
 	return Iterator(this->elements, NUM);
 };
 
-#endif //__ARRAY_H
+#endif //__ARRAY_H 
