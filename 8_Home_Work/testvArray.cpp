@@ -3,12 +3,13 @@
 int main() {
     int arr[7] = { 4, 2, 12, 8, 14, 6, 10 };
     vArray<int> aArr(arr, 7);
+    aArr.push_back(3);
     vArray<int> bArr;
 
     try {
-        aArr.QSort(0, 6);
+        aArr.QSort(0, 7);
     }
-    catch (ArrException& problem) {
+    catch (vArrException& problem) {
         std::cout << problem.what();
     }
 
@@ -20,11 +21,9 @@ int main() {
     try {
         std::cout << aArr[5] << '\n';
     }
-    catch (ArrException& problem) {
+    catch (vArrException& problem) {
         std::cout << problem.what() << '\n';
     }
     
     std::cout << aArr.find(19);
-    getchar();
-    getchar();
 }

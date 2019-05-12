@@ -31,11 +31,6 @@ public:
         memcpy(val, A.val, sizeof(T) * SIZE);
     };
 
-    // move constructor
-    Array(T &&A) : val(A) {
-        A.val = nullptr;
-    };
-
     //destructor
     ~Array() {}
 

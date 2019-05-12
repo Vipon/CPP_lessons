@@ -6,10 +6,10 @@
 #include <iostream>
 #include <exception>
 
-class ArrException : public std::exception {
+class vArrException : public std::exception {
 public:
-    ArrException(std::string&& err) noexcept : exc(std::move(err)) {}
-    ArrException(ArrException&& gExc) noexcept : exc(std::move(gExc.exc)) {}
+    vArrException(std::string&& err) noexcept : exc(std::move(err)) {}
+    vArrException(vArrException&& gExc) noexcept : exc(std::move(gExc.exc)) {}
     const char* what() const noexcept { return exc.c_str(); }
 private:
     std::string exc;
@@ -23,16 +23,22 @@ public:
     vArray() {};
 
     vArray(T A[], size_t length) :size(length), val(new T[length]) {
+        if (val == nullptr) {
+            throw vArrException("OUT OF MEMORY");
+        }
         memcpy(val, A, sizeof(T) * size);
     };
 
     // constructor of copy
     vArray(const vArray<T>& vA) : size(vA.size), val(new T[vA.size]) {
+        if (val == nullptr) {
+            throw vArrException("OUT OF MEMORY");
+        }
         memcpy(val, vA.val, sizeof(T) * vA.size);
     };
 
     // move constructor
-    vArray(T &&vA) : val(vA.val), size(vA.size) {
+    vArray(T &&vA) noexcept : val(vA.val), size(vA.size) {
         vA.val = nullptr;
         vA.size = 0;
     };
@@ -49,7 +55,12 @@ public:
     vArray& operator=(const vArray<T>& vA) {
         size = vA.size;
         delete[] val;
+
         val = new T[size];
+        if (val == nullptr) {
+            throw vArrException("OUT OF MEMORY");
+        }
+
         memcpy(val, vA.val, size * sizeof(T));
         return *this;
     }
@@ -64,7 +75,7 @@ public:
 
     T& operator[](size_t pos) {
         if (pos > size - 1) {
-            throw ArrException("OUT OF SIZE");
+            throw vArrException("OUT OF SIZE");
         }
         return val[pos];
     }
@@ -74,6 +85,8 @@ public:
     void QSort(int begin, int end);
 
     void set_size(size_t new_size);
+
+    void push_back(T elem);
 
 private:
     T* val;
@@ -94,7 +107,12 @@ std::istream& operator>>(std::istream &in, vArray<T> &vA) {
     while (elem != end) {
         if (i >= vA.size) {
             T* temp = vA.val;
+
             vA.val = new T[(vA.size + 1) * 2];
+            if (vA.val == nullptr) {
+                throw vArrException("OUT OF MEMORY");
+            }
+
             memcpy(vA.val, temp, sizeof(T) * vA.size);
             vA.size = (vA.size + 1) * 2;
             delete[] temp;
@@ -107,6 +125,10 @@ std::istream& operator>>(std::istream &in, vArray<T> &vA) {
 
     T* temp = vA.val;
     vA.val = new T[i];
+    if (vA.val == nullptr && vA.size != 0) {
+        throw vArrException("OUT OF MEMORY");
+    }
+
     memcpy(vA.val, temp, i * sizeof(T));
     delete[] temp;
     vA.size = i;
@@ -137,7 +159,7 @@ std::ostream& operator<<(std::ostream &out, const vArray<T> &vA) {
 template <typename T>
 void vArray <T>::QSort(int begin, int end) {
     if ((begin < 0) || (end > size - 1)) {
-        throw ArrException("OUT OF SIZE");
+        throw vArrException("OUT OF SIZE");
     }
 
     T temp;
@@ -184,6 +206,22 @@ void vArray<T>::set_size(size_t new_size) {
         memcpy(val, temp, size * sizeof(T));
     }
     size = new_size;
+}
+
+
+template <typename T>
+void vArray<T>::push_back(T elem) {
+    T* temp = val;
+    val = new T[size + 1];
+    if (val == nullptr) {
+        throw vArrException("OUT OF MEMORY");
+    }
+
+    memcpy(val, temp, size * sizeof(T));
+    delete[] temp;
+
+    val[size] = elem;
+    size++;
 }
 
 #endif //__vARRAY_H
