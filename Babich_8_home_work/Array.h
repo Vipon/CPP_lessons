@@ -8,7 +8,7 @@ template <typename T, size_t Size>
 class Array
 {
 public:
-	Array() : table(new T[Size]) {}
+	Array() = default;
 
 	~Array()
 	{
@@ -80,6 +80,6 @@ public:
 	}
 
 private:
-	T* table;
+	T* table[Size];
 };
 #endif /*ARRAY_H*/
