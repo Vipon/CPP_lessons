@@ -18,12 +18,6 @@ public:
 		memcpy(this->elements, arr.elements, (NUM * (sizeof(T))));
 	}
 
-	Array(Array&& arr) noexcept {
-		T* temp = elements;
-		elements = arr.elements;
-		arr.elements = temp;
-	};
-
 	~Array() = default;
 
 	Array& operator=(const Array<T, NUM>& arr) {
