@@ -14,8 +14,17 @@ public:
 		memcpy(elements, val, ((sizeof(T)) * NUM)); 
 	}
 
-	Array(T (&&val)[NUM]) : elements(val) {}
-	~Array() {}
+	Array(const Array& arr) {
+		memcpy(this->elements, arr.elements, (NUM * (sizeof(T))));
+	}
+
+	Array(Array&& arr) noexcept {
+		T* temp = elements;
+		elements = arr.elements;
+		arr.elements = temp;
+	};
+
+	~Array() = default;
 
 	Array& operator=(const Array<T, NUM>& arr) {
 		memcpy(this->elements, arr.elements, ((sizeof(T)) * NUM));
