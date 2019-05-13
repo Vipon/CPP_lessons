@@ -8,7 +8,7 @@ template <typename T, size_t Size>
 class Array
 {
 public:
-	Array() = default;
+	Array() {};
 
 	~Array() = default;
 
