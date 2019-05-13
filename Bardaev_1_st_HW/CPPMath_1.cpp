@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 struct Complex {
     double x = 1;
     double y = 1;
@@ -65,7 +63,7 @@ template <> Complex Div<Complex>(Complex a, Complex b){
         c.x = ((a.x * b.x) + (a.y * b.y))/(b.x*b.x+b.y*b.y);
         c.y = ((a.y * b.x) - (b.y * a.x))/(b.x*b.x+b.y*b.y);
     } else {
-        cout << "Enter valid diverse" << endl;
+        std::cout << "Enter valid diverse" << std::endl;
     }
         
     return c;
@@ -75,21 +73,21 @@ void cPrint(Complex C){ //the optional programming needed
     
     if (C.x != 0 && C.y != 0){
     if (C.y > 0){
-        cout << C.x << "+i" << C.y << endl;
+        std::cout << C.x << "+i" << C.y << std::endl;
     } else {
-        cout << C.x << "-i" << (-1)*C.y << endl;
+        std::cout << C.x << "-i" << (-1)*C.y << std::endl;
     }
     } else {
         if (C.x == 0 && C.y == 0){
-            cout << C.x << endl;
+            std::cout << C.x << std::endl;
         } else {
             if (C.x != 0 && C.y == 0){
-                cout << C.x << endl;
+                std::cout << C.x << std::endl;
             } else {
                 if (C.x == 0 && C.y > 0){ //look for mistake
-                    cout << "i" << C.y << endl;
+                    std::cout << "i" << C.y << std::endl;
                 } else {
-                    cout << "-i" << (-1)*C.y << endl;
+                    std::cout << "-i" << (-1)*C.y << std::endl;
                 }
             }
         }
@@ -110,19 +108,19 @@ int main() {
     double a = 1.0;
     double b = 1.0;
     
-    cin >> a >> b;
+    std::cin >> a >> b;
     
     V = Sum(a, b);
-    cout << V << endl;
+    std::cout << V << std::endl;
     
     V = Sub(a, b);
-    cout << V << endl;
+    std::cout << V << std::endl;
     
     V = Mul(a, b);
-    cout << V << endl;
+    std::cout << V << std::endl;
     
     V = Div(a, b);
-    cout << V << endl;
+    std::cout << V << std::endl;
     
     Complex A;
     init_c(&A, a, b);
