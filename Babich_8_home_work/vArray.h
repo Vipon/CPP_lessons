@@ -138,8 +138,9 @@ public:
 		}
 		this->Size += add.Size;
 		this->last_pos += (add.last_pos - 1);
+		delete[] table;
 		this->table = buf;
-		delete[] buf;
+	
 		return *this;
 	}
 
