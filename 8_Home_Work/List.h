@@ -131,14 +131,11 @@ public:
 	~List() {
 		Elem* entry = begin;
 
-		if (entry) {
-			while (entry->next) {
-				entry = entry->next;
-				delete entry->prev;
-			}
+		while (entry) {
+			Elem* temp = entry;
+			entry = entry->next;
+			delete temp;
 		}
-
-		delete entry;
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, List& list) {

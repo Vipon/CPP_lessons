@@ -10,7 +10,7 @@
 template <typename T>
 class vArray {
 public:
-	vArray(size_t num = 1) :
+	vArray(size_t num = 0) :
 		size(num),
 		num(num), 
 		elements(new T[num]) {};
@@ -53,15 +53,6 @@ public:
 	}
 
 	void set_num(size_t new_num) {
-		if (new_num == num) {
-			return;
-		}
-
-		if (new_num <= size) {
-			num = new_num;
-			return;
-		}
-
 		T* temp = elements;
 		elements = new T[new_num];
 
@@ -73,24 +64,6 @@ public:
 		}
 		num = new_num;
 		size = new_num;
-		delete [] temp;
-	}
-
-	void set_size(size_t new_size) {
-		if (new_size == size) {
-			return;
-		}
-
-		T* temp = elements;
-		elements = new T[new_size];
-		if (new_size < num) {
-			memcpy(elements, temp, (new_size * (sizeof(T))));
-			num = new_size;
-		}
-		else {
-			memcpy(elements, temp, (num * (sizeof(T))));
-		}
-		size = new_size;
 		delete [] temp;
 	}
 
@@ -223,6 +196,24 @@ private:
 	size_t size; // the size of the allocated memory for the array
 	size_t num; //the size of the array
 	T* elements;
+
+	void set_size(size_t new_size) {
+		if (new_size == size) {
+			return;
+		}
+
+		T* temp = elements;
+		elements = new T[new_size];
+		if (new_size < num) {
+			memcpy(elements, temp, (new_size * (sizeof(T))));
+			num = new_size;
+		}
+		else {
+			memcpy(elements, temp, (num * (sizeof(T))));
+		}
+		size = new_size;
+		delete [] temp;
+	}
 
 };
 

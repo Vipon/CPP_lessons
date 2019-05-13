@@ -8,6 +8,11 @@ int main() {
 		std::cin >> iArr;
 		iArr.sort(0, 4);
 		std::cout << iArr;
+		Array<int, 5> iArr2(iArr);
+		std::cout << iArr2;
+		iArr2[2] = 15;
+		iArr = iArr2;
+		std::cout << iArr;
 	}
 	catch (std::exception& er) {
 		std::cerr << er.what();
