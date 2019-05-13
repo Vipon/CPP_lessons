@@ -26,10 +26,10 @@ int main()
     std::cout << std::endl;
 
     std::cout << L.front() << " " << L.back() << std::endl;
-    List <int> L2;
+    List <int> L2, L3;
     L2 = L;
     std::cout << L2;
-    std::cin >> L2;
-    std::cout << L2;
+    std::cin >> L3;
+    std::cout << L3;
     return 0;
 }
