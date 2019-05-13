@@ -1,3 +1,5 @@
+#ifndef stack__h
+#define stack__h
 #include <exception>
 #include <iostream>
 
@@ -41,45 +43,24 @@ public:
         }
     }
     
-    Stack()=default;
-    ~Stack()=default;
+    Stack() = default;
+    Stack(const Stack& p);
+    /* while(auto: w *_ar){
+            _ar[n] = 0;
+            N--;
+        }*/  //TODO!
+    ~Stack() = default;
+    
+    
     
 private:
-    data _ar[N] = {1};
+    data _ar[N];
     unsigned int current = 0;
 };
 
-int main() {
- 
-    Stack<int, 8> s;
-    
-    try{
-        s.push(2);
-        s.push(7);
-        s.push(1);
-        s.push(8);
-        s.push(2);
-        s.push(6);
-        s.push(1);
-        s.push(8);
-        s.push(2);
-    } catch(std::range_error& msg) {
-        std::cerr << msg.what() << std::endl;
-    }
-    
-    s.dump();
-    std::cout << std::endl;
-    
-    try{
-        std::cout << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << std::endl;
-    } catch(std::underflow_error& msg) {
-        std::cerr << std::endl;
-        std::cerr << msg.what() << std::endl;
-    }
-    
-    s.isEmpty();
-    s.isFull();
-    
-    return 0;
-}
+#endif /* stack__h */
 
+// methods >> alchoritms in priority of using
+// qt for graphics, works with 3D objects, maps and sensors on phone (and not only)
+// boost library is essential for C++ programminsts
+// qt has expand for C++, Python etc. (расширения) 
