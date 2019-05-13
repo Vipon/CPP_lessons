@@ -77,6 +77,6 @@ public:
 	}
 
 private:
-	T* table[Size];
+	T table[Size];
 };
 #endif /*ARRAY_H*/
