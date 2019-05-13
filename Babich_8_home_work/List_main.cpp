@@ -5,8 +5,7 @@ int main()
 	List<int> ls(5);
 	std::cin >> ls >> ls >>ls;
 	std::cout << ls;
-	struct Line<int>* ptr = ls.findline(3);
-	ls.DelLine(ptr);
+	ls.DelLine(ls.findline(3));
 	std::cout << ls;
 //	system("pause");
 }
