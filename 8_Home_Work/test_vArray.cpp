@@ -1,6 +1,7 @@
 #include "vArray.h"
 #include <cstdlib>
 #include <iostream>
+#include <cstring>
 
 void testing_of_constructor_of_copy(vArray<int> arr)
 {
@@ -13,8 +14,15 @@ int main()
     std::cout <<"arr0 = " << arr0 << std::endl;
     std::cout <<"arr0.get_size() = " << arr0.get_size() << std::endl;
     arr0.change_size(2);
-    arr0[0] = 0;
-    arr0[1] = 1;
+    try
+    {
+        arr0[0] = 0;
+        arr0[1] = 1;
+    }
+    catch(std::string s)
+    {
+        std::cout << s << std::endl;
+    }
     std::cout <<"After arr0.change_size(2); arr0[0] = 0; arr0[1] = 1;" << std::endl;
     std::cout <<"arr0 = " << arr0 << std::endl;
     std::cout <<"arr0.get_size() = " << arr0.get_size() << std::endl;
