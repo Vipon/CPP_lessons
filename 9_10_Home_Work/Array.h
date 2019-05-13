@@ -7,13 +7,13 @@
 
 template <typename T, std::size_t I>
 class Array{
-protected:
+private:
     T arr[I + 2];
 public:
+    std::size_t NUM = 0;
     Array(){};
     Array(const Array &A);
-    Array(Array &&A);
-    Array(const T A[I]);
+    Array(T *A, std::size_t number);
     ~Array(){};
     class iterator : public std::iterator<
                 std::random_access_iterator_tag,
@@ -41,7 +41,7 @@ public:
         iterator operator+=(const int place);
         iterator operator-=(const int place);
         int operator-(const iterator &it);
-    protected:
+    private:
         Array <T, I> *lord;
         std::size_t pos;
         friend Array<T, I>;
@@ -50,38 +50,33 @@ public:
     iterator rbegin();
     iterator end();
     iterator rend();
-    iterator operator[](std::size_t place);
+    T &operator[](std::size_t place);
     template <typename U, std::size_t S>
     friend std::ostream &operator<< (std::ostream &out, Array<U,S> &A);
     template <typename U, std::size_t S>
     friend std::istream &operator>> (std::istream &in, Array<U,S> &A);
-    Array operator= (const Array &A);
-    Array operator= (Array &&A);
+    Array &operator= (const Array &A);
+    Array &operator= (Array &&A);
     friend Array<T, I>::iterator;
 };
 
 template <typename T, std::size_t I>
 Array<T, I>::Array(const Array<T, I> &A){
     memcpy(this->arr, A.arr, (I + 1) * sizeof(T));
+    this->NUM = A.NUM;
 }
 
 template <typename T, std::size_t I>
-Array<T, I>::Array(Array<T, I> &&A){
-    T *i = this->arr;
-    this->arr = A.arr;
-    A.arr = i;
-}
-
-template <typename T, std::size_t I>
-Array<T, I>::Array(const T A[I]){
-    memcpy(this->arr + 1, A, I * sizeof(T));
+Array<T, I>::Array(T *A, std::size_t number){
+    memcpy(this->arr + 1, A, std::min(number, I) * sizeof(T));
+    this->NUM = number;
 }
 
 template <typename T, std::size_t I>
 typename Array<T, I>::iterator Array<T, I>::iterator::operator++ (){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     if (this->pos == I + 1){
         return (*this);
     }
@@ -91,9 +86,9 @@ typename Array<T, I>::iterator Array<T, I>::iterator::operator++ (){
 
 template <typename T, std::size_t I>
 typename Array<T, I>::iterator Array<T, I>::iterator::operator++ (int){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     if (this->pos == I + 1){
         return (*this);
     }
@@ -106,9 +101,9 @@ typename Array<T, I>::iterator Array<T, I>::iterator::operator++ (int){
 
 template <typename T, std::size_t I>
 typename Array<T, I>::iterator Array<T, I>::iterator::operator-- (){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     if (this->pos == 0){
         return (*this);
     }
@@ -118,9 +113,9 @@ typename Array<T, I>::iterator Array<T, I>::iterator::operator-- (){
 
 template <typename T, std::size_t I>
 typename Array<T, I>::iterator Array<T, I>::iterator::operator-- (int){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     if (this->pos == 0){
         return (*this);
     }
@@ -133,12 +128,12 @@ typename Array<T, I>::iterator Array<T, I>::iterator::operator-- (int){
 
 template <typename T, std::size_t I>
 T &Array<T, I>::iterator::operator*(){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
     }
     if (this->pos == I + 1 || this->pos == 0){
         throw "ptr_to_dummy_element";
-    }
+    }*/
     return *(this->lord->arr + this->pos);
 }
 
@@ -181,20 +176,20 @@ typename Array<T,I>::iterator &Array<T,I>::iterator::operator= (const iterator &
 
 template <typename T, std::size_t I>
 T &Array<T,I>::iterator::operator[](const int place){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
     }
     if (this->pos + place >= I + 1 || this->pos + place == 0){
         throw "*ptr_over_array";
-    }
+    }*/
     return *(this->lord->arr + this->pos + place);
 }
 
 template <typename T, std::size_t I>
 typename Array<T,I>::iterator Array<T,I>::iterator::operator+(const int place){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     Array<T, I>::iterator it = *this;
     if (it.pos + place < 0){
         it.pos = 0;
@@ -209,9 +204,9 @@ typename Array<T,I>::iterator Array<T,I>::iterator::operator+(const int place){
 
 template <typename T, std::size_t I>
 typename Array<T,I>::iterator Array<T,I>::iterator::operator-(const int place){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     Array<T, I>::iterator it = *this;
     if (it.pos - place < 0){
         it.pos = 0;
@@ -226,9 +221,9 @@ typename Array<T,I>::iterator Array<T,I>::iterator::operator-(const int place){
 
 template <typename T, std::size_t I>
 typename Array<T,I>::iterator Array<T,I>::iterator::operator+=(const int place){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     if (this->pos + place < 0){
         this->pos = 0;
         return *this;
@@ -242,9 +237,9 @@ typename Array<T,I>::iterator Array<T,I>::iterator::operator+=(const int place){
 
 template <typename T, std::size_t I>
 typename Array<T,I>::iterator Array<T,I>::iterator::operator-=(const int place){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_ptr";
-    }
+    }*/
     if (this->pos - place < 0){
         this->pos = 0;
         return *this;
@@ -258,7 +253,7 @@ typename Array<T,I>::iterator Array<T,I>::iterator::operator-=(const int place){
 
 template <typename T, std::size_t I>
 int Array<T,I>::iterator::operator-(const iterator &it){
-    if (this->lord == nullptr){
+    /*if (this->lord == nullptr){
         throw "invalid_left_ptr";
     }
     if (it.lord == nullptr){
@@ -266,7 +261,7 @@ int Array<T,I>::iterator::operator-(const iterator &it){
     }
     if (it.lord != this->lord){
         throw "different_ptrs";
-    }
+    }*/
     return (this->pos - it.pos);
 }
 
@@ -302,19 +297,24 @@ typename Array<T, I>::iterator Array<T, I>::rend(){
 }
 
 template <typename T, std::size_t I>
-typename Array<T, I>::iterator Array<T, I>::operator[](std::size_t place){
-    if (place >= I){
+T &Array<T, I>::operator[](std::size_t place){
+    /*if (place >= I){
         throw "*ptr_over_array";
-    }
+    }*/
     Array<T, I>::iterator it;
     it.lord = this;
     it.pos = place + 1;
-    return it;
+    return *it;
 }
 
 template <typename T, std::size_t I>
 std::ostream &operator<< (std::ostream &out, Array<T,I> &A){
+    std::size_t i = 0;
     for (auto it = A.begin(); it != A.end(); ++it){
+        if (i == A.NUM){
+            continue;
+        }
+        ++i;
         out << *it << " ";
     }
     out << std::endl;
@@ -323,23 +323,31 @@ std::ostream &operator<< (std::ostream &out, Array<T,I> &A){
 
 template <typename T, std::size_t I>
 std::istream &operator>> (std::istream &in, Array<T,I> &A){
+    T num;
+    A.NUM = 0;
     for (auto it = A.begin(); it != A.end(); ++it){
-        in >> *it;
+        if (in >> num){
+            *it = num;
+            ++(A.NUM);
+        } else{
+            continue;
+        }
     }
+    in.clear();
     return in;
 }
 
 template <typename T, std::size_t I>
-Array<T, I> Array<T, I>::operator=(const Array<T, I> &A){
+Array<T, I> &Array<T, I>::operator=(const Array<T, I> &A){
     memcpy(this->arr, A.arr, (I + 1) * sizeof(T));
+    this->NUM = A.NUM;
     return *this;
 }
 
 template <typename T, std::size_t I>
-Array<T, I> Array<T, I>::operator=(Array<T, I> &&A){
-    T *i = this->arr;
-    this->arr = A.arr;
-    A.arr = i;
+Array<T, I> &Array<T, I>::operator=(Array<T, I> &&A){
+    memcpy(this->arr, A.arr, (I + 1) * sizeof(T));
+    this->NUM = A.NUM;
     return *this;
 }
 

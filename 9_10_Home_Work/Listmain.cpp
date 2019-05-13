@@ -5,9 +5,6 @@
 int main()
 {
     List<int> L;
-    for (int i = 0; i < 5; ++i){
-        L.push_back(0);
-    }
     std::cin >> L;
     std::cout << L;
     std::reverse(L.begin(), L.end());

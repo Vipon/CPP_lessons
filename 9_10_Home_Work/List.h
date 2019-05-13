@@ -48,7 +48,7 @@ public:
     iterator rbegin() const;
     iterator end() const;
     iterator rend() const;
-    iterator operator[](std::size_t place);
+    T &operator[](std::size_t place);
     iterator insert(const T &val, iterator place);
     iterator push_back(const T &val);
     iterator push_front(const T &val);
@@ -61,8 +61,8 @@ public:
     friend std::ostream &operator<< (std::ostream &out, const List<U> &lt);
     template <typename U>
     friend std::istream &operator>> (std::istream &in, List<U> &lt);
-    List operator= (const List &L);
-    List operator= (List &&L);
+    List &operator= (const List &L);
+    List &operator= (List &&L);
     friend List<T>::iterator;
 };
 
@@ -206,12 +206,12 @@ typename List<T>::iterator List<T>::rend() const {
 }
 
 template <typename T>
-typename List<T>::iterator List<T>::operator[](std::size_t place){
+T &List<T>::operator[](std::size_t place){
     iterator it = this->begin();
     for (std::size_t i = 0; i < place; ++i){
         ++it;
     }
-    return it;
+    return *it;
 }
 
 template <typename T>
@@ -282,14 +282,16 @@ std::ostream &operator<< (std::ostream &out, const List<T> &lt){
 
 template <typename T>
 std::istream &operator>> (std::istream &in, List<T> &lt){
-    for (auto it = lt.begin(); it != lt.end(); ++it){
-        in >> *it;
+    T num;
+    while (in >> num){
+        lt.push_back(num);
     }
+    in.clear();
     return in;
 }
 
 template <typename T>
-List<T> List<T>::operator= (const List<T> &L){
+List<T> &List<T>::operator= (const List<T> &L){
     this->first = new Elem;
     this->last = new Elem;
     this->Length = 0;
@@ -304,7 +306,7 @@ List<T> List<T>::operator= (const List<T> &L){
 }
 
 template <typename T>
-List<T> List<T>::operator= (List<T> &&L){
+List<T> &List<T>::operator= (List<T> &&L){
     this->first = new Elem;
     this->last = new Elem;
     this->Length = L.Length;
