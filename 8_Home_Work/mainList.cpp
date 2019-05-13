@@ -14,7 +14,10 @@ int main()
     }
     std::cout << std::endl;
 
-    List<int>::iterator it = L[5];
+    List<int>::iterator it = L.begin();
+    for (std::size_t i = 0; i < 5; ++i){
+        ++it;
+    }
 
     for (std::size_t i = 0; i < 5; ++i){
         it = L.remove(it);
