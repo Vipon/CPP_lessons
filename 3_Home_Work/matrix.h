@@ -10,8 +10,6 @@
 class matrix
 {
 public:
-
-	matrix() {};//default constructor
 	matrix(int h, int w);
 	matrix (const matrix& A);//copy constructor
 	matrix(matrix&& A) noexcept;//move constructor
