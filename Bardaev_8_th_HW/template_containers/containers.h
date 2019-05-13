@@ -1,8 +1,11 @@
-#include <exception>
+#ifndef containers_h
+#define containers_h
+
 #include <iostream>
+#include <exception>
 
 template<typename data, int N = 64>
-class Stack {
+class Array {
 public:
     
     void push(const data& F){
@@ -41,45 +44,16 @@ public:
         }
     }
     
-    Stack()=default;
-    ~Stack()=default;
+    Array() = default;
+    Array(const Array& p);
+    
+    ~Array() = default;
+    
+    
     
 private:
-    data _ar[N] = {1};
+    data _ar[N];
     unsigned int current = 0;
 };
 
-int main() {
- 
-    Stack<int, 8> s;
-    
-    try{
-        s.push(2);
-        s.push(7);
-        s.push(1);
-        s.push(8);
-        s.push(2);
-        s.push(6);
-        s.push(1);
-        s.push(8);
-        s.push(2);
-    } catch(std::range_error& msg) {
-        std::cerr << msg.what() << std::endl;
-    }
-    
-    s.dump();
-    std::cout << std::endl;
-    
-    try{
-        std::cout << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << " " << s.pop() << std::endl;
-    } catch(std::underflow_error& msg) {
-        std::cerr << std::endl;
-        std::cerr << msg.what() << std::endl;
-    }
-    
-    s.isEmpty();
-    s.isFull();
-    
-    return 0;
-}
-
+#endif /* containers_h */
