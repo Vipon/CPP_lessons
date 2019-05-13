@@ -2,11 +2,7 @@
 #define LIST_H
 #include <iostream>
 
-template <typename T>
-struct Line {
-	T data;
-	struct Line<T>* next;
-};
+
 
 
 
@@ -23,14 +19,14 @@ public:
 	}
 	List()
 	{
-		this->enter = new struct Line<T>;
+		this->enter = new  Line<T>;
 		this->enter->next = nullptr;
 		this->length++;
 	}
 	~List()
 	{
-		struct Line<T>* buf1 = this->enter;
-		struct Line<T>* buf2 = this->enter;
+		 Line<T>* buf1 = this->enter;
+		 Line<T>* buf2 = this->enter;
 		while (buf1->next != nullptr)
 		{
 			buf2 = buf1->next;
@@ -41,10 +37,10 @@ public:
 	}
 	friend std::istream& operator>>(std::istream& stream, List<T>& input)
 	{
-		struct Line<T>* newLine = new struct Line<T>;
+		 Line<T>* newLine = new  Line<T>;
 		stream >> newLine->data;
 		newLine->next = nullptr;
-		struct Line<T>* buf = input.enter;
+		 Line<T>* buf = input.enter;
 		while (buf->next != nullptr)
 		{
 			buf = buf->next;
@@ -56,7 +52,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, List<T>& output)
 	{
-		struct Line<T>* buf = output.enter;
+		 Line<T>* buf = output.enter;
 		for (size_t i = 1; i < output.length+1; i++)
 		{
 			stream << buf->data << ' ';
@@ -65,11 +61,11 @@ public:
 		return stream;
 	}
 
-	struct Line<T>* operator[](size_t pos)
+	 Line<T>* operator[](size_t pos)
 	{
 		if (pos > length)
 			return nullptr;
-		struct Line<T> buf = enter;
+		 Line<T> buf = enter;
 		for (size_t i = 0; i < pos; i++)
 		{
 			buf = buf->next;
@@ -77,9 +73,9 @@ public:
 		return buf;
 	}
 
-	void DelLine(struct Line<T>* prev)
+	void DelLine(T data)
 	{
-		struct Line<T>* buf = prev->next;
+		 Line<T>* buf = findline(data)->next;
 		prev->next = prev->next->next;
 		delete[] buf;
 		if (this->length > 1)
@@ -87,9 +83,9 @@ public:
 		return;
 	}
 
-	struct Line<T>* findline(T data)
+	 Line<T>* findline(T data)
 	{
-		struct Line<T>* buf = this->enter;
+		 Line<T>* buf = this->enter;
 		while (buf->next != nullptr)
 		{
 			if (buf->data == data)
@@ -101,7 +97,11 @@ public:
 
 private:
 	size_t length = 0;
-	struct Line<T>* enter;
+	 Line<T>* enter;
+	 Line {
+	T data;
+	 Line<T>* next;
+};
 };
 
 #endif /*LIST_H*/
