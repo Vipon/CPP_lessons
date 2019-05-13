@@ -162,9 +162,9 @@ public:
 
 	T& operator[] (size_t pos)
 	{
-		if (pos < Size)
+		if (pos < this->last_pos)
 		{
-			return table[pos-1];
+			return this->table[pos-1];
 		}
 		else
 		{
