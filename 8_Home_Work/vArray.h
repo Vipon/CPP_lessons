@@ -100,7 +100,10 @@ void vArray<T>::change_size(size_t new_varray_size)
 {
     T* new_varray = new T [new_varray_size];
     size_t min_size = std::min(new_varray_size, varray_size);
-    memcpy(new_varray, varray, min_size * sizeof(T));
+    if (varray != nullptr)
+    {
+        memcpy(new_varray, varray, min_size * sizeof(T));
+    }
     varray_size = new_varray_size;
     delete[] varray;
     varray = new_varray;
