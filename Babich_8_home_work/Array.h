@@ -14,8 +14,9 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, Array<T, Size>& output)
 	{
-		for (size_t i = 1; i < Size+1; i++)
+		for (size_t i = 1; i < (last_pos-1)+1; i++)
 		{
+			if(output.table[i-1] )
 			stream << output.table[i-1] << " ";
 		}
 		return stream;
@@ -24,7 +25,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
 		std::string buf = "oh shit";
-		for(int i = 0; i< Size; i++)
+		for(int i = 0; i< (last_pos-1); i++)
 		{
 			std::getline(stream, buf);
 
@@ -40,8 +41,6 @@ public:
 
 	void push_back(T data)
 	{
-		if (this->last_pos > this->Size)
-			set_size(2 * (this->Size));
 		this->table[this->last_pos] = data;
 		this->last_pos++;
 		return;
@@ -49,13 +48,13 @@ public:
 
 	Array& operator=(const Array<T, Size>& dupl)
 	{
-		memcpy(this->table, dupl.table, sizeof(T)*Size);
+		memcpy(this->table, dupl.table, sizeof(T)*(last_pos-1));
 		return *this;
 	}
 
 	T& operator[] (size_t pos)
 	{
-		if (pos < Size)
+		if (pos < (last_pos-1))
 		{
 			return table[pos - 1];
 		}
@@ -67,9 +66,9 @@ public:
 
 	void sortUp() //shellsort
 	{
-		for (size_t gap = Size / 2; gap > 0; gap /= 2)
+		for (size_t gap = (last_pos-1) / 2; gap > 0; gap /= 2)
 		{
-			for (size_t i = gap; i < Size; i++)
+			for (size_t i = gap; i < (last_pos-1); i++)
 			{
 				T buf = table[i];
 				size_t j;
@@ -84,16 +83,17 @@ public:
 	void revert()
 	{
 		T buf = 0;
-		for (size_t i = 0; i < (Size / 2); i++)
+		for (size_t i = 0; i < ((last_pos-1) / 2); i++)
 		{
 			buf = table[i];
-			table[i] = table[Size - 1 - i];
-			table[Size - 1 - i] = buf;
+			table[i] = table[(last_pos-1) - 1 - i];
+			table[(last_pos-1) - 1 - i] = buf;
 		}
 		return;
 	}
 
 private:
 	T table[Size];
+	size_t last_pos = 0;
 };
 #endif /*ARRAY_H*/
