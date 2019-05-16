@@ -75,20 +75,18 @@ public:
 
 	void DelLine(T data)
 	{
-			 Line* findline(T data)
-	{
-		 Line* buf = this->enter;
-		while (buf->next != nullptr)
-		{
-			if (buf->data == data)
-				return buf;
-			buf = buf->next;
-		}
-		return nullptr;
-	}
 		
-		 Line* buf = findline(data)->next;
-		prev->next = prev->next->next;
+		 Line* buf1 = this->enter;
+		while (buf1->next != nullptr)
+		{
+			if (buf1->data == data)
+			break;
+			buf1 = buf1->next;
+		}
+	
+		
+		 Line* buf = buf1->next;
+		prev->next = (prev->next)->next;
 		delete[] buf;
 		if (this->length > 1)
 		this->length--;
