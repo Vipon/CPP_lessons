@@ -12,21 +12,21 @@ class List
 public:
 	List(T firstline)
 	{
-		this->enter = new struct Line<T>;
+		this->enter = new  Line;
 		this->enter->data = firstline;
 		this->enter->next = nullptr;
 		this->length++;
 	}
 	List()
 	{
-		this->enter = new  Line<T>;
+		this->enter = new  Line;
 		this->enter->next = nullptr;
 		this->length++;
 	}
 	~List()
 	{
-		 Line<T>* buf1 = this->enter;
-		 Line<T>* buf2 = this->enter;
+		 Line* buf1 = this->enter;
+		 Line* buf2 = this->enter;
 		while (buf1->next != nullptr)
 		{
 			buf2 = buf1->next;
@@ -37,10 +37,10 @@ public:
 	}
 	friend std::istream& operator>>(std::istream& stream, List<T>& input)
 	{
-		 Line<T>* newLine = new  Line<T>;
+		 Line* newLine = new  Line;
 		stream >> newLine->data;
 		newLine->next = nullptr;
-		 Line<T>* buf = input.enter;
+		 Line* buf = input.enter;
 		while (buf->next != nullptr)
 		{
 			buf = buf->next;
@@ -52,7 +52,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, List<T>& output)
 	{
-		 Line<T>* buf = output.enter;
+		 Line* buf = output.enter;
 		for (size_t i = 1; i < output.length+1; i++)
 		{
 			stream << buf->data << ' ';
@@ -61,11 +61,11 @@ public:
 		return stream;
 	}
 
-	 Line<T>* operator[](size_t pos)
+	 Line* operator[](size_t pos)
 	{
 		if (pos > length)
 			return nullptr;
-		 Line<T> buf = enter;
+		 Line buf = enter;
 		for (size_t i = 0; i < pos; i++)
 		{
 			buf = buf->next;
@@ -75,7 +75,7 @@ public:
 
 	void DelLine(T data)
 	{
-		 Line<T>* buf = findline(data)->next;
+		 Line* buf = findline(data)->next;
 		prev->next = prev->next->next;
 		delete[] buf;
 		if (this->length > 1)
@@ -83,9 +83,9 @@ public:
 		return;
 	}
 
-	 Line<T>* findline(T data)
+	 Line* findline(T data)
 	{
-		 Line<T>* buf = this->enter;
+		 Line* buf = this->enter;
 		while (buf->next != nullptr)
 		{
 			if (buf->data == data)
@@ -96,12 +96,13 @@ public:
 	}
 
 private:
-	size_t length = 0;
-	 Line<T>* enter;
-	 Line {
+	Line {
 	T data;
-	 Line<T>* next;
+	 Line* next;
 };
+	size_t length = 0;
+	 Line* enter;
+	 
 };
 
 #endif /*LIST_H*/
