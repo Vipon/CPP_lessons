@@ -7,8 +7,10 @@ Zp::Zp(size_t Char)
 }
 Zp Zp::operator+(const Zp& lal) 
 {
-	if (lal.Char != this->Char)
+	if (lal.Char != Char)
+	{
 		throw ArrayException("different characteristic");
+	}
 	Zp buf(this->Char);
 	buf.val = (val + lal.val) % this->Char;
 
@@ -17,8 +19,10 @@ Zp Zp::operator+(const Zp& lal)
 
 Zp Zp::operator*(const Zp& lal) 
 {
-	if (lal.Char != this->Char)
+	if (lal.Char != Char)
+	{
 		throw ArrayException("different characteristic");
+	}
 	Zp buf(this->Char);
 	buf.val=(val*lal.val) % this->Char;
 
