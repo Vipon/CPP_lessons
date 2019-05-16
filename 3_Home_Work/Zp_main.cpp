@@ -13,5 +13,5 @@ int main()
 	std::cout << c << d << e;
 	c = a;
 	std::cout << c;
-	 system("pause");
+	// system("pause");
 }
