@@ -24,7 +24,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
 		std::string buf = "oh shit";
-		while (true)
+		for(int i = 0; i< Size; i++)
 		{
 			std::getline(stream, buf);
 
@@ -32,14 +32,8 @@ public:
 			{
 				return stream;
 			}
-
-			if (input.last_pos == input.Size)
-			{
-				return;
-			}
-
-			input.table[input.last_pos] = (T)stod(buf);
-			input.last_pos++;
+			
+			input.table[i] = (T)stod(buf);
 		}
 		return stream;
 	}
