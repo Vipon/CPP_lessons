@@ -75,14 +75,20 @@ public:
 
 	void DelLine(T data)
 	{
-		
+		size_t count = 0;
 		 Line* buf1 = this->enter;
 		while (buf1->next != nullptr)
 		{
 			if (buf1->data == data)
+			{
+			count++;
 			break;
+			}
 			buf1 = buf1->next;
 		}
+		
+		if(count == 0)
+			return;
 	
 		
 		 Line* buf = buf1->next;
