@@ -5,7 +5,7 @@ Zp::Zp(size_t Char)
 {
 	this->Char = Char;
 }
-Zp Zp::operator+(const Zp lal) const
+Zp Zp::operator+(const Zp& lal) const
 {
 	if (lal.Char != this->Char)
 		throw ArrayException("different characteristic");
@@ -15,7 +15,7 @@ Zp Zp::operator+(const Zp lal) const
 	return buf;
 }
 
-Zp Zp::operator*(const Zp lal) const
+Zp Zp::operator*(const Zp& lal) const
 {
 	if (lal.Char != this->Char)
 		throw ArrayException("different characteristic");
