@@ -96,7 +96,7 @@ public:
 	}
 
 private:
-	Line {
+	struct Line {
 	T data;
 	 Line* next;
 };
