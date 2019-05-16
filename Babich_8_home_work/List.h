@@ -90,7 +90,19 @@ public:
 		if(count == 0)
 			return;
 	
+		Line* prev = enter;
+		while(prev->next ! = buf1)
+		{
+			prev=prev->next;
+		}
 		
+		if(prev == enter)
+		{
+		Line* sec = enter->next;
+		delete[] enter;
+		enter = new Line;
+		enter->next = sec;
+		}
 		 Line* buf = buf1->next;
 		prev->next = (prev->next)->next;
 		delete[] buf;
