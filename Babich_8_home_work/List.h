@@ -61,29 +61,21 @@ public:
 		return stream;
 	}
 
-	 Line* operator[](size_t pos)
+	 T& operator[](size_t pos)
 	{
 		if (pos > length)
 			return nullptr;
-		 Line buf = enter;
+		 Line* buf = enter;
 		for (size_t i = 0; i < pos; i++)
 		{
 			buf = buf->next;
 		}
-		return buf;
+		return buf->data;
 	}
 
 	void DelLine(T data)
 	{
-		 Line* buf = findline(data)->next;
-		prev->next = prev->next->next;
-		delete[] buf;
-		if (this->length > 1)
-		this->length--;
-		return;
-	}
-
-	 Line* findline(T data)
+			 Line* findline(T data)
 	{
 		 Line* buf = this->enter;
 		while (buf->next != nullptr)
@@ -94,6 +86,16 @@ public:
 		}
 		return nullptr;
 	}
+		
+		 Line* buf = findline(data)->next;
+		prev->next = prev->next->next;
+		delete[] buf;
+		if (this->length > 1)
+		this->length--;
+		return;
+	}
+
+
 
 private:
 	struct Line {
