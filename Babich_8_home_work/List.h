@@ -91,7 +91,7 @@ public:
 			return;
 	
 		Line* prev = enter;
-		while(prev->next ! = buf1)
+		while ((prev->next != buf1)&&(buf1 != enter))
 		{
 			prev=prev->next;
 		}
