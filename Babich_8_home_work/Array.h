@@ -23,6 +23,34 @@ public:
 
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
+		std::string buf = "oh shit";
+		while (true)
+		{
+			std::getline(stream, buf);
+
+			if (buf == " ")
+			{
+				return stream;
+			}
+
+			if (input.last_pos == input.Size)
+			{
+				return;
+			}
+
+			input.table[input.last_pos] = (T)stod(buf);
+			input.last_pos++;
+		}
+		return stream;
+	}
+
+	void push_back(T data)
+	{
+		if (this->last_pos > this->Size)
+			set_size(2 * (this->Size));
+		this->table[this->last_pos] = data;
+		this->last_pos++;
+		return;
 		for (size_t i = 1; i < Size+1; i++)
 		{
 		stream >> input.table[i-1];
