@@ -45,11 +45,6 @@ public:
 		this->table[this->last_pos] = data;
 		this->last_pos++;
 		return;
-		for (size_t i = 1; i < Size+1; i++)
-		{
-		stream >> input.table[i-1];
-		}
-		return stream;
 	}
 
 	Array& operator=(const Array<T, Size>& dupl)
