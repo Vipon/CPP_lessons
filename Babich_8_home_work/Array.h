@@ -16,7 +16,7 @@ public:
 	{
 		for (size_t i = 1; i < Size+1; i++)
 		{
-			stream << output.table[i-1] << ' ';
+			stream << output.table[i-1] << " ";
 		}
 		return stream;
 	}
