@@ -25,7 +25,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
 		std::string buf = "oh shit";
-		for(int i = 0; i< (output.last_pos-1); i++)
+		for(int i = 0; i< (input.last_pos-1); i++)
 		{
 			std::getline(stream, buf);
 
