@@ -14,7 +14,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& stream, Array<T, Size>& output)
 	{
-		for (size_t i = 1; i < (last_pos-1)+1; i++)
+		for (size_t i = 1; i < (output.last_pos-1)+1; i++)
 		{
 			if(output.table[i-1] )
 			stream << output.table[i-1] << " ";
@@ -25,7 +25,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
 		std::string buf = "oh shit";
-		for(int i = 0; i< (last_pos-1); i++)
+		for(int i = 0; i< (output.last_pos-1); i++)
 		{
 			std::getline(stream, buf);
 
