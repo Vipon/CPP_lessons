@@ -102,6 +102,7 @@ public:
 		delete[] enter;
 		enter = new Line;
 		enter->next = sec;
+		return;
 		}
 		 Line* buf = buf1->next;
 		prev->next = (prev->next)->next;
