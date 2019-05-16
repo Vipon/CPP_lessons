@@ -1,8 +1,15 @@
 #include "my_class.h"
+#include "Excep.h"
 
+Zp::Zp(size_t Char)
+{
+	this->Char = Char;
+}
 Zp Zp::operator+(const Zp lal) const
 {
-	Zp buf;
+	if (lal.Char != this->Char)
+		throw ArrayException("different characteristic");
+	Zp buf(this->Char);
 	buf.val = (val + lal.val) % this->Char;
 
 	return buf;
@@ -10,7 +17,9 @@ Zp Zp::operator+(const Zp lal) const
 
 Zp Zp::operator*(const Zp lal) const
 {
-	Zp buf;
+	if (lal.Char != this->Char)
+		throw ArrayException("different characteristic");
+	Zp buf(this->Char);
 	buf.val=(val*lal.val) % this->Char;
 
 	return buf;
@@ -34,14 +43,14 @@ Zp Zp::operator^(const int pow) const
 		{
 			lal = lal*this->val % this->Char;
 		}
-		
+
 		for (int i = 1; i < -pow; i++)
 		{
 			lal = lal*this->val % this->Char;
 		}
 	}
 
-	Zp buf;
+	Zp buf(this->Char);
 	buf.val =lal;
 
 	return buf;
@@ -55,12 +64,12 @@ std::istream& operator>>(std::istream& in,Zp& input)
 
 	while (num < 0)
 	{
-		num = num + p;
+		num = num + input.Char;
 	}
 
-	num = num % p;
+	num = num % input.Char;
 	input.val = num;
-	
+
 	return in;
 }
 
@@ -82,3 +91,5 @@ Zp& Zp::operator=(const int lal)
 	this->val = val % this->Char;
 	return *this;
 }
+
+
