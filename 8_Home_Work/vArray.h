@@ -30,7 +30,7 @@ public:
     };
 
     // constructor of copy
-    vArray(const vArray<T>& vA) : size(vA.size), val(new T[vA.size]) {
+    vArray(const vArray& vA) : size(vA.size), val(new T[vA.size]) {
         if (val == nullptr) {
             throw vArrException("OUT OF MEMORY");
         }
@@ -103,7 +103,7 @@ std::istream& operator>>(std::istream &in, vArray<T> &vA) {
     in >> elem;
     size_t i = 0;
     vA.size = 0;
-     
+
     while (elem != end) {
         if (i >= vA.size) {
             T* temp = vA.val;

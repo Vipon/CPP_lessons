@@ -2,35 +2,21 @@
 
 int main() {
     int arr[7] = { 4, 2, 12, 8, 14, 6, 10 };
-    vArray<int> aArr(arr, 7);
-
     try {
-         aArr.push_back(3);
-    }
-    catch (vArrException& problem) {
-        std::cout << problem.what();
-    }
-
-    vArray<int> bArr;
-
-    try {
+        vArray<int> aArr(arr, 7);
+        aArr.push_back(3);
+        vArray<int> bArr;
         aArr.QSort(0, 7);
-    }
-    catch (vArrException& problem) {
-        std::cout << problem.what();
-    }
-
-    bArr = aArr;
-    std::cout << bArr;
-    std::cin >> bArr;
-    std::cout << bArr;
-    
-    try {
+        bArr = aArr;
+        std::cout << bArr;
+        std::cin >> bArr;
+        std::cout << bArr;
         std::cout << aArr[5] << '\n';
+        std::cout << aArr.find(19);
     }
     catch (vArrException& problem) {
         std::cout << problem.what() << '\n';
     }
-    
-    std::cout << aArr.find(19);
+    getchar();
+    getchar();
 }
