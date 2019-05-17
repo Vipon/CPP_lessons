@@ -166,14 +166,13 @@ template <typename T>
 List<T>::~List() {
 	Elem* entry = Begin;
 
-	if (entry) {
-		while (entry != End) {
-			entry = entry->next;
-			delete entry->prev;
-		}
-
-		delete entry;
+	while ((entry != End) && (entry)) {
+		Elem* temp = entry;
+		entry = entry->next;
+		delete temp;
 	}
+
+	delete entry;
 }
 
 template <typename T>

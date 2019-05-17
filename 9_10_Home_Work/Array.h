@@ -10,8 +10,9 @@
 template <typename T, size_t NUM = 10>
 class Array {
 public:
+	Array(){};
 	Array(T (&val)[NUM]);
-	Array(T (&&val)[NUM]) : elements(val) {};
+	Array(const Array& arr);
 	~Array() {};
 
 	Array& operator=(const Array<T, NUM>& arr);
@@ -72,6 +73,11 @@ private:
 template<typename T, size_t NUM>
 Array<T, NUM>::Array(T (&val)[NUM]) { 
 		memcpy(elements, val, ((sizeof(T)) * NUM)); 
+}
+
+template<typename T, size_t NUM>
+Array<T, NUM>::Array(const Array& arr) {
+	memcpy(this->elements, arr.elements, (NUM * (sizeof(T))));
 }
 
 template<typename T, size_t NUM>

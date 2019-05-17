@@ -8,4 +8,4 @@ exec: main
 	./main
 
 clean: 
-	rm -f main.o main 
+	rm -f main 
