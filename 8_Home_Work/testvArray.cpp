@@ -1,4 +1,7 @@
 #include "vArray.h"
+#include <iostream>
+#include <cstddef>
+#include <exception>
 
 int main() {
 try {
