@@ -1,7 +1,4 @@
 #include "vArray.h"
-#include <iostream>
-#include <cstddef>
-#include <exception>
 
 int main() {
 try {
@@ -15,7 +12,8 @@ try {
     std::cout << a << std::endl;
     auto c = a + b;
     std::cout << c[1000];
-} catch (std::exception error) {
+}   
+catch (std::exception& error) {
     std::cout << error.what();
     exit (1);
 };
