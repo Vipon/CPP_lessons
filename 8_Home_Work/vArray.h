@@ -20,7 +20,9 @@ class vArray {
 
 public:
     // default constructor
-    vArray() {};
+    vArray(size_t size = 0) :
+        size(size),
+        val(new T[size]) {};
 
     vArray(T A[], size_t length) :size(length), val(new T[length]) {
         if (val == nullptr) {
