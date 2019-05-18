@@ -10,7 +10,7 @@ public:
 	Triangle(size_t sideline1, size_t sideline2, size_t sideline3) : sideline1(sideline1), sideline2(sideline2), sideline3(sideline3) {};
 	virtual ~Triangle() {};
 
-	virtual void draw(SDL_Renderer* render, int x, int y);
+	virtual void draw(SDL_Renderer* render, int x, int y) override;
 
 protected:
 	size_t sideline1;
