@@ -2,6 +2,7 @@
 #define ARRAY_H
 #include <iostream>
 #include <cstring>
+#include <cstdio>
 #include "my_Exception.h"
 
 template <typename T, size_t Size>
@@ -25,7 +26,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
 		std::string buf = "oh shit";
-		for(int i = 0; i< (input.last_pos-1); i++)
+		for(int i = 0; i< (input.Size); i++)
 		{
 			std::getline(stream, buf);
 
@@ -34,7 +35,7 @@ public:
 				return stream;
 			}
 			
-			input.table[i] = (T)stod(buf);
+			input.table[i] = (T)(std::atoi(buf));
 		}
 		return stream;
 	}
