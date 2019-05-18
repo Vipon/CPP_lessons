@@ -92,11 +92,11 @@ void vArray<T>::PushBack(const T &val) {
 template<typename T>
 void vArray<T>::Resize() {
     if (cap){
-        cap << 2
+        cap << 2;
     } else {
         cap = 1;
     }
-    
+
     T *newData = new T[cap];
     for (int i = 0; i < size; ++i) {
         newData[i] = data[i];
