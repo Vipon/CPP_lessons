@@ -9,7 +9,7 @@ public:
 	Segment(size_t length = 0) : length(length) {};
 	virtual ~Segment() {};
 
-	virtual void draw(SDL_Renderer* render, int x, int y);
+	virtual void draw(SDL_Renderer* render, int x, int y) override;
 
 protected:
 	size_t length; 
