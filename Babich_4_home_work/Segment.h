@@ -12,7 +12,7 @@ public:
 	virtual void draw(SDL_Renderer* render, int x, int y);
 
 protected:
-	int length; 
+	size_t length; 
 };
 
 #endif //__SEGMENT_H 
