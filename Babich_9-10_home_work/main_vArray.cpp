@@ -34,5 +34,5 @@ int main()
 	std::sort(arr.begin(), arr.end());
 	std::cout << arr;
 
-	system("pause");
+	//system("pause");
 }
