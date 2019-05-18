@@ -12,7 +12,7 @@ public:
 
 	void _4points(SDL_Renderer* rend, int x, int y, int x_1, int y_1);
 
-	virtual void draw(SDL_Renderer* rend, int x, int y);
+	virtual void draw(SDL_Renderer* rend, int x, int y) override;
 
 protected:
 	int a;
