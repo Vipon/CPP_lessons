@@ -26,7 +26,7 @@ public:
 	friend std::istream& operator>>(std::istream& stream, Array<T, Size>& input)
 	{
 		std::string buf = "oh shit";
-		for(int i = 0; i< (input.Size); i++)
+		for(int i = 0; i< (Size); i++)
 		{
 			std::getline(stream, buf);
 
@@ -35,7 +35,7 @@ public:
 				return stream;
 			}
 			
-			input.table[i] = (T)(std::atoi(buf));
+			input.table[i] = (T)(stod(buf));
 		}
 		return stream;
 	}
