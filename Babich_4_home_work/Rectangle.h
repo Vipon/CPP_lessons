@@ -10,7 +10,7 @@ public:
 	Rectangle(size_t sideline1, size_t sideline2) : sideline1(sideline1), sideline2(sideline2) {};
 	virtual ~Rectangle() {};
 
-	virtual void draw(SDL_Renderer* rend, int x, int y);
+	virtual void draw(SDL_Renderer* rend, int x, int y) override;
 
 protected:
 	int sideline1;
