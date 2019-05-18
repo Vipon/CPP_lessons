@@ -91,8 +91,8 @@ void vArray<T>::PushBack(const T &val) {
 
 template<typename T>
 void vArray<T>::Resize() {
-    if (cap){
-        cap << 2;
+    if (cap != 0){
+        cap <<= 2;
     } else {
         cap = 1;
     }
