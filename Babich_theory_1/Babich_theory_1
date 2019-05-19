@@ -4,7 +4,7 @@ I-III. Сигнатура фнкции - часть объявления, сод
 void func (int* val1, char* val2);
 float func (int* val1, char* val2);
 
-Одинаковыми сигнатурами будут
+Разными сигнатурами будут
 
 void func (int* val1, float* val2);
 void func (int* val1, char* val2);
