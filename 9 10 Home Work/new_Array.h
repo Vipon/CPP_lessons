@@ -7,7 +7,7 @@
 #include <cstring>
 
 template <typename Type, typename Function> 
-void my_qsort (Type* arr, int b, int e, Function Func);
+void my_qsort (Type* arr, int b, int e, Function Func); 
 
 template <typename Type, size_t size>
 class Array
