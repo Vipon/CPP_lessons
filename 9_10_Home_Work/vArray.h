@@ -330,7 +330,7 @@ template <typename T>
  };
 
  template <typename T>
- typename int vArray<T>::Iterator::operator-(const Iterator &it) {
+ int vArray<T>::Iterator::operator-(const Iterator &it) {
      return (pos - it.pos);
  }
 
