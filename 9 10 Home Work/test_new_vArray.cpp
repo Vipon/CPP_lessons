@@ -7,7 +7,7 @@
 void testing_of_constructor_of_copy(vArray<int> arr)
 {
     arr[0] = 1234;
-}
+} 
 
 int main()
 {

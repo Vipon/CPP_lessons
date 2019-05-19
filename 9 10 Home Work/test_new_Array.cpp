@@ -6,7 +6,7 @@
 
 
 void testing_of_constructor_of_copy(Array<int,3> arr)
-{
+{ 
     int a[3] = {};
     Array<int,3> arr1(a);
     arr = arr1;

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <exception>
 
-class ArrayException : public std::exception {
+class ArrayException : public std::exception { 
 public:
     ArrayException(std::string && err) noexcept : exc(std::move(err)) {}
     ArrayException(ArrayException&& aExc) noexcept : exc(std::move(aExc.exc)) {}
