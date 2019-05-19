@@ -1,8 +1,8 @@
 #include "triangle.h"
 #include "circle.h"
 #include "ellipse.h"
-#include "segment.h"
 #include "rectangle.h"
+#include "segment.h"
 #include "square.h"
 
 #include <iostream>
