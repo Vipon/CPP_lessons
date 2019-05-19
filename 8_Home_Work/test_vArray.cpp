@@ -1,7 +1,7 @@
 #include "vArray.h"
 #include <cstdlib>
-#include <iostream>
 #include <cstring>
+#include <iostream>
 
 void testing_of_constructor_of_copy(vArray<int> arr)
 {
@@ -19,7 +19,7 @@ int main()
         arr0[0] = 0;
         arr0[1] = 1;
     }
-    catch(std::string s)
+    catch(std::string& s)
     {
         std::cout << s << std::endl;
     }
