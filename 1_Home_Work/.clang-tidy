@@ -1,2 +1,0 @@
-Checks:             'clang-analyzer-*,-clang-diagnostic-unused-command-line-argument'
-WarningsAsErrors:   '*'
