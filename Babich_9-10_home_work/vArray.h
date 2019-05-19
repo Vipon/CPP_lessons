@@ -15,7 +15,7 @@ class vArray
 {
 public:
 
-	class Iterator
+	class Iterator : public std::iterator<std::random_access_iterator_tag, T, int>
 	{
 	public:
 		Iterator() {};
