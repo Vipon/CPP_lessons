@@ -1,6 +1,6 @@
 #include "triangle.h"
-#include "ellipse.h"
 #include "circle.h"
+#include "ellipse.h"
 #include "segment.h"
 #include "rectangle.h"
 #include "square.h"
