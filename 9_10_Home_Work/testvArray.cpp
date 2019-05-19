@@ -1,7 +1,6 @@
 #include "vArray.h"
 #include <algorithm>
 #include <numeric>
-#include <iterator>
 
 
 int main() {
