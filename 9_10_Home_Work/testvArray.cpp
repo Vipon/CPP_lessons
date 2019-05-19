@@ -1,7 +1,8 @@
+#include "vArray.h"
 #include <algorithm>
 #include <numeric>
 #include <iterator>
-#include "vArray.h"
+
 
 int main() {
     int arr[7] = { 4, 2, 12, 8, 14, 6, 10 };
