@@ -1,4 +1,5 @@
 #include "vArray.h"
+#include "Array_exeption.h"
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -81,8 +82,8 @@ int main()
         }
         return 0;
     }
-    catch(std::string& s)
+    catch(ArrayException& s)
     {
-        std::cout << s << std::endl;
+        std::cout << s.what() << std::endl;
     }
 }
