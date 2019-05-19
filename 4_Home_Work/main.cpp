@@ -1,9 +1,10 @@
-#include "circle.h"
+#include "triangle.h"
 #include "ellipse.h"
+#include "circle.h"
+#include "segment.h"
 #include "rectangle.h"
 #include "square.h"
-#include "segment.h"
-#include "triangle.h"
+
 #include <iostream>
 
 int main()
