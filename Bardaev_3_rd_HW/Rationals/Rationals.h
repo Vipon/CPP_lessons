@@ -44,6 +44,11 @@ public:
         denominator = 1;
     }
     
+    Rational(const int& a){
+        nominator = a;
+        denominator = 1;
+    }
+    
     Rational(const int& a, const int& b){ //there is a mistake in the constructor of class
         
         int c = absNOD(a, b);
@@ -76,19 +81,9 @@ public:
         return Rational(a.nominator*b.denominator+b.nominator*a.denominator, a.denominator*b.denominator);
     }
     
-    friend Rational operator + (const Rational& a, const int& b) {
-        
-        return Rational(a.nominator+a.denominator*b, a.denominator);
-    }
-    
     friend Rational operator - (const Rational& a, const Rational& b) {
         
         return Rational(a.nominator*b.denominator-b.nominator*a.denominator, a.denominator*b.denominator);
-    }
-    
-    friend Rational operator - (const Rational& a, const int& b) {
-        
-        return Rational(a.nominator-a.denominator*b, a.denominator);
     }
     
     friend Rational operator * (const Rational& a, const Rational& b) {
@@ -96,30 +91,11 @@ public:
         return Rational(a.nominator*b.nominator, a.denominator*b.denominator);
     }
     
-    friend Rational operator * (const Rational& a, const int& b) {
-        
-        return Rational(a.nominator*b, a.denominator);
-    }
-    
     friend Rational operator / (const Rational&a, const Rational& b) {
         if (b.nominator == 0){
             throw std::invalid_argument("Never divide by 0!");
         }
         return Rational(a.nominator*b.denominator, a.denominator*b.nominator);
-    }
-    
-    friend Rational operator / (const Rational& a, const int& b) {
-        if(b == 0){
-            throw std::invalid_argument("Never divide by 0!");
-        }
-        return Rational(a.nominator, a.denominator*b);
-    }
-    
-    friend Rational operator / (const int& b, const Rational& a) {
-        if (a.nominator == 0){
-            throw std::invalid_argument("Never divide by 0!");
-        }
-        return Rational(b*a.denominator,a.nominator);
     }
     
     friend std::ostream& operator << (std::ostream& stream, const Rational& R){
