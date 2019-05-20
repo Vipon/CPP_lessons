@@ -2,7 +2,7 @@
 #define VARRAY_H
 #include "my_Exception.h"
 #include <iostream>
-//#include <cstring>
+#include <cstring>
 #include <string>
 #include <iterator>
 #include <algorithm>
