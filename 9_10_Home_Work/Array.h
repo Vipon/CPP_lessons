@@ -6,6 +6,7 @@
 #include <iostream>
 #include <exception>
 #include <iterator>
+#include <algorithm>
 
 template <typename T, size_t NUM = 10>
 class Array {
@@ -18,7 +19,6 @@ public:
 	Array& operator=(const Array<T, NUM>& arr);
 	T& operator[](size_t pos);
 	void sort(int begin, int end);
-	size_t find(T& value) const;
 
 	template <typename Type, size_t S>
 	friend std::ostream& operator<<(std::ostream& os, const Array<Type, S>& arr);
@@ -49,6 +49,7 @@ public:
 		bool operator<=(Iterator& it);
 		bool operator>=(Iterator& it);
 		Iterator operator+(int n);
+		Iterator operator[](int n);
 		Iterator operator+=(int n);
 		Iterator operator-(int n);
 		Iterator operator-=(int n);
@@ -61,6 +62,8 @@ public:
 
 		Iterator(T* elem, size_t pos) : ptr(elem), pos(pos) {};
 	};
+
+	Iterator& find(T& value) const;
 
 	Iterator begin();
 	Iterator end();
@@ -96,49 +99,14 @@ T& Array<T, NUM>::operator[](size_t pos) {
 }
 
 template<typename T, size_t NUM>
-void Array<T, NUM>::sort(int begin, int end) {
-	if ((begin < 0) || (end >= NUM)) {
-		throw std::out_of_range("The size of the Array is exceeded");
-	}
-
-	T temp; 
-	int l = begin;
-	int r = end;
-	T piv = elements[((l + r) / 2)];
-	while (l <= r) {
-		while (elements[l] < piv) {
-			l++;
-		}
-
-		while (elements[r] > piv) {
-			r--;
-		}
-
-		if (l <= r) {
-			temp = elements[l];
-			elements[l++] = elements[r];
-			elements[r--] = temp;
-		}
-	}
-
-	if (begin < r) {
-		sort(begin, r);
-	}
-
-	if (end > l) {
-		sort(l, end);
-	}
+void Array<T, NUM>::sort(int b, int e) {
+	std::sort((begin() + b), (begin() + e));
 }
 
 template<typename T, size_t NUM>
-size_t Array<T, NUM>::find(T& value) const {
-	for (size_t i = 0; i < NUM; i++) {
-		if ((*this)[i] == value) {
-			return i;
-		}
-	};
-
-	return (NUM + 1);
+typename Array<T, NUM>::Iterator& Array<T, NUM>::find(T& value) const {
+	Iterator it = std::find(begin(), end(), value);
+	return it;
 }
 
 template<typename T, size_t NUM>
@@ -268,6 +236,11 @@ typename Array<T, NUM>::Iterator Array<T, NUM>::Iterator::operator+(int n) {
 	};
 
 	return Iterator((this->ptr), ((this->pos) + n));
+}
+
+template<typename T, size_t NUM>
+typename Array<T, NUM>::Iterator Array<T, NUM>::Iterator::operator[](int n) {
+	return (this + n);
 }
 
 template<typename T, size_t NUM>

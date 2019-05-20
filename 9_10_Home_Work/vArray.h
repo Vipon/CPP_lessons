@@ -6,12 +6,13 @@
 #include <iostream>
 #include <exception>
 #include <iterator>
+#include <algorithm>
 
 
 template <typename T>
 class vArray {
 public:
-	vArray(size_t num = 1) : size(num), num(num), elements(new T[num]) {};
+	vArray(size_t num = 0) : size(num), num(num), elements(new T[num]) {};
 	vArray(T* elem, size_t num = 0);
 	vArray(const vArray& v);
 	vArray(vArray&& v) noexcept;
@@ -23,8 +24,7 @@ public:
 	vArray operator+(vArray<T>& arr);
 	T& operator[](size_t pos);
 	size_t arr_num() { return num; }
-	void sort(int begin, int end);
-	size_t find(T& value) const;
+	void sort(int b, int e);
 	void set_num(size_t new_num);
 	void push_back(T value);
 
@@ -58,6 +58,7 @@ public:
 		bool operator<=(Iterator& it);
 		bool operator>=(Iterator& it);
 		Iterator operator+(int n);
+		Iterator operator[](int n);
 		Iterator operator+=(int n);
 		Iterator operator-(int n);
 		Iterator operator-=(int n);
@@ -72,6 +73,8 @@ public:
 
 		Iterator(T** elem, size_t pos, size_t* size) : ptr(elem), pos(pos), size(size) {};
 	};
+
+	Iterator& find(T& value) const;
 
 	Iterator begin();
 	Iterator end();
@@ -162,49 +165,14 @@ T& vArray<T>::operator[](size_t pos) {
 }
 
 template <typename T>
-void vArray<T>::sort(int begin, int end) {
-	if ((begin < 0) || (end >= num)) {
-		throw std::out_of_range("The size of the vArray is exceeded");
-	}
-
-	T temp; 
-	int l = begin;
-	int r = end;
-	T piv = elements[((l + r) / 2)];
-	while (l <= r) {
-		while (elements[l] < piv) {
-			l++;
-		}
-
-		while (elements[r] > piv) {
-			r--;
-		}
-
-		if (l <= r) {
-			temp = elements[l];
-			elements[l++] = elements[r];
-			elements[r--] = temp;
-		}
-	}
-
-	if (begin < r) {
-		sort(begin, r);
-	}
-
-	if (end > l) {
-		sort(l, end);
-	}
+void vArray<T>::sort(int b, int e) {
+	std::sort((begin() + b), (begin() + e));
 }
 
 template <typename T>
-size_t vArray<T>::find(T& value) const {
-	for (size_t i = 0; i < num; i++) {
-		if ((*this)[i] == value) {
-			return i;
-		}
-	};
-
-	return (num + 1);
+typename vArray<T>::Iterator& vArray<T>::find(T& value) const {
+	Iterator it = std::find(begin(), end(), value);
+	return it;
 }
 
 template <typename T>
@@ -380,6 +348,11 @@ typename vArray<T>::Iterator vArray<T>::Iterator::operator+(int n) {
 	};
 
 	return Iterator((this->ptr), ((this->pos) + n), this->size);
+}
+
+template<typename T>
+typename vArray<T>::Iterator vArray<T>::Iterator::operator[](int n) {
+	return (this + n);
 }
 
 template <typename T>

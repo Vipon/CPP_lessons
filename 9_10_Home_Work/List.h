@@ -23,9 +23,7 @@ public:
 	void insert_start(T val);
 	void insert_end(T val);
 	T& operator[](size_t pos);
-	void insert_after(T val, size_t num);
-	void delete_elem(size_t num);
-	T& find(T& val) const;
+	size_t list_size() { return size; };
 	List(const List& ls);
 	List(List&& ls) noexcept;
 	~List();
@@ -59,8 +57,13 @@ public:
 		Iterator(Elem* elem) : ptr(elem) {};
 	};
 
+	void insert_after(T val, Iterator& it);
+	void delete_elem(Iterator& it); 
+	Iterator& find(T& val) const;
+
 	Iterator begin();
 	Iterator end(); 
+	friend List<T>::Iterator;
 };
 
 
@@ -118,21 +121,22 @@ T& List<T>::operator[](size_t pos) {
 }
 
 template <typename T>
-void List<T>::insert_after(T val, size_t num) {
+void List<T>::insert_after(T val, Iterator& it) {
 	Elem* entry = new Elem;
 	entry->value = val;
 
 	size++;
-	Elem* t = (this[num]).next;
-	(this[num]).next = entry;
+	Elem* t = (*it).next;
+	(*it).next = entry;
 	t->prev = entry;
-	entry->prev = this[num];
+	entry->prev = *it;
 	entry->next = t;
 }
 
 template <typename T>
-void List<T>::delete_elem(size_t num) {
-	Elem* entry = this[num];
+void List<T>::delete_elem(Iterator& it) {
+	Elem* entry = *it;
+	it++;
 	if (Begin == entry) {
 		(entry->next)->prev = nullptr;
 		Begin = entry->next;
@@ -152,14 +156,9 @@ void List<T>::delete_elem(size_t num) {
 }
 
 template <typename T>
-T& List<T>::find(T& val) const {
-	Elem* t = Begin;
-
-	while((t) && ((t->value) != val) && (t != End)) {
-		t = t->next;
-	}
-
-	return t->value;
+typename List<T>::Iterator& List<T>::find(T& val) const {
+	Iterator it = std::find(begin(), end(), val);
+	return it;
 }
 
 template <typename T>
