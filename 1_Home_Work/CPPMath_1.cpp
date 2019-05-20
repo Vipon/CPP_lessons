@@ -7,25 +7,25 @@ struct Complex {
 
 
 template <typename T>
-T Sum (T &a, T &b)
+const T Sum (T &a, T &b)
 {
 	return (a + b);
 }
 
 template <typename T>
-T Sub (T &a, T &b)
+const T Sub (T &a, T &b)
 {
 	return (a - b);
 }
 
 template <typename T>
-T Mul (T &a, T &b)
+const T Mul (T &a, T &b)
 {
 	return (a * b);
 }
 
 template <typename T>
-T Div (T &a, T &b)
+const T Div (T &a, T &b)
 {
 	return (a / b);
 }
