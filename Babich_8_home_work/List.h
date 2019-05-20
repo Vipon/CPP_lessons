@@ -1,6 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 #include <iostream>
+#include <string>
+#include "my_Exception.h"
 
 
 
@@ -25,8 +27,8 @@ public:
 	}
 	~List()
 	{
-		 Line* buf1 = this->enter;
-		 Line* buf2 = this->enter;
+		Line* buf1 = this->enter;
+		Line* buf2 = this->enter;
 		while (buf1->next != nullptr)
 		{
 			buf2 = buf1->next;
@@ -35,24 +37,30 @@ public:
 		}
 		delete[] buf1;
 	}
+	
 	friend std::istream& operator>>(std::istream& stream, List<T>& input)
 	{
-		 Line* newLine = new  Line;
-		stream >> newLine->data;
-		newLine->next = nullptr;
-		 Line* buf = input.enter;
-		while (buf->next != nullptr)
+		std::string str = "boze_dai_otl";
+		while (str != " ")
 		{
-			buf = buf->next;
+			Line* newLine = new  Line;
+			newLine->next = nullptr;
+			std::getline(stream, str);
+			newLine->data = (T)stod(str);
+			Line* buf = input.enter;
+			while (buf->next != nullptr)
+			{
+				buf = buf->next;
+			}
+			buf->next = newLine;
+			input.length++;
 		}
-		buf->next = newLine;
-		input.length++;
 		return stream;
 	}
 
 	friend std::ostream& operator<<(std::ostream& stream, List<T>& output)
 	{
-		 Line* buf = output.enter;
+		Line* buf = output.enter;
 		for (size_t i = 1; i < output.length+1; i++)
 		{
 			stream << buf->data << ' ';
@@ -61,11 +69,11 @@ public:
 		return stream;
 	}
 
-	 T& operator[](size_t pos)
+	T& operator[](size_t pos)
 	{
 		if (pos > length)
-			return nullptr;
-		 Line* buf = enter;
+			throw ArrayException("out of range.");
+		Line* buf = enter;
 		for (size_t i = 0; i < pos; i++)
 		{
 			buf = buf->next;
@@ -76,7 +84,7 @@ public:
 	void DelLine(T data)
 	{
 		size_t count = 0;
-		 Line* buf1 = this->enter;
+		Line* buf1 = this->enter;
 		while (buf1->next != nullptr)
 		{
 			if (buf1->data == data)
@@ -104,23 +112,65 @@ public:
 		enter->next = sec;
 		return;
 		}
-		 Line* buf = buf1->next;
+		Line* buf = buf1->next;
 		prev->next = (prev->next)->next;
 		delete[] buf;
 		if (this->length > 1)
 		this->length--;
 		return;
 	}
+	
+	void pushback(T data)
+	{
+		Line* newLine = new  Line;
+		newLine->next = nullptr;
+		newLine->data = data;
+		Line* buf = enter;
+		while (buf->next != nullptr)
+		{
+			buf = buf->next;
+		}
+		buf->next = newLine;
+		input.length++;
+	}
+	
+	void pushfront(T data)
+	{
+		Line* newLine = new  Line;
+		newLine->next = enter->next;
+		newLine->data = data;
+		enter->next = newLine;
+		input.length++;
+	}
+	
+	void pop_back()
+	{
+		Line* buf = enter;
+		if (buf->next == nullptr)
+		{
+			throw ArrayException("no element do delete");
+		}
+
+		while (((buf->next)->next != nullptr))
+		{
+			buf = buf->next;
+		}
+
+		delete[] buf->next;
+		buf->next = nullptr;
+	}
+	
+	
 
 
 
 private:
 	struct Line {
 	T data;
-	 Line* next;
+	Line* next;
 };
 	size_t length = 0;
-	 Line* enter;
+	Line* enter;
 	 
 };
 
