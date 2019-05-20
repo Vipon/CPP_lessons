@@ -108,7 +108,7 @@ public:
         }
 
         Elem* addElem = new Elem;
-        if (addelem == nullptr) {
+        if (addElem == nullptr) {
             throw ListException("OUT OF MEMORY");
         }
         Elem* temp = current->next;

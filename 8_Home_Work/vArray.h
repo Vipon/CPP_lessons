@@ -28,7 +28,7 @@ public:
         else {
             val = new T[1];
         }
-        val = new T[size];
+
     };
 
     vArray(T A[], size_t length) :size(length), val(new T[length]) {
