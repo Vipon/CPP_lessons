@@ -104,7 +104,7 @@ void vArray<T>::Resize() {
 }
 
 template<typename T>
-T &vArray<T>::operator[](const size_t &n) {
+T &vArray<T>::operator[](const size_t &n) const {
     if (n > cap) {
         throw std::runtime_error("Out of range");
     }
