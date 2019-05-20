@@ -16,8 +16,8 @@ public:
 //	Particle& 				operator+(const Particle& p);
 	Particle&		operator+(const Particle& p) ;
 	Particle&				operator-(const Particle& p);
-	friend std::ostream& 	operator<< (std::ostream& os, const Particle& p);
-	friend std::istream& 	operator>> (std::istream& is, Particle& p);
+	friend std::ostream& 	operator<< (std::ostream& out, const Particle& p);
+	friend std::istream& 	operator>> (std::istream& in, Particle& p);
 private:
 	double mass;
 	int el_ch;
