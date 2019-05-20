@@ -16,6 +16,13 @@ public:
 		this->length++;
 	}
 	
+	List()
+	{
+		this->enter = new  Line;
+		this->enter->next = nullptr;
+		this->length++;
+	}
+	
 	~List()
 	{
 		Line* buf1 = this->enter;
@@ -149,6 +156,7 @@ public:
 
 		delete buf->next;
 		buf->next = nullptr;
+		length--;
 	}
 	
 	
