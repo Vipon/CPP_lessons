@@ -40,4 +40,19 @@ uint64_t Stack::pop() {
 	if (isEmpty()) {
 		abort();
 	}
+
+	uint32_t data = stack[(cur - 1)];
+	stack[(--cur)] = 0;
+	return data;
 }
+
+void Stack::dump() {
+	if (isEmpty()) {
+		return;
+	}
+
+	size_t i = 0;
+	for (i = 0; i < cur; i++) {
+		std::cout << stack[i] << std::endl;
+	}
+} 
