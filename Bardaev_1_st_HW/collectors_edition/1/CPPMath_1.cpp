@@ -6,27 +6,27 @@ struct Complex {
 };
 
 template <class T>
-T Sum(T a, T b){
-    return a+b;
+T Sum(T& a, T& b){
+    return a + b;
 }
 
 template <class T>
-T Sub(T a, T b){
-    return (a-b);
+T Sub(T& a, T& b){
+    return a - b;
 }
 
 template <class T>
-T Mul(T a, T b){
-    return (a*b);
+T Mul(T& a, T& b){
+    return a * b;
 }
 
 template <class T>
-T Div(T a, T b){
-    return (a/b);
+T Div(T& a, T& b){
+    return a / b;
 }
 
-template <> Complex Sum<Complex>(Complex a, Complex b){
-   
+template <> Complex Sum<Complex>(Complex& a, Complex& b){
+    
     Complex c;
     
     c.x = a.x + b.x;
@@ -35,7 +35,7 @@ template <> Complex Sum<Complex>(Complex a, Complex b){
     return c;
 }
 
-template <> Complex Sub<Complex>(Complex a, Complex b){
+template <> Complex Sub<Complex>(Complex& a, Complex& b){
     
     Complex c;
     
@@ -45,7 +45,7 @@ template <> Complex Sub<Complex>(Complex a, Complex b){
     return c;
 }
 
-template <> Complex Mul<Complex>(Complex a, Complex b){
+template <> Complex Mul<Complex>(Complex& a, Complex& b){
     
     Complex c;
     
@@ -55,7 +55,7 @@ template <> Complex Mul<Complex>(Complex a, Complex b){
     return c;
 }
 
-template <> Complex Div<Complex>(Complex a, Complex b){
+template <> Complex Div<Complex>(Complex& a, Complex& b){
     
     Complex c;
     
@@ -65,18 +65,25 @@ template <> Complex Div<Complex>(Complex a, Complex b){
     } else {
         std::cout << "Enter valid diverse" << std::endl;
     }
-        
+    
     return c;
 }
 
-void cPrint(Complex C){ //the optional programming needed
+void init_c(Complex * c, double a, double b){
+    
+    c->x = a;
+    c->y = b;
+    
+}
+
+void cPrint(Complex& C){ //the optional programming needed
     
     if (C.x != 0 && C.y != 0){
-    if (C.y > 0){
-        std::cout << C.x << "+i" << C.y << std::endl;
-    } else {
-        std::cout << C.x << "-i" << (-1)*C.y << std::endl;
-    }
+        if (C.y > 0){
+            std::cout << C.x << "+i" << C.y << std::endl;
+        } else {
+            std::cout << C.x << "-i" << (-1)*C.y << std::endl;
+        }
     } else {
         if (C.x == 0 && C.y == 0){
             std::cout << C.x << std::endl;
@@ -92,14 +99,6 @@ void cPrint(Complex C){ //the optional programming needed
             }
         }
     }
-}
-
-
-void init_c(Complex * c, double a, double b){
-    
-    c->x = a;
-    c->y = b;
-    
 }
 
 int main() {
