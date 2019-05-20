@@ -131,7 +131,7 @@ public:
 			buf = buf->next;
 		}
 		buf->next = newLine;
-		input.length++;
+		length++;
 	}
 	
 	void pushfront(T data)
@@ -140,7 +140,7 @@ public:
 		newLine->next = enter->next;
 		newLine->data = data;
 		enter->next = newLine;
-		input.length++;
+		length++;
 	}
 	
 	void pop_back()
