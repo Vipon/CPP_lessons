@@ -1,97 +1,60 @@
 #include <iostream>
 
-struct Complex {
-	float im;
-	float re;
+using namespace std;
+
+struct Complex{
+    double Re;
+    double Im;
 };
 
-
 template <typename T>
-T Sum (const T &a, const T &b)
-{
-	return (a + b);
+T Sum(T &a, T &b){
+    return a + b;
 }
 
-template <typename T>
- T Sub (const T &a, const T &b)
-{
-	return (a - b);
+template <>
+Complex Sum <Complex> (Complex &a, Complex &b){
+    return {a.Re + b.Re, a.Im + b.Im};
 }
 
 template <typename T>
-T Mul (const T &a, const T &b)
-{
-	return (a * b);
+T Sub(T &a, T &b){
+    return a - b;
+}
+
+template <>
+Complex Sub <Complex> (Complex &a, Complex &b){
+    return {a.Re - b.Re, a.Im - b.Im};
 }
 
 template <typename T>
- T Div (const T &a, const T &b)
-{
-	return (a / b);
+T Mul(T &a, T &b){
+    return a * b;
 }
 
-template <> Complex Sum<Complex> (Complex &a, Complex &b)
-{
-	Complex sum {};
-	sum.im = a.im + b.im;
-	sum.re = a.re + b.re; 
-	return sum;
+template <>
+Complex Mul <Complex> (Complex &a, Complex &b){
+    return {a.Re * b.Re - a.Im * b.Im, a.Im * b.Re + a.Re * b.Im};
 }
 
-template <> Complex Sub<Complex> (Complex &a, Complex &b)
-{
-	Complex sub {};
-	sub.im = a.im - b.im;
-	sub.re = a.re - b.re; 
-	return sub;
-}
-template <> Complex Mul<Complex> (Complex &a, Complex &b)
-{
-	Complex mul {};
-	mul.im = a.re * b.im + a.im * b.re;
-	mul.re = a.re * b.re - a.im * b.im; 
-	return mul;
-}
-template <> Complex Div<Complex> (Complex &a, Complex &b)
-{
-	Complex div {};
-	div.im = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
-	div.re = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
-	return div;
+template <typename T>
+T Div(T &a, T &b){
+    return a / b;
 }
 
-
-int main ()
-{
-	Complex a {};
-	Complex b {};
-	a.im = 13;
-	b.im = 15;
-	a.re = 3;
-	b.re = 5;
-	int i = 13;
-	int j = 5;
-	float n = 1.37;
-	float m = 20.22;
-
-	std::cout << "int:" << std::endl;
-	std::cout << "Sum = " << Sum (i, j) << std::endl;
-	std::cout << "Sub = " << Sub (i, j) << std::endl;
-	std::cout << "Mul = " << Mul (i, j) << std::endl;
-	std::cout << "Div = " << Div (i, j) << std::endl;
-
-	std::cout << "float:" << std::endl;
-	std::cout << "Sum = " << Sum (n, m) << std::endl;
-	std::cout << "Sub = " << Sub (n, m) << std::endl;
-	std::cout << "Mul = " << Mul (n, m) << std::endl;
-	std::cout << "Div = " << Div (n, m) << std::endl;
-
-
-	std::cout << "Complex:" << std::endl;
-	std::cout << "Sum = " << Sum(a, b).re << " + i * ("<< Sum(a, b).im << ")" << std::endl;
-	std::cout << "Sub = " << Sub(a, b).re << " + i * ("<< Sub(a, b).im << ")" << std::endl;
-	std::cout << "Mul = " << Mul(a, b).re << " + i * ("<< Mul(a, b).im << ")" << std::endl;
-	std::cout << "Div = " << Div(a, b).re << " + i * ("<< Div(a, b).im << ")" << std::endl;
-
-	return 0;
+template <>
+Complex Div <Complex> (Complex &a, Complex &b){
+    return {(a.Re * b.Re + a.Im * b.Im)/(b.Re * b.Re + b.Im * b.Im), (a.Im * b.Re - a.Re * b.Im)/(b.Re * b.Re + b.Im * b.Im)};
 }
+
+ostream &operator<<(ostream &out, Complex C){
+    out << C.Re << "+" << C.Im << "i";
+    return out;
+}
+
+int main(){
+    double a = 5, b = 9;
+    Complex c = {1, 0}, d= {0, 1};
+    cout << Sum(a, b) << " " << Sub(a, b) << " " << Mul(a, b) << " " << Div(a, b) << endl;
+    cout << Sum(c, d) << " " << Sub(c, d) << " " << Mul(c, d) << " " << Div(c, d) << endl;
+    return 0;
