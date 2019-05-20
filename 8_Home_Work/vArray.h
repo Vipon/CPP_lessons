@@ -119,13 +119,12 @@ void vArray<T>::operator+=(vArray<T>& array_) {
 }
 
 template<typename T>
-vArray<T> operator+(vArray<T>& array_) {
-    vArray &array = *this;
-    vArray<T> NewVArray = vArray<T>(array.GetSize() + array_.GetSize());
-    for(int i = 0; i < array.GetSize(); ++i){
-        NewVArray.PushBack(array[i]);
+vArray<T> vArray<T>::operator+(vArray<T>& array_) {
+    vArray<T> NewVArray = vArray<T>(size + array_.size);
+    for(int i = 0; i < size; ++i){
+        NewVArray.PushBack((*this)[i]);
     }
-    for(int i = 0; i < array_.GetSize(); ++i){
+    for(int i = 0; i < size; ++i){
         NewVArray.PushBack(array_[i]);
     }
     return NewVArray;
