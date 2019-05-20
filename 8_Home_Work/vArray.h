@@ -20,8 +20,8 @@ public:
     void SetSize(const size_t& n);
     void PushBack(const T& val);
     T &operator[](const size_t &n);
-    T operator[](const size_t &n) const;
     void operator+=(const vArray<T>& array_);
+    vArray operator+(const vArray<T>& array, const vArray<T>& array_);
     bool operator==(const vArray<T>& array_);
     void operator=(const vArray<T>& array_);
     template<typename Q>
@@ -35,8 +35,6 @@ private:
     size_t size;
 };
 
-template<typename T>
-vArray<T> operator+(const vArray<T>& array, const vArray<T>& array_);
 
 template<typename T>
 vArray<T>::vArray() : cap(N), size(0) {
@@ -108,14 +106,6 @@ void vArray<T>::Resize() {
 template<typename T>
 T &vArray<T>::operator[](const size_t &n) {
     if (n > cap) {
-        throw std::runtime_error("Out of range");
-    }
-    return data[n];
-}
-
-template<typename T>
-T vArray<T>::operator[](const size_t &n) const{
-    if (n > size) {
         throw std::runtime_error("Out of range");
     }
     return data[n];
