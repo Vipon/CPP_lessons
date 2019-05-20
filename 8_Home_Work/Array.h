@@ -37,13 +37,24 @@ public:
 		return *this;
 	}
 
-	friend std::istream& operator>>(std::istream& is, Array& rep) {
-		for(size_t i = 0; i < N; i++) {
+	friend std::istream& operator>>(std::istream& is, Array <T, N>& rep) {
+		size_t i = 0;
+		bool b = 0;
+		std::cout << "\n" << "More symbols? If yes print 1 else print 0" << "\n";
+		is >> b;
+		while((i < N) && b) {
 			is >> (rep.arr)[i];
+			std::cout <<  "\n" << "More symbols? If yes print 1 else print 0s" << "\n";
+			is >> b;
+			i++;
 		};
+		for (i =i; i < N; ++i)
+		{
+			rep.arr[i] = 0;
+		}
 
-		return is;
-	}
+		return is;	
+		}
 
 	friend std::ostream& operator<<(std::ostream& os, const Array& rep) {
 		for(size_t i = 0; i < N; i++) {
