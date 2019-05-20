@@ -7,10 +7,10 @@
 #include <exception>
 
 
-class ArrException : public std::exception {
+class ListException : public std::exception {
 public:
-    ArrException(std::string&& err) noexcept : exc(std::move(err)) {}
-    ArrException(ArrException&& gExc) noexcept : exc(std::move(gExc.exc)) {}
+    ListException(std::string&& err) noexcept : exc(std::move(err)) {}
+    ListException(ListException&& gExc) noexcept : exc(std::move(gExc.exc)) {}
     const char* what() const noexcept { return exc.c_str(); }
 private:
     std::string exc;
@@ -25,10 +25,16 @@ public:
 
     List(T* Arr, size_t sizeArr) {
         begin = new Elem;
+        if (begin == nullptr) {
+            throw ListException("OUT OF MEMORY");
+        }
         Elem *current = begin;
         for (int i = 0; i < sizeArr - 1; i++) {
             current->val = Arr[i];
             current->next = new Elem;
+            if (current->next == nullptr) {
+                throw ListException("OUT OF MEMORY");
+            }
             current = current->next;
         }
 
@@ -41,11 +47,18 @@ public:
     List(const List<T>& L) {
         Elem* current = L.begin;
         begin = new Elem;
+        if (begin == nullptr) {
+            throw ListException("OUT OF MEMORY");
+        }
         Elem* elem = begin;
         elem->val = current->val;
 
         while (current->next) {
             elem->next = new Elem;
+            if (elem->next == nullptr) {
+                throw ListException("OUT OF MEMORY");
+            }
+
             elem = elem->next; 
             current = current->next;
             elem->val = current->val;
@@ -78,6 +91,10 @@ public:
         out << std::endl;
         return out;
     }
+    
+    void push_front(T value) {
+        begin->val = value;
+    }
 
     //this fuction inserts element 'value' after element 'elem'
     void insert(T value, T elem) {
@@ -87,11 +104,13 @@ public:
         }
 
         if (current == nullptr) {
-            //element not find
-            //realize with throw?
+            throw ListException("ELEMENT NOT FOUND");
         }
 
         Elem* addElem = new Elem;
+        if (addelem == nullptr) {
+            throw ListException("OUT OF MEMORY");
+        }
         Elem* temp = current->next;
         current->next = addElem;
         addElem->val = value;
@@ -138,6 +157,9 @@ public:
         if (value != closing_el) {
             list.size = 1;
             list.begin = new Elem;
+            if (list.begin == nullptr) {
+                throw ListException("OUT OF MEMORY");
+            }
             list.begin->val = value;
             current = list.begin;
             is >> value;
@@ -149,6 +171,9 @@ public:
 
         while (value != closing_el) {
             current->next = new Elem;
+            if (current->next == nullptr) {
+                throw ListException("OUT OF MEMORY");
+            }
             current->next->val = value;
             list.size = list.size + 1;
             is >> value;
