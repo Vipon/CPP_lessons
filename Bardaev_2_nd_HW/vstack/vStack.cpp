@@ -2,16 +2,23 @@
 
 int main() {
     
-    vStack<int> a = vStack<int>(3);
+    vStack<int> a = vStack<int>(2);
     
     try{
     
     a.push(1);
     a.push(2);
+        
+    vStack<int> b = vStack<int>(a);
+        
+    a.isFull();
+        
     a.push(3);
     
     std::cout << "Size: " << a.Size() << std::endl;
     
+    a.push(4);
+    a.push(5);
     a.dump();
     
     a.pop();
@@ -19,6 +26,9 @@ int main() {
     
     std::cout << "Size: " << a.Size() << std::endl;
     
+        b.dump();
+        std::cout << "Size b: " << a.Size() << std::endl;
+        b.isEmpty();
         
     a.pop();
     a.pop();
@@ -30,6 +40,9 @@ int main() {
     }
     
     std::cout << "Size: " << a.Size() << std::endl;
+    
+    a.isFull();
+    a.isEmpty();
     
     /*
      try{

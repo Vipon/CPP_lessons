@@ -9,7 +9,16 @@ class vStack {
 public:
     vStack(const unsigned int maxSize) {
         size = 0;
+        max = maxSize;
         array = new T [maxSize];
+    }
+    vStack(const vStack& var){   //constructor of copying
+        size = var.size;
+        max = var.max;
+        array = new T[var.size];
+        for(int i = 0; i < max; i++) {
+            array[i] = var.array[i];
+        }
     }
     
     ~vStack() {
@@ -17,6 +26,11 @@ public:
     }
     
     void push(const T newElement) {
+        /*if(size == max){
+            vStack t = vStack();
+            array = new T[max+1];
+            std::cout << "New memory " << std::endl;
+        }*/
         array[size] = newElement;
         size++;
     }
@@ -43,13 +57,13 @@ public:
         std::cout << std::endl;
     }
     
-    /*void isFull(){
-        if (size >= N) {
+    void isFull(){
+        if (size == max) {
             std::cout << "Full" << std::endl;
         } else {
             std::cout << "Not Full" << std::endl;
         }
-    }*/
+    }
     
     void isEmpty(){
         if (size == 0){
@@ -61,6 +75,7 @@ public:
     
 private:
     unsigned int size;
+    unsigned int max;
     T *array;
     
 };
