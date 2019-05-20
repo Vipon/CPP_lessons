@@ -58,3 +58,4 @@ int main(){
     cout << Sum(a, b) << " " << Sub(a, b) << " " << Mul(a, b) << " " << Div(a, b) << endl;
     cout << Sum(c, d) << " " << Sub(c, d) << " " << Mul(c, d) << " " << Div(c, d) << endl;
     return 0;
+}
