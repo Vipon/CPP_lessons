@@ -28,10 +28,10 @@ public:
 		while (buf1->next != nullptr)
 		{
 			buf2 = buf1->next;
-			delete[] buf1;
+			delete buf1;
 			buf1 = buf2;
 		}
-		delete[] buf2;
+		delete buf2;
 	}
 	
 	friend std::istream& operator>>(std::istream& stream, List<T>& input)
@@ -103,14 +103,14 @@ public:
 		if(prev == enter)
 		{
 		Line* sec = enter->next;
-		delete[] enter;
+		delete enter;
 		enter = new Line;
 		enter->next = sec;
 		return;
 		}
 		Line* buf = buf1->next;
 		prev->next = (prev->next)->next;
-		delete[] buf;
+		delete buf;
 		if (this->length > 1)
 		this->length--;
 		return;
@@ -152,7 +152,7 @@ public:
 			buf = buf->next;
 		}
 
-		delete[] buf->next;
+		delete buf->next;
 		buf->next = nullptr;
 	}
 	
