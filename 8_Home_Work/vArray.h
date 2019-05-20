@@ -124,7 +124,7 @@ vArray<T> vArray<T>::operator+(vArray<T>& array_) {
     for(int i = 0; i < size; ++i){
         NewVArray.PushBack((*this)[i]);
     }
-    for(int i = 0; i < size; ++i){
+    for(int i = 0; i < array_.size; ++i){
         NewVArray.PushBack(array_[i]);
     }
     return NewVArray;
