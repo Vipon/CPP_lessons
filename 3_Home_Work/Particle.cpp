@@ -31,9 +31,9 @@ Particle::Particle(const Particle& p)
 Particle::~Particle()
 {
 	delete  &mass;
-	delete  &el_ch;
-	delete  &spin;
-	delete  &izospin;
+//	delete  &el_ch;
+//	delete  &spin;
+//	delete  &izospin;
 }
 
 
