@@ -2,10 +2,13 @@
 
 int main() {
     
-    vStack<int> a = vStack<int>(1);
+    vStack<int> a = vStack<int>(3);
+    
+    try{
     
     a.push(1);
     a.push(2);
+    a.push(3);
     
     std::cout << "Size: " << a.Size() << std::endl;
     
@@ -15,8 +18,9 @@ int main() {
     a.dump();
     
     std::cout << "Size: " << a.Size() << std::endl;
-    try{
+    
         
+    a.pop();
     a.pop();
     a.pop();
         
