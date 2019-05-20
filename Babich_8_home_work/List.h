@@ -59,7 +59,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& stream, List<T>& output)
 	{
 		Line* buf = output.enter;
-		for (size_t i = 1; i < output.length+1; i++)
+		for (size_t i = 1; i < output.length; i++)
 		{
 			stream << buf->data << ' ';
 			buf = buf->next;
