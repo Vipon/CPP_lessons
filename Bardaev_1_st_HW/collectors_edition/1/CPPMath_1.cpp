@@ -6,26 +6,26 @@ struct Complex {
 };
 
 template <class T>
-T Sum(T& a, T& b){
+T Sum(const T& a, const T& b){
     return a + b;
 }
 
 template <class T>
-T Sub(T& a, T& b){
+T Sub(const T& a, const T& b){
     return a - b;
 }
 
 template <class T>
-T Mul(T& a, T& b){
+T Mul(const T& a, const T& b){
     return a * b;
 }
 
 template <class T>
-T Div(T& a, T& b){
+T Div(const T& a, const T& b){
     return a / b;
 }
 
-template <> Complex Sum<Complex>(Complex& a, Complex& b){
+template <> Complex Sum<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -35,7 +35,7 @@ template <> Complex Sum<Complex>(Complex& a, Complex& b){
     return c;
 }
 
-template <> Complex Sub<Complex>(Complex& a, Complex& b){
+template <> Complex Sub<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -45,7 +45,7 @@ template <> Complex Sub<Complex>(Complex& a, Complex& b){
     return c;
 }
 
-template <> Complex Mul<Complex>(Complex& a, Complex& b){
+template <> Complex Mul<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -55,7 +55,7 @@ template <> Complex Mul<Complex>(Complex& a, Complex& b){
     return c;
 }
 
-template <> Complex Div<Complex>(Complex& a, Complex& b){
+template <> Complex Div<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -76,7 +76,7 @@ void init_c(Complex * c, double a, double b){
     
 }
 
-void cPrint(Complex& C){ //the optional programming needed
+void cPrint(const Complex& C){ //the optional programming needed
     
     if (C.x != 0 && C.y != 0){
         if (C.y > 0){

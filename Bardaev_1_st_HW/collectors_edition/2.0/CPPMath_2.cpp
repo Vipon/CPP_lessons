@@ -6,22 +6,22 @@ struct Complex {
 };
 
 template <class T1, class T2>
-T1 Sum(T1 a, T2 b){
+T1 Sum(const T1& a, const T2& b){
     return (a+b);
 }
 
 template <class T>
-T Sub(T a, T b){
+T Sub(const T& a, const T& b){
     return (a-b);
 }
 
 template <class T1,class T2>
-T1 Mul(T1 a, T2 b){
+T1 Mul(const T1& a, const T2& b){
     return (a*b);
 }
 
 template <class T>
-T Div(T a, T b){
+T Div(const T& a, const T& b){
     return (a/b);
 }
 
@@ -89,7 +89,7 @@ template <> Complex Mul<Complex, double>(const Complex& a, const double& b){
     return c;
 }*/
 
-void cPrint(Complex C){ //the optional programming needed
+void cPrint(const Complex C){ //the optional programming needed
     
     if (C.x != 0 && C.y != 0){
         if (C.y > 0){
