@@ -93,7 +93,13 @@ public:
     }
     
     void push_front(T value) {
+        Elem* current = begin;
+
+        size++;
+
+        begin = new Elem;
         begin->val = value;
+        begin->next = current;
     }
 
     //this fuction inserts element 'value' after element 'elem'
