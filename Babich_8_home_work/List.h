@@ -4,10 +4,6 @@
 #include <string>
 #include "my_Exception.h"
 
-
-
-
-
 template <typename T>
 class List
 {
