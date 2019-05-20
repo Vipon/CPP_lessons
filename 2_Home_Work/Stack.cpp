@@ -1,12 +1,13 @@
 #include "Stack.h"
+
 #include <cstdint>
 #include <cstdio>
-// #include <cstring>
+#include <cstring>
 #include <iostream>
 
 
 Stack::Stack (size_t size) {
-	stack = new uint64_t[size];
+	stack = new uint32_t[size];
 	this->size = size;
 	this->cur = 0;
 }
@@ -23,34 +24,20 @@ bool Stack::isEmpty() {
 	return (cur == 0);
 }
 
-void Stack::push(uint64_t dat) {
+void Stack::push(uint32_t data) {
 	if (isFull()) {
-		uint64_t *ST0 = stack;
-		stack = new uint64_t[size * 2];
-		memcpy(stack, ST0, (size * sizeof(uint64_t)));
+		uint32_t *buffer = stack;
+		stack = new uint32_t[size * 2];
+		memcpy(stack, buffer, (size * sizeof(uint32_t)));
 		size = 2 * size;
-		delete [] ST0;
+		delete [] buffer;
 	}
 
-	stack[cur++] = dat;
+	stack[(cur++)] = data;
 }
 
 uint64_t Stack::pop() {
 	if (isEmpty()) {
-		std::cout << "Sorry, stack is empty" << std::endl;
 		abort();
-}
-
-	return (stack[--cur]);
-}
-
-void Stack::dump() {
-	if (isEmpty()) {
-		return;
 	}
-
-	size_t i = 0;
-	for (i = 0; i < cur; i++) {
-		std::cout << stack[i] << std::endl;
-	}
-}  
+}
