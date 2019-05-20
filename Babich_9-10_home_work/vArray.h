@@ -19,12 +19,12 @@ public:
 	{
 	public:
 		Iterator() {};
-		Iterator(const Iterator& it) : pointer(it.pointer), pos(it.pos), num(it.num) {};
+		Iterator(const Iterator& it) : Pointer(it.Pointer), pos(it.pos), num(it.num) {};
 		~Iterator() {};
 
 		T& operator*()
 		{
-			return *pointer[pos];
+			return *Pointer[pos];
 		}
 
 		Iterator operator++()
@@ -49,24 +49,24 @@ public:
 
 		bool operator==(Iterator& it)
 		{
-			return ((this->pos == it.pos) && (this->num == it.num) && (this->pointer == it.pointer));
+			return ((this->pos == it.pos) && (this->num == it.num) && (this->Pointer == it.Pointer));
 		}
 
-		bool operator!=(Iterator& it)
+		bool operator!=(const Iterator& it) const
 		{
-			return !((this->pos == it.pos) && (this->num == it.num) && (this->pointer == it.pointer));
+			return !((this->pos == it.pos) && (this->num == it.num) && (this->Pointer == it.Pointer));
 		}
 
 		Iterator& operator=(const Iterator& it)
 		{
 			this->pos = it.pos;
 			this->num = it.num;
-			this->pointer = it.pointer;
+			this->Pointer = it.Pointer;
 
 			return *this;
 		}
 
-		int operator-(const Iterator& it)
+		int operator-(const Iterator& it) const
 		{
 			return this->pos - it.pos;
 		}
@@ -96,7 +96,7 @@ public:
 			if ((this->pos + n > *this->num) || (this->pos + n < 0))
 				return *this;
 
-			return Iterator(this->pointer, this->pos + n, this->num);
+			return Iterator(this->Pointer, this->pos + n, this->num);
 		}
 		Iterator operator+=(int n)
 		{
@@ -111,7 +111,7 @@ public:
 			if ((this->pos - n > *this->num) || (this->pos - n < 0))
 				return *this;
 
-			return Iterator(this->pointer, this->pos - n, this->num);
+			return Iterator(this->Pointer, this->pos - n, this->num);
 		}
 
 		Iterator operator-=(int n)
@@ -126,12 +126,12 @@ public:
 
 
 	private:
-		T** pointer;
+		T** Pointer;
 		size_t pos;
 		size_t* num;
 		friend vArray<T>;
 
-		Iterator(T** elem, size_t pos, size_t* size) : pointer(elem), pos(pos), num(size) {};
+		Iterator(T** elem, size_t pos, size_t* size) : Pointer(elem), pos(pos), num(size) {};
 	};
 
 
@@ -211,7 +211,7 @@ public:
 		while (true)
 		{
 			std::getline(stream, buf);
-			
+
 			if (buf == " ")
 			{
 				return stream;
@@ -347,7 +347,7 @@ public:
 		throw ArrayException("no such element");
 	}
 
-	
+
 
 private:
 	size_t last_pos = 0;
