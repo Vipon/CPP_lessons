@@ -21,7 +21,7 @@ public:
     void PushBack(const T& val);
     T &operator[](const size_t &n);
     void operator+=(vArray<T>& array_);
-    //vArray operator+(const vArray<T>& array_);
+    vArray operator+(vArray<T>& array_);
     bool operator==(const vArray<T>& array_);
     void operator=(const vArray<T>& array_);
     template<typename Q>
@@ -112,13 +112,13 @@ T &vArray<T>::operator[](const size_t &n) {
 }
 
 template<typename T>
-void vArray<T>::operator+=(const vArray<T>& array_) {
+void vArray<T>::operator+=(vArray<T>& array_) {
     for(int i = 0; i < array_.GetSize(); ++i) {
         this->PushBack(array_[i]);
     }
 }
 
-/*template<typename T>
+template<typename T>
 vArray<T> operator+(vArray<T>& array_) {
     vArray &array = *this;
     vArray<T> NewVArray = vArray<T>(array.GetSize() + array_.GetSize());
@@ -129,7 +129,7 @@ vArray<T> operator+(vArray<T>& array_) {
         NewVArray.PushBack(array_[i]);
     }
     return NewVArray;
-}*/
+}
 
 template<typename T>
 bool vArray<T>::operator==(const vArray<T>& array_) {
