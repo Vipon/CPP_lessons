@@ -25,7 +25,7 @@ T Div(T a, T b){
     return (a/b);
 }
 
-template <> Complex Sum<Complex, Complex>(const Complex a, const Complex b){
+template <> Complex Sum<Complex, Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -35,7 +35,7 @@ template <> Complex Sum<Complex, Complex>(const Complex a, const Complex b){
     return c;
 }
 
-template <> Complex Sub<Complex>(const Complex a, const Complex b){
+template <> Complex Sub<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -45,7 +45,7 @@ template <> Complex Sub<Complex>(const Complex a, const Complex b){
     return c;
 }
 
-template <> Complex Mul<Complex>(const Complex a, const Complex b){
+template <> Complex Mul<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -55,7 +55,7 @@ template <> Complex Mul<Complex>(const Complex a, const Complex b){
     return c;
 }
 
-template <> Complex Div<Complex>(const Complex a, const Complex b){
+template <> Complex Div<Complex>(const Complex& a, const Complex& b){
     
     Complex c;
     
@@ -69,7 +69,7 @@ template <> Complex Div<Complex>(const Complex a, const Complex b){
     return c;
 }
 
-template <> Complex Mul<Complex, double>(const Complex a, const double b){
+template <> Complex Mul<Complex, double>(const Complex& a, const double& b){
     
     Complex c;
     
