@@ -15,12 +15,7 @@ public:
 		this->enter->next = nullptr;
 		this->length++;
 	}
-	List()
-	{
-		this->enter = new  Line;
-		this->enter->next = nullptr;
-		this->length++;
-	}
+	
 	~List()
 	{
 		Line* buf1 = this->enter;
