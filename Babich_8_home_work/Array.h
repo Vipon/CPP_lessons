@@ -55,7 +55,7 @@ public:
 
 	T& operator[] (size_t pos)
 	{
-		if (pos < (last_pos-1))
+		if (pos < (last_pos+1))
 		{
 			return table[pos - 1];
 		}
