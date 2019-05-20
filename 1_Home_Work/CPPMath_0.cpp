@@ -1,25 +1,25 @@
 #include <iostream>
 
 template <typename T>
-T Sum (const T a, const T b)
+T Sum (const T &a, const T &b)
 {
 	return (a + b);
 }
 
 template <typename T>
-T Sub (const T a, const T b)
+T Sub (const T &a, const T &b)
 {
 	return (a - b);
 }
 
 template <typename T>
-T Mul (const T a, const T b)
+T Mul (const T &a, const T &b)
 {
 	return (a * b);
 }
 
 template <typename T>
-T Div (const T a, const T b)
+T Div (const T &a, const T &b)
 {
 	return (a / b);
 }
