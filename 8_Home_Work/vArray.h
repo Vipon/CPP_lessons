@@ -144,7 +144,7 @@ bool vArray<T>::operator==(const vArray<T>& array_) {
 
 
 template<typename T>
-void vArray<T>::operator=(const vArray<T>& array_) {
+vArray<T> vArray<T>::operator=(const vArray<T>& array_) {
     size = array_.size;
     cap = array_.cap;
     delete[] data;
