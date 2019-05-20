@@ -23,7 +23,7 @@ public:
     void operator+=(vArray<T>& array_);
     vArray operator+(vArray<T>& array_);
     bool operator==(const vArray<T>& array_);
-    void operator=(const vArray<T>& array_);
+    vArray operator=(const vArray<T>& array_);
     template<typename Q>
     friend std::ostream &operator<<(std::ostream &stream, const vArray<Q>& array);
     template<typename Q>
