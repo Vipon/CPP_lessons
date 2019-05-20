@@ -35,7 +35,7 @@ public:
 			delete[] buf1;
 			buf1 = buf2;
 		}
-		delete[] buf1;
+		delete[] buf2;
 	}
 	
 	friend std::istream& operator>>(std::istream& stream, List<T>& input)
