@@ -19,7 +19,7 @@ public:
     void Resize();
     void SetSize(const size_t& n);
     void PushBack(const T& val);
-    T &operator[](const size_t &n);
+    T &operator[](const size_t &n) const;
     void operator+=(vArray<T>& array_);
     vArray operator+(vArray<T>& array_);
     bool operator==(const vArray<T>& array_);
